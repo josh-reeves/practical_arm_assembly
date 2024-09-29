@@ -9,7 +9,7 @@ _start:
 	mov r7, #0x1
 	swi 0
 
-@Additional Notes:
+@Other Notes:
 	@The exit code is stored in the last 8 bits of the r0 register.
 
 
