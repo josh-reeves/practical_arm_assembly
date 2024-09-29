@@ -4,4 +4,4 @@ pipelines:
   default:
     - step:
         script:
-          -git push --mirror git@github.com:josh-reeves/practical_arm_assembly.git
+          - git push --mirror git@github.com:josh-reeves/practical_arm_assembly.git
