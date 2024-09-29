@@ -10,6 +10,6 @@ _start:
 	swi 0 @Causes a software interrupt  exception. The argument is ignored.
 
 @Other Notes:
-	@The number of bits in a processor architecture typically refers to the number of bits the processors register can hold and the processor can work with at one time.
-	@The pc register increments by 4 for each instruction exectued because each instruction is 4 bits long.
+	@The number of bits in a processor architecture typically refers to the capacity of the processor's registers.
+	@The pc register increments by 4 for each instruction exectued because each instruction is 4 bytes (32 bits) long.
 
