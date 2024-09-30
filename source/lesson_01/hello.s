@@ -12,4 +12,5 @@ _start:
 @Other Notes:
 	@The number of bits in a processor architecture typically refers to the capacity of the processor's registers.
 	@The pc register increments by 4 for each instruction exectued because each instruction is 4 bytes (32 bits) long.
+	
 
