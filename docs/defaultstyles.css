@@ -3,9 +3,14 @@
 
 }
 
-.centerwmargin {
+.centered {
     margin: auto;
     width: 33%;
     padding: 10;
+
+}
+
+.centeredtext {
+    text-align: center;
 
 }
