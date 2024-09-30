@@ -12,4 +12,6 @@ _start:
 
 @Other Notes:
 	@According to official docs. The PC register can be used for either operand.
+	@The mov command can also take a register for its second argument.
+	
 
