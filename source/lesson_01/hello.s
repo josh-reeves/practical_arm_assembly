@@ -14,3 +14,4 @@ _start:
 	@The pc register increments by 4 for each instruction exectued because each instruction is 4 bytes (32 bits) long.
 	
 
+
