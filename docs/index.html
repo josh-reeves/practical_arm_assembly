@@ -3,23 +3,67 @@
     <head>
         <title>Practical ARM Assembly Notes</title>
         <link rel="stylesheet" href="assets/styles/default-styles.css">
+        <script src="scripts/utils.js"></script>
     </head>
     <body>
 
-        <header style="line-height: 2; padding-top: 40px;">
-                <h1 style="color: white; text-align: center;">Practical ARM Assembly</h1>
-                <p style="color: white; text-align: center;">A collection of documents, notes and other material created to accompany the <a href="https://github.com/josh-reeves/practical_arm_assembly">Practical Arm Assembly</a> repo.</p>
+        <header>
+            <div class="vertical-center" style="text-align: center; color: #FAFAFA;">
+                <h1>Practical ARM Assembly</h1>
+                <p>A collection of documents, notes and other material created to accompany the <a href="https://github.com/josh-reeves/practical_arm_assembly">Practical Arm Assembly</a> repository.</p>
+            </div>
         </header>
 
+            <table class="menu-container">
+                <tr>
+                    <td>
+                        <div class="menu-item" style="background-color: #475569;"><p>Home</p></div>
+                    </td>
+                    <td>
+                        <div class="menu-item" id="lessons" onmouseenter="unhide('lessonList')" onmouseleave="hide('lessonList')"><p>Lesson Notes</p></div>
+                    </td> 
+                    <td>
+                        <div class="menu-item"><p>Miscellaneous</p></div>
+                    </td> 
+                    <td>
+                        <div class="menu-item"><p>Resources</p></div>
+                    </td> 
+                </tr>
+            </table>
+
+            <table class="submenu-container">
+                <tr>
+                    <td>
+                        <div class="submenu" id="lessonList" onmouseenter="unhide('lessonList')" onmouseleave="hide('lessonList')">
+                            <div class="submenu-item" onclick="window.location.href='pages/lessons/introduction/introduction.html'"><p>Introduction</p></div> 
+                            <div class="submenu-item"><p>Lesson 1</p></div>
+                            <div class="submenu-item"><p>Lesson 2</p></div>
+                            <div class="submenu-item" onclick="window.location.href = 'pages/lessons/lesson_03/lesson_03.html'"><p>Lesson 3</p></div>
+                            <div class="submenu-item"><p>Lesson 4</p></div>                
+                            <div class="submenu-item"><p>Lesson 5</p></div>
+                            <div class="submenu-item"><p>Lesson 6</p></div>
+                            <div class="submenu-item"><p>Lesson 7</p></div>
+                            <div class="submenu-item"><p>Lesson 8</p></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
         <main>
-            <div class="scrollcontainer" style="margin-top: 35px;">
-                <div class="contentcontainer">
-                    <h2>What is this?</h2>
-                    <p style="padding: 10px; margin-left: 10px;">This site is meant to serve as documentaion for the <a href="https://github.com/josh-reeves/practical_arm_assembly">Practical Arm Assembly</a> GitHub repository, which in turn is based on the <a href="https://www.youtube.com/playlist?list=PLn_It163He32Ujm-l_czgEBhbJjOUgFhg">Practical Arm Assembly Tutorial Series</a> by Laurie Wired.</p>
+            <div class="scroll-container" style="margin-top: 15px;">
+                <div class="content-container">
+                    <h2>About</h2>
+                    <p class="content-section">This site is meant to serve as documentation for the <a href="https://github.com/josh-reeves/practical_arm_assembly">Practical Arm Assembly</a> GitHub repository, which, in turn, is based on the <a href="https://www.youtube.com/playlist?list=PLn_It163He32Ujm-l_czgEBhbJjOUgFhg">Practical Arm Assembly Tutorial Series</a> by Laurie Wired. Together, the repo and documentation are meant to serve as an introduction for anyone attempting to learn ARM assembly, with the repository providing well-commented code examples and the documentation providing supplemental, in-depth information about the topics covered.</p>
+                    <p class="content-section">Please note that this effort is not in any way affiliated with the creator of the original tutorial series and these materials are being provided for purely educational purposes. While the associated repository isn't officially licensed for a variety of reasons, all code, concepts and other intellectual property should be attributed to their original authors.</p>
                     <br>
+                    <h2>What is ARM Assembly?</h2>
+                    <p class="content-section">Assembly languages are low-level programming languages that feature a strong correlation between the instructions the language provides and the machine code instructions the processor is capable of natively understanding. They provide a way to directly invoke the basic arithmetic and logic operations that the processor can perform.</p>
+                    <p class="content-section">Because these operations and the way they're performed vary between processor architectures, assembly languages are typically specific to a particular architecture. ARM Assembly is the language for interfacing with processors based on the ARM architecture. For more information, please refer to <a>About ARM Assembly</a> the section of the introduction.</p>
+                    <br>
+                    <h2>Submitting Corrections</h2>
+                    <p class="content-section">Please note that the owner of this repository does not claim to be, in any way, an expert on this subject. If you notice anything that you know or suspect is incorrect, please feel free to <a href="https://github.com/josh-reeves/practical_arm_assembly/issues/new">submit an issue</a>. The repository's owner will review the submitted information and make any changes necessary.</p>
                 </div>
             </div>
         </main>
-    
     </body>
 </html>
