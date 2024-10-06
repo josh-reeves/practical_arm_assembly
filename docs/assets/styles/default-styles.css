@@ -106,14 +106,13 @@
 html
 {
     height: 100%;
+    overflow-y: hidden;
 
 }
 
 body
 {
-    background-color: #E4E4E1;
-    background-image: radial-gradient(at top center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.03) 100%), linear-gradient(to top, rgba(255,255,255,0.1) 0%, rgba(143,152,157,0.60) 100%);
-    background-blend-mode: normal, multiply;    
+    background-color: #E4E4E7;
     background-size: cover;
 
 }
@@ -121,8 +120,10 @@ body
 header
 {
     height: 14vh;
+    width: 100%;
     background-color: #18181B;
     box-shadow: 0px 1px 3px;
+    position: relative;
 
 }
 
@@ -146,135 +147,117 @@ p
 {
     font-family: robotoregular;
     font-weight: lighter;
+    line-height: 1.5;
 
 }
+
+li
+{
+    font-family: robotoregular;
+    font-weight: lighter;
+    line-height: 1.5;
+
+}
+
 
 /*Classes*/
-p.content-section
+div.menu-container
 {
-    padding: 10px; 
-    margin-left: 10px;
-
-}
-
-table.menu-container
-{
-    width: 50%; 
-    margin: auto; 
-    height: 5vh; 
-    margin-top: 15px;
-    table-layout: fixed;
-    border-radius: 3px;
-    overflow: hidden;
+    height: 86vh;
+    width: inherit;
+    position: absolute;
+    background-color: #18181B;
     box-shadow: 0px 1px 2px #00000080;
-    border-collapse: collapse;
-
-}
-
-table.menu-container td
-{
-    border-collapse: collapse;
-    border: 1.5px solid #0F172A;
+    overflow-y: auto;
 
 }
 
 div.menu-item
 {
     cursor: pointer;
-    height: 100%;
-    background-color: #334155;
-
-}
-
-div.menu-item p
-{
-    margin: 0;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    text-align: center;
-    color: #FAFAFA;
+    height: 5vh;
+    background-color: #27272A;
+    border: 1px solid #18181B;
 
 }
 
 div.menu-item:hover
 {
-    background-color: #475569;
+    background-color: #3F3F46;
 
 }
 
-table.submenu-container
+div.menu-item p
 {
-    width: 50%; 
-    margin: auto; 
-    table-layout: fixed;
-    border-radius: 3px;
-    border-collapse: collapse;
-    position: absolute;
-    transform: translateX(50%);
-    z-index: 1;
-
-}
-
-div.submenu
-{
-    height: 100%;
-    width: 100%;
-    background-color: #334155;
-    display: none;
-    overflow-x: hidden;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    box-shadow: 0px 1px 2px #00000080;
-    max-height: 25vh;
+    margin-left: 15px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FAFAFA;
 
 }
 
 div.submenu-item
 {
-    background-color: #334155;
-    border: 1px solid #0F172A;
+    margin: 0;
+    display: none;
     cursor: pointer;
-}
-
-div.submenu-item:hover
-{
-    background-color: #475569;
+    height: 5vh;
+    background-color: #333338;
+    border: 1px solid #18181B;
 
 }
 
-div.submenu-item p
+div.submenu-item-active
 {
-    margin: auto;
-    padding: 15px;
+    margin: 0;
+    display: block;
+    cursor: pointer;
+    height: 5vh;
+    background-color: #333338;
+    border: 1px solid #18181B;
+
+}
+
+div.submenu-item-active:hover
+{
+    background-color: #3F3F46;
+
+}
+
+div.submenu-item-active p
+{
+    margin-left: 45px;
+    margin-right: 20px;
     position: relative;
-    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
     color: #FAFAFA;
-
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 div.scroll-container
 {
-    width: 50%;
-    max-height: 750px;    
+    width: 65%;
+    height: 86vh;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 5px;
-    overflow-x: hidden;
     overflow-y: auto;
+    overflow-x: hidden;
     scrollbar-width: thin;
-    
+    background-color: #F4F4F5;
+    box-shadow: 0px 1px 3px;
+
 }
 
 div.content-container
 {
     margin-left: auto;
     margin-right: auto;
-    width: 90%;
-    padding: 35px;
-    border-radius: 3px;
-    background-color: #e4e4e780;
-    box-shadow: 0px 1px 2px #00000080;
+    width: 85%;
+    padding-top: 60px;
 
 }
 
@@ -284,6 +267,28 @@ div.content-container
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+
+}
+
+p.content-section
+{
+    padding: 10px; 
+    margin-left: 10px;
+    text-wrap: pretty;
+
+}
+
+ul.content-section
+{
+    margin-top: 5px;
+    margin-left: 60px;
+
+}
+
+ul.content-section li
+{
+    margin-bottom: 20px;
+    text-wrap: pretty;
 
 }
 

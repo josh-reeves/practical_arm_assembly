@@ -14,48 +14,87 @@
             </div>
         </header>
 
-        <table class="menu-container">
-            <tr>
-                <td>
-                    <div class="menu-item" onclick="window.location.href='../../../index.html'"><p>Home</p></div>
-                </td>
-                <td>
-                    <div class="menu-item" id="lessons" onmouseenter="unhide('lessonList')" onmouseleave="hide('lessonList')" style="background-color: #475569;"><p>Lesson Notes</p></div>
-                </td> 
-                <td>
-                    <div class="menu-item"><p>Miscellaneous</p></div>
-                </td> 
-                <td>
-                    <div class="menu-item"><p>Resources</p></div>
-                </td> 
-            </tr>
-        </table>
-
-        <table class="submenu-container">
-            <tr>
-                <td>
-                    <div class="submenu" id="lessonList" onmouseenter="unhide('lessonList')" onmouseleave="hide('lessonList')">
-                        <div class="submenu-item" style="background-color: #475569;"><p>Introduction</p></div> 
-                        <div class="submenu-item"><p>Lesson 1</p></div>
-                        <div class="submenu-item"><p>Lesson 2</p></div>
-                        <div class="submenu-item" onclick="window.location.href='../lesson_03/lesson_03.html'"><p>Lesson 3</p></div>
-                        <div class="submenu-item"><p>Lesson 4</p></div>                
-                        <div class="submenu-item"><p>Lesson 5</p></div>
-                        <div class="submenu-item"><p>Lesson 6</p></div>
-                        <div class="submenu-item"><p>Lesson 7</p></div>
-                        <div class="submenu-item"><p>Lesson 8</p></div>
+        <main>
+            <table style="border-collapse: collapse; table-layout: auto;">
+                <td style="width: 12%;">
+                    <div class="menu-container">
+                        <div class="menu-item" onclick="window.location.href='../../../index.html'">
+                            <p>About</p>
+                        </div>
+                        <div class="menu-item" onclick="toggleStyle('submenu-item-active', 'submenu-item', 'lessons')">
+                            <p>Lesson Notes</p>
+                        </div>  
+                        <div id="lessons">
+                            <div class="submenu-item-active" style="background-color: #333338;">
+                                <p style="opacity: 20%;">Introduction</p>
+                            </div>                        
+                            <div class="submenu-item-active" >
+                                <p>Lesson 01: MOV, Exit Syscall</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 02: ADD, SUB, MUL, set CPSR</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 03: LDR, STR</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 04: Logical Operators</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 05: Signed Number Conversions</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 06: Shift and Rotate</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 07: CMP</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 08: Branching</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 09: While Loops</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 10: Function Calls</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 11: Stack Operations</p>
+                            </div>
+                        </div>
+                        <div class="menu-item"><p>Resources</p></div>
+                        <div class="menu-item"><p>Miscellaneous</p></div>
                     </div>
                 </td>
-            </tr>
-        </table>
-
-        <main>
-            <div class="scroll-container" style="margin-top: 15px;">
-                <div class="content-container">
-                    <h2>Notes</h2>
-                    <br>
-                </div>
-            </div>
+                <td>        
+                    <div class="scroll-container">
+                        <div class="content-container">
+                            <h2>About ARM Assembly</h2>
+                            <p class="content-section">Generally speaking, all computer processors are only capable of understanding a limited set of relatively basic instructions. These instructions typically provide, among other things, basic arithmetic, logical operations and ways to access computer memory. All activity performed by the processor is, at most, an aggregate of these basic operations.</p>
+                            <p class="content-section">Assembly languages are low-level programming languages that provide a way to directly invoke these instructions. As opposed to higher-level languages (e.g. Python, Rust, the C variants, etc.), which provide controlled and highly-abstracted access to these operations via relatively human-readable code, assembly languages feature a strong correlation between the instructions they provide to the developer and those the processor is actually able to understand.</p>
+                            <p class="content-section">Due to this correlation, assembly languages are architecture specific.</p>
+                            <br>
+                            <br>
+                            <h2>Why Learn Assembly?</h2>
+                            <p class="content-section">Learning assembly builds a fundamental understanding of how the various operations a computer is instructed to perform are actually carried out and provides hands-on experience with what are, for many, some of the more obscure aspects of computer science. This additional understanding is beneficial for making informed and detailed decisions about the design of programs written in higher-level languages and troubleshooting complex issues where the cause may not be immediately apparent.</p>
+                            <br>
+                            <br>
+                            <h2>Notable Deviations from Source Material</h2>
+                            <p class="content-section">While the code and concepts provided by this project do adhere closely to those provided by the original tutorial series. It does deviate from the source material in a few notable ways.</p> 
+                            <p class="content-section">The source code was written and compiled on a bare-metal system built around a 64-bit ARM Cortex-A76 processor. This provided both additional opportunities and additional challenges, which ultimately resulted in the following changes:</p>
+                            <ul class="content-section">
+                                <li>Because some of the original lessons make extensive use of CPULator to examine the value of specific registers or other memory locations, the registers used by the source code in the associated repository often differ from the ones used in the tutorial series. This is done so that the results of various operations can be queried via the programs' exit codes.</li>
+                                <li>For the same reason, additional instructions are sometimes executed for the purpose of moving program results into the appropriate register. This includes load/store operations as well as any other operations required to ultimately move the program result into the location required for the exit code.</li>
+                                <li>While the use of the gcc-arm-linux-gnueabi toolchain from the tutorial series results in 32-bit executables, the use of a 64-bit processor provides an opportunity to export the A64 ISA as well. For this reason, 64-bit versions of the various exercises are provided. These were compiled using the gcc-aarch64-linux-gnu toolchain and serve to demonstrate the differences between the 32-bit and 64-bit ARM ISAs. Because of this, the comments within this source code are largely limited to noting these differences.</li>
+                                <li>In addition to the above, there may be occasional stylistic changes that do not affect the execution of the exercises themselves. An example of this is the data segment, which is placed above the text segment in the repository source code instead of beneath it as in the original tutorials.</li>
+                            </ul>
+                            <br>
+                            <h2>Making Effective Use of this Documentation</h2>
+                        </div>
+                    </div>
+                </td>
+            </table>
         </main>
+
     </body>
 </html>
