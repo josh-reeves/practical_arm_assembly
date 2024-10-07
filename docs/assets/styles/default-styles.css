@@ -143,6 +143,14 @@ h2
 
 }
 
+h3
+{
+    font-family: robotoregular;
+    font-size: 20px;
+    font-weight: 400;
+
+}
+
 p
 {
     font-family: robotoregular;
@@ -258,6 +266,7 @@ div.content-container
     margin-right: auto;
     width: 85%;
     padding-top: 60px;
+    padding-bottom: 60px;
 
 }
 
@@ -278,6 +287,41 @@ p.content-section
 
 }
 
+table.content-section
+{
+    padding: 10px; 
+    margin-left: auto;
+    margin-right: auto;
+    text-wrap: pretty;
+    table-layout: auto;
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+table.content-section th
+{
+    font-family: robotoregular;
+    font-weight: lighter;
+    line-height: 1.5;
+    text-align: center;
+    padding: 15px; 
+    border: 1.5px solid #18181B;
+    background-color: #E4E4E7;
+
+}
+
+table.content-section td
+{
+    font-family: robotoregular;
+    font-weight: lighter;
+    line-height: 1.5;
+    padding: 15px; 
+    margin-left: 10px;
+    border: 1.5px solid #18181B;
+
+}
+
 ul.content-section
 {
     margin-top: 5px;
@@ -292,6 +336,36 @@ ul.content-section li
 
 }
 
+div.illustration
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+    margin-top: 20px;
+
+}
+
+div.codebox
+{
+    background-color: #27272A;
+    border: 1px solid #18181B;
+    border-radius: 3px;
+
+}
+
+div.codebox p
+{
+    font-family: 'Courier New', Courier, monospace;
+    color: #FAFAFA;
+    padding: 15px;
+
+}
+
+div.codebox a
+{
+    color: #FAFAFA;
+
+}
 
   
 

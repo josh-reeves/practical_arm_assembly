@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Practical ARM Assembly Notes</title>
+        <link rel="stylesheet" href="../../../assets/styles/default-styles.css">
+        <script src="../../../scripts/utils.js"></script>
+    </head>
+    <body>
+
+        <header>
+            <div class="vertical-center" style="text-align: center; color: #FAFAFA;">
+                <h1>Practical ARM Assembly</h1>
+                <p>A collection of documents, notes and other material created to accompany the <a href="https://github.com/josh-reeves/practical_arm_assembly">Practical Arm Assembly</a> repository.</p>
+            </div>
+        </header>
+
+        <main>
+            <table style="border-collapse: collapse; table-layout: auto; width: 100%;">
+                <td style="width: 12%;">
+                    <div class="menu-container">
+                        <div class="menu-item" style="background-color: #27272A;" onclick="window.location.href='../../../index.html'">
+                            <p>About</p>
+                        </div>
+                        <div class="menu-item" onclick="toggleStyle('submenu-item-active', 'submenu-item', 'lessons')">
+                            <p>Lesson Notes</p>
+                        </div>  
+                        <div id="lessons">
+                            <div class="submenu-item-active" onclick="window.location.href='../introduction/introduction.html'">
+                                <p >Introduction</p>
+                            </div>                        
+                            <div class="submenu-item-active" >
+                                <p>Lesson 01: MOV, Exit Syscall</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 02: ADD, SUB, MUL, set CPSR</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 03: LDR, STR</p>
+                            </div>
+                            <div class="submenu-item-active" style="background-color: #333338;">
+                                <p style="opacity: 20%;">Lesson 04: Logical Operators</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 05: Signed Number Conversions</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 06: Shift and Rotate</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 07: CMP</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 08: Branching</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 09: While Loops</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 10: Function Calls</p>
+                            </div>
+                            <div class="submenu-item-active" >
+                                <p>Lesson 11: Stack Operations</p>
+                            </div>
+                        </div>
+                        <div class="menu-item"><p>Resources</p></div>
+                        <div class="menu-item"><p>Miscellaneous</p></div>
+                    </div>
+                </td>
+                <td>        
+                    <div class="scroll-container">
+                        <div class="content-container">
+                            <h2>Logical Operators</h2>
+                            <p class="content-section">All logical operators are performed bitwise (i.e. they are performed on each individual bit of their operands).</p>
+                            <br>
+                            <h3 style="margin-left: 20px;">AND</h3>
+                            <p class="content-section">For each pair of bits in the provided operands, AND will return a 0 if either bit is 0 or a 1 if both bits are 1.</p>
+                            <div class="illustration">
+                                <h3 style="margin-left: 10px; margin-bottom: 10px;">AND Truth Table</h3>
+                                <table class="content-section">
+                                    <tr>
+                                        <th>Input A</th>
+                                        <th>Input B</th>
+                                        <th>Result</th>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                    </tr>
+                                </table> 
+                            </div>
+
+                            <div class="illustration" style="margin-bottom: 40px;">
+                                <h3 style="margin-left: 10px; margin-bottom: 10px;">AND Example</h3>
+                                <div class="codebox" style="text-align: center;">
+                                    <p>00000000000000000000000001000010</p>
+                                    <p>00000000000000000000000000100110</p>
+                                    <hr style="height: 1px; color: #FAFAFA; background-color: #FAFAFA; width: 75%; margin: auto;"></hr>
+                                    <p><a href="https://www.rapidtables.com/convert/number/binary-to-decimal.html?x=00000000000000000000000000000010">00000000000000000000000000000010</a></p>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-left: 20px;">ORR</h3>
+                            <p class="content-section">For each pair of bits in the provided operands, AND will return a 1 if either bit 1 or a 0 if both bits are 0.</p>
+
+                            <div class="illustration">
+                                <h3 style="margin-left: 10px; margin-bottom: 10px;">ORR Truth Table</h3>
+                                <table class="content-section">
+                                    <tr>
+                                        <th>Input A</th>
+                                        <th>Input B</th>
+                                        <th>Result</th>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                    </tr>
+                                </table> 
+                            </div>
+                            
+                            <div class="illustration" style="margin-bottom: 40px;">
+                                <h3 style="margin-left: 10px; margin-bottom: 10px;">ORR Example</h3>
+                                <div class="codebox" style="text-align: center;">
+                                    <p>00000000000000000000000001000010</p>
+                                    <p>00000000000000000000000000100110</p>
+                                    <hr style="height: 1px; color: #FAFAFA; background-color: #FAFAFA; width: 75%; margin: auto;"></hr>
+                                    <p><a href="https://www.rapidtables.com/convert/number/binary-to-decimal.html?x=00000000000000000000000001100110">00000000000000000000000001100110<a></p>
+                                </div>
+                            </div>
+
+                            <h3 style="margin-left: 20px;">EOR</h3>
+                            <p class="content-section">For each pair of bits in the provided operands, EOR will return a 1 if only one of the bits is 1.</p>
+
+                            <div class="illustration">
+                                <h3 style="margin-left: 10px; margin-bottom: 10px;">EOR Truth Table</h3>
+                                <table class="content-section">
+                                    <tr>
+                                        <th>Input A</th>
+                                        <th>Input B</th>
+                                        <th>Result</th>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                    </tr>
+                                </table> 
+                            </div>
+
+                            <div class="illustration">
+                                <h3 style="margin-left: 10px; margin-bottom: 10px;">EOR Example</h3>
+                                <div class="codebox" style="text-align: center;">
+                                    <p>00000000000000000000000001000010</p>
+                                    <p>00000000000000000000000000100110</p>
+                                    <hr style="height: 1px; color: #FAFAFA; background-color: #FAFAFA; width: 75%; margin: auto;"></hr>
+                                    <p><a href="https://www.rapidtables.com/convert/number/binary-to-decimal.html?x=00000000000000000000000001100100">00000000000000000000000001100100<a></p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </td>
+            </table>
+        </main>
+
+    </body>
+</html>
