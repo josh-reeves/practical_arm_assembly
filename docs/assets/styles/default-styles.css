@@ -145,7 +145,7 @@ h2
 
 h3
 {
-    font-family: robotoregular;
+    font-family: robotomedium;
     font-size: 20px;
     font-weight: 400;
 
@@ -173,7 +173,7 @@ div.menu-container
 {
     height: 86vh;
     width: inherit;
-    position: absolute;
+    position: fixed;
     background-color: #18181B;
     box-shadow: 0px 1px 2px #00000080;
     overflow-y: auto;
@@ -270,12 +270,34 @@ div.content-container
 
 }
 
-.vertical-center 
+div.illustration
 {
-    margin: 0;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+    margin-top: 20px;
+
+}
+
+div.codebox
+{
+    background-color: #27272A;
+    border: 1px solid #18181B;
+    border-radius: 3px;
+
+}
+
+div.codebox p
+{
+    font-family: 'Courier New', Courier, monospace;
+    color: #FAFAFA;
+    padding: 15px;
+
+}
+
+div.codebox a
+{
+    color: #FAFAFA;
 
 }
 
@@ -324,48 +346,23 @@ table.content-section td
 
 ul.content-section
 {
-    margin-top: 5px;
+    margin-top: 10px;
     margin-left: 60px;
 
 }
 
 ul.content-section li
 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-wrap: pretty;
 
 }
 
-div.illustration
+.vertical-center 
 {
-    margin-left: auto;
-    margin-right: auto;
-    width: 45%;
-    margin-top: 20px;
+    margin: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 
 }
-
-div.codebox
-{
-    background-color: #27272A;
-    border: 1px solid #18181B;
-    border-radius: 3px;
-
-}
-
-div.codebox p
-{
-    font-family: 'Courier New', Courier, monospace;
-    color: #FAFAFA;
-    padding: 15px;
-
-}
-
-div.codebox a
-{
-    color: #FAFAFA;
-
-}
-
-  
-

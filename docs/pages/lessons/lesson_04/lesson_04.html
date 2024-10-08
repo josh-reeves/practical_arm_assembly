@@ -70,11 +70,11 @@
                     <div class="scroll-container">
                         <div class="content-container">
                             <h2>Logical Operators</h2>
-                            <p class="content-section">All logical operators are performed bitwise (i.e. they are performed on each individual bit of their operands).</p>
+                            <p class="content-section">Logical operators perform logical operations (e.g. comparison) on their inputs and provide a result based on the result of the calculation. Because of the way digital computers process data, the primary method of comparing values is bit-by-bit. For this reason, all logical operators are bitwise. The most prevalent logical operators included in the A32 ISA are AND, ORR, EOR and MVN.</p>
                             <br>
                             <h3 style="margin-left: 20px;">AND</h3>
-                            <p class="content-section">For each pair of bits in the provided operands, AND will return a 0 if either bit is 0 or a 1 if both bits are 1.</p>
-                            <div class="illustration">
+                            <p class="content-section">For each pair of bits comprising the provided operands, the AND operator will return a 1 only if both input bits are also 1. To illustrate this we can construct a Truth Table: A table representing the output for each of the possible inputs a logical operator is capable of receiving:</p>
+                            <div class="illustration" style="margin-bottom: 40px;">
                                 <h3 style="margin-left: 10px; margin-bottom: 10px;">AND Truth Table</h3>
                                 <table class="content-section">
                                     <tr>
@@ -104,8 +104,8 @@
                                     </tr>
                                 </table> 
                             </div>
-
-                            <div class="illustration" style="margin-bottom: 40px;">
+                            <p class="content-section">The hexadecimal values #0x42 and #0x26 (66 and 38 in decimal, respectively), for each of the <a href="https://github.com/josh-reeves/practical_arm_assembly/tree/main/source/lesson_04/A32">examples</a> in this section. The illustration below demonstrates the AND operation on the two test values. The result links to decimal and hexadecimal representations of its value:</p>
+                            <div class="illustration" style="margin-bottom: 60px;">
                                 <h3 style="margin-left: 10px; margin-bottom: 10px;">AND Example</h3>
                                 <div class="codebox" style="text-align: center;">
                                     <p>00000000000000000000000001000010</p>
@@ -116,93 +116,160 @@
                             </div>
 
                             <h3 style="margin-left: 20px;">ORR</h3>
-                            <p class="content-section">For each pair of bits in the provided operands, AND will return a 1 if either bit 1 or a 0 if both bits are 0.</p>
-
-                            <div class="illustration">
-                                <h3 style="margin-left: 10px; margin-bottom: 10px;">ORR Truth Table</h3>
-                                <table class="content-section">
-                                    <tr>
-                                        <th>Input A</th>
-                                        <th>Input B</th>
-                                        <th>Result</th>
-                                    </tr>
-                                    <tr>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>0</td>
-                                        <td>1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>0</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                    </tr>
-                                </table> 
-                            </div>
+                            <p class="content-section">For each pair of bits comprising the provided operands, the ORR operator will return a 1 if 1 or more of the inputs are 1:</p>
                             
-                            <div class="illustration" style="margin-bottom: 40px;">
-                                <h3 style="margin-left: 10px; margin-bottom: 10px;">ORR Example</h3>
-                                <div class="codebox" style="text-align: center;">
-                                    <p>00000000000000000000000001000010</p>
-                                    <p>00000000000000000000000000100110</p>
-                                    <hr style="height: 1px; color: #FAFAFA; background-color: #FAFAFA; width: 75%; margin: auto;"></hr>
-                                    <p><a href="https://www.rapidtables.com/convert/number/binary-to-decimal.html?x=00000000000000000000000001100110">00000000000000000000000001100110<a></p>
-                                </div>
-                            </div>
-
+                            <table style="width: 80%; margin-left: auto; margin-right: auto; margin-bottom: 60px;">
+                                <td style="width: 50%;">
+                                    <div class="illustration" style="width: 90%;">
+                                        <h3 style="margin-left: 10px; margin-bottom: 10px;">ORR Truth Table</h3>
+                                        <table class="content-section">
+                                            <tr>
+                                                <th>Input A</th>
+                                                <th>Input B</th>
+                                                <th>Result</th>
+                                            </tr>
+                                            <tr>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                            </tr>
+                                        </table> 
+                                    </div>                                
+                                </td>
+                                <td>
+                                    <div class="illustration" style="width: 90%;">
+                                        <h3 style="margin-left: 10px; margin-bottom: 10px;">OOR Example</h3>
+                                        <div class="codebox" style="text-align: center;">
+                                            <p>00000000000000000000000001000010</p>
+                                            <p>00000000000000000000000000100110</p>
+                                            <hr style="height: 1px; color: #FAFAFA; background-color: #FAFAFA; width: 75%; margin: auto;"></hr>
+                                            <p><a href="https://www.rapidtables.com/convert/number/binary-to-decimal.html?x=00000000000000000000000001100110">00000000000000000000000001100110<a></p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </table>
                             <h3 style="margin-left: 20px;">EOR</h3>
-                            <p class="content-section">For each pair of bits in the provided operands, EOR will return a 1 if only one of the bits is 1.</p>
-
-                            <div class="illustration">
-                                <h3 style="margin-left: 10px; margin-bottom: 10px;">EOR Truth Table</h3>
-                                <table class="content-section">
-                                    <tr>
-                                        <th>Input A</th>
-                                        <th>Input B</th>
-                                        <th>Result</th>
-                                    </tr>
-                                    <tr>
-                                        <td>0</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>0</td>
-                                        <td>1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>0</td>
-                                        <td>1</td>
-                                        <td>1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>1</td>
-                                        <td>0</td>
-                                    </tr>
-                                </table> 
-                            </div>
-
-                            <div class="illustration">
-                                <h3 style="margin-left: 10px; margin-bottom: 10px;">EOR Example</h3>
-                                <div class="codebox" style="text-align: center;">
-                                    <p>00000000000000000000000001000010</p>
-                                    <p>00000000000000000000000000100110</p>
-                                    <hr style="height: 1px; color: #FAFAFA; background-color: #FAFAFA; width: 75%; margin: auto;"></hr>
-                                    <p><a href="https://www.rapidtables.com/convert/number/binary-to-decimal.html?x=00000000000000000000000001100100">00000000000000000000000001100100<a></p>
-                                </div>
-                            </div>
-
+                            <p class="content-section">For each pair of bits comprising the provided operands, the EOR (Exclusive-OR) operator will return a 1 only when a single input bit is also 1. If both input bits are 1, 0 is returned:</p>           
+                            <table style="width: 80%; margin-left: auto; margin-right: auto; margin-bottom: 60px;">
+                                <td style="width: 50%;">
+                                    <div class="illustration" style="width: 90%;">
+                                        <h3 style="margin-left: 10px; margin-bottom: 10px;">EOR Truth Table</h3>
+                                        <table class="content-section">
+                                            <tr>
+                                                <th>Input A</th>
+                                                <th>Input B</th>
+                                                <th>Result</th>
+                                            </tr>
+                                            <tr>
+                                                <td>0</td>
+                                                <td>0</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>0</td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>0</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>0</td>
+                                            </tr>
+                                        </table> 
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="illustration" style="width: 90%;">
+                                        <h3 style="margin-left: 10px; margin-bottom: 10px;">EOR Example</h3>
+                                        <div class="codebox" style="text-align: center;">
+                                            <p>00000000000000000000000001000010</p>
+                                            <p>00000000000000000000000000100110</p>
+                                            <hr style="height: 1px; color: #FAFAFA; background-color: #FAFAFA; width: 75%; margin: auto;"></hr>
+                                            <p><a href="https://www.rapidtables.com/convert/number/binary-to-decimal.html?x=00000000000000000000000001100100">00000000000000000000000001100100<a></p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </table>
+                            <h3 style="margin-left: 20px;">MVN</h3>
+                            <p class="content-section">The MVN operator (Move and Negate) only takes one operand and will invert the value of each bit comprising that operand, returning 1 if the input is 0 and 0 if the input is 1:</p>           
+                            <table style="width: 80%; margin-left: auto; margin-right: auto; margin-bottom: 60px;">
+                                <td style="width: 50%;">
+                                    <div class="illustration" style="width: 90%;">
+                                        <h3 style="margin-left: 10px; margin-bottom: 10px;">MVN Truth Table</h3>
+                                        <table class="content-section">
+                                            <tr>
+                                                <th>Input</th>
+                                                <th style="width: 50%">Result</th>
+                                            </tr>
+                                            <tr>
+                                                <td>0</td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>0</td>
+                                            </tr>
+                                        </table> 
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="illustration" style="width: 90%;">
+                                        <h3 style="margin-left: 10px; margin-bottom: 10px;">MVN Example</h3>
+                                        <div class="codebox" style="text-align: center;">
+                                            <p>00000000000000000000000001000010</p>
+                                            <hr style="height: 1px; color: #FAFAFA; background-color: #FAFAFA; width: 75%; margin: auto;"></hr>
+                                            <p><a href="https://www.rapidtables.com/convert/number/binary-to-decimal.html?x=00000000000000000000000001100100">11111111111111111111111110111101<a></p>
+                                        </div>
+                                        <p>NOTE: Due to the manner in which exit codes are stored, the source for this example will return 189 when queried.</p>
+                                    </div>
+                                </td>
+                            </table>
+                            <h2>New Instructions</h2>
+                            <ul class="content-section">
+                                <li><a href="https://developer.arm.com/documentation/ddi0597/2024-09/Base-Instructions/AND--ANDS--immediate---Bitwise-AND--immediate--?lang=en">AND{s}{c}{q} {Rd}, Rn, (Rm/#Imm):</a></li>
+                                <ul style="margin-left: 30px; margin-bottom: 20px;">
+                                    <li>Performs a bitwise AND operation on the bits of the first and second operands and stores the result in Rd.</li>
+                                    <li>The last operand can be either an immediate or another register.</li>
+                                    <li>If {Rd} is omitted, Rn is used for the destination register.</li>
+                                </ul>
+                                <li><a href="https://developer.arm.com/documentation/ddi0597/2024-09/Base-Instructions/ORR--ORRS--immediate---Bitwise-OR--immediate--?lang=en">ORR{s}{c}{q} {Rd}, Rn, (Rm/#Imm):</a></li>
+                                <ul style="margin-left: 30px; margin-bottom: 20px;">
+                                    <li>Performs a bitwise OR operation on the bits of the first and second operands and stores the result in Rd.</li>
+                                    <li>The last operand can be either an immediate or another register.</li>
+                                    <li>If {Rd} is omitted, Rn is used for the destination register.</li>
+                                </ul>
+                                <li><a href="https://developer.arm.com/documentation/ddi0597/2024-09/Base-Instructions/ORR--ORRS--immediate---Bitwise-OR--immediate--?lang=en">EOR{s}{c}{q} {Rd}, Rn, (Rm/#Imm):</a></li>
+                                <ul style="margin-left: 30px; margin-bottom: 20px;">
+                                    <li>Performs a bitwise Exclusive-OR operation on the bits of the first and second operands and stores the result in Rd.</li>
+                                    <li>The last operand can be either an immediate or another register.</li>
+                                    <li>If {Rd} is omitted, Rn is used for the destination register.</li>
+                                </ul>
+                                <li><a href="https://developer.arm.com/documentation/ddi0597/2024-09/Base-Instructions/ORR--ORRS--immediate---Bitwise-OR--immediate--?lang=en">MVN{s} Rd, (Rm/#Imm):</a></li>
+                                <ul style="margin-left: 30px; margin-bottom: 20px;">
+                                    <li>Performs a bitwise Negate operation on the bits of the second operand and stores the result in Rd.</li>
+                                    <li>The last operand can be either an immediate or another register.</li>
+                                </ul>
+                            </ul>
                         </div>
                     </div>
                 </td>
