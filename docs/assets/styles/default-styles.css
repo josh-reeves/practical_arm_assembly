@@ -171,9 +171,8 @@ li
 /*Classes*/
 div.menu-container
 {
-    height: 86vh;
-    width: inherit;
-    position: fixed;
+    height: 100%;
+    width: 100%;
     background-color: #18181B;
     box-shadow: 0px 1px 2px #00000080;
     overflow-y: auto;
@@ -249,7 +248,7 @@ div.submenu-item-active p
 div.scroll-container
 {
     width: 65%;
-    height: 86vh;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
     overflow-y: auto;
@@ -306,6 +305,22 @@ p.content-section
     padding: 10px; 
     margin-left: 10px;
     text-wrap: pretty;
+
+}
+
+table.body-frame
+{
+    border-collapse: collapse; 
+    table-layout: fixed; 
+    width: 100%;
+    height: 86vh;
+
+}
+
+table.body-frame td
+{
+    vertical-align: top;
+
 
 }
 
