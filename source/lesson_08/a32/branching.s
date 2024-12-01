@@ -13,21 +13,25 @@ _start:
 	cmp r1, r0 // Compares the valuee stored in r0 to the value stored in r1 and stores the result in r1
 	blt cond1 /* The LT extension indicates that the specified label should be jumped to if the first value from the previous comparison was less than
 		   * the second value*/
-	bge cond2 /* The GE extension indicates that the specified label should be jumped to if the first value from the previous comparison was greater
-		   * than or equal to the second value.*/
+	// The GE extension indicates that the specified label should be executed next if the first value from the previous comparison was greater than or equal to the second value.
+	bge cond2 // Jump to label cond2 if the value in r1 > the value in r0.
 
 cond1:
-	mov r0, #0x0 // if the first value is less than the second value, move the value 0 into r0.
+	mov r0, #0x0
 
 	mov r7, #0x1
 	swi 0
 
+	/* Unless steps are taken to redirect the program's flow, it will continue until the software interrupt instruction is executed. For this reason the software interrupt has
+	 * been placed under it's own label, which we can force the program to jump to by using the branch mnemonic without any extensions:*/
+	b end // Jump to label end.
+
 cond2:
 	mov r0, #0x1 // if the first value is greater than or equal to the second value, move the value 1 into r1.
 
-	mov r7, #0x1
-	swi 0 /* Note that both conditions have separate swi calls and the start label has none. This is because execution will continue from the end of
-	       * whichever label the branch jumps to regardless of whether the other conditions are true unless steps are taken to halt or redirect
-	       * execution.*/
+	// Note that the redirection from cond1 is not required at this point, as execution will continue from here into the end label regardless.
 
+end:
+	mov r7, #0x1
+	swi 0
 
