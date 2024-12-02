@@ -1,7 +1,17 @@
-into i = 0;
+#include <stdio.h>
 
-while (i < 5)
+int main(void)
 {
-	i++;
+	int i = 0;
+
+	while (i < 5)
+	{
+		i++;
+
+	}
+
+	printf("%d\n", i);
+
+	return 0;
 
 }

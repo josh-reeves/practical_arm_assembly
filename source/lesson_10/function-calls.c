@@ -1,8 +1,10 @@
+#include <stdio.h>
+
 int add_nums(int num1, int num2);
 
 int main(void)
 {
-	add_nums(1, 1);
+	printf("%d\n", add_nums(5, 4));
 
 	return 0;
 
