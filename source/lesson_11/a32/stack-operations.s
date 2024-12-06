@@ -2,10 +2,10 @@
 
 _start:
 	// Lesson 10 introduced the concept of the PCS, which, among other things, recommends limiting the registers used to pass arguments to procedure calls to r0 - r3:
-	mov r0, #0x3 // Arg 1
-	mov r1, #0x5 // Arg 2
-	mov r2, #0x7 // Arg 3
-	mov r3, #0x2 // Arg 4
+	mov r0, #0x3 // Argument 1
+	mov r1, #0x5 // Argument 2
+	mov r2, #0x7 // Argument 3
+	mov r3, #0x2 // Argument 4
 
 	/* At this point all of the registers the PCS recommends for passing arguments to a procedure have been used. While using additional registers may not cause the program
 	 * to fail outright, other software following the PCS standard will not be expecting it, which could cause unexpected behavior. Instead, the stack can be utilized to
@@ -26,8 +26,13 @@ _start:
 	mov r4, #0x8 // Moves the value 8 into r4.
 	str r4, [sp, #0x4] // Stores the value from r4 in location of referenced by the stack pointer offset by 4 bytes.
 
-	// R3 will be used to load the stored values, so its value should be preserved by the caller. In this instance, we'll do this by storing its value in r4:
-	mov r4, r3 // Moves the value from r3 into r4.
+	/* In addition to specifying which registers should be used to pass data between procedures, the PCS also provides recommendations for how these registers' original
+	 * values should be preserved. Because registers r0 - r3 should be used or modified by a procedure, they are termed as caller-saved: The calling procedure is
+	 * responsible for preserving their value. Conversely, registers r4 - r11 are callee-saved: If the called procedure modifies them, it is responsible for preserving
+	 * their original values.
+	 *
+	 * R3 will be used to load the values for arguments 5 and 6, so its value should be preserved. For now, this will be done by moving its value into r4:*/
+	mov r4, r3 // Sets the value of r4 to the value stored in r3.
 
 	bl add_nums // Branches to the add_nums procedure and sets the link register to the location of the next instruction from the current procedure.
 
