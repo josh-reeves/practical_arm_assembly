@@ -12,12 +12,16 @@ _start:
 	 * of the loop label:*/
 	loop:
 		cmp r0, #0x5 // Compare the value stored in register 0 to 5.
-		bge end /* If the value in r0 is greater than or equal to 5, redirect 
-				   execution to the end label.*/
+
+		/* If the value in r0 is greater than or equal to 5, redirect execution
+		 * to the end label:*/
+		bge end 
 
 		// If execution jumps to the end label, this portion of code is skipped.
-		add r0, #0x1 /* Add 1 to the value stored in register 0. Store the 
-					  * result in register r0.*/
+		
+		/* Add 1 to the value stored in register 0. Store the result in register
+		 * r0:*/
+		add r0, #0x1 
 
 		b loop // Redirect execution to the beginning of the loop label.
 

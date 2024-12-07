@@ -20,24 +20,28 @@ _start:
 	 *		- If the first and second value are the same and the result is zero,
 	 *			the zero condition flag, Z [30], and the carry condition flag, 
 	 *			C [29], are both set to 1.*/
-	mov r0, #0x3 /* Moves the value 3 (00000000000000000000000000000011) into
-				  * register 0.*/
-	cmp r0, #0x5 /* Compares the value store in r0 (3) to the value 5 to
-				  * determine which is greater. This comparison is done by
-				  * subtracting the value in the first register from the one in
-				  * the second register:
-				  *   00000000000000000000000000000011
-				  * - 00000000000000000000000000000101
-				  *	 ----------------------------------
-				  *	  11111111111111111111111111111110
-				  */
+
+	// Moves the value 3 (00000000000000000000000000000011) into register r0:
+	mov r0, #0x3 
+	
+	/* The below compares the value store in r0 (3) to the value 5 to determine
+	 * which is greater. This comparison is done by subtracting the value in the 
+	 * first register from the one in the second register:
+	 *   00000000000000000000000000000011
+	 * - 00000000000000000000000000000101
+	 *	----------------------------------
+	 *	 11111111111111111111111111111110
+	 */
+	cmp r0, #0x5
     
 	/* The below just moves the value from the CPSR register into r0 and shifts
-	 * it so that bits 29, 30 and 31 are the rightmost bits
-	 * and appear in the exitcode.*/
+	 * it so that bits 29, 30 and 31 are the rightmost bits and appear in the
+	 * exitcode:*/
 	mrs r0, cpsr 
-	lsr r0, #0x1D /* Because the N flag was set to 1 before the shift,
-				   * this will be 4 in decimal.*/
+
+	/* Because the N flag was set to 1 before the shift, this will be 4 in 
+	 * decimal:*/
+	lsr r0, #0x1D 
 				   
 	mov r7, #0x1
 	swi 0

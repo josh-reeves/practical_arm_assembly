@@ -30,9 +30,10 @@ _start:
 	b end // Branch to the end label.
 
 add_nums:
-	// Convention typically reserves r0 for a procedures return value:
-	add r0, r1, r2 /* Adds the values stored in r1 and r2 together and stores
-					* the result in r0.*/
+	// Convention typically reserves r0 for a procedures return value.
+
+	// Adds the values stored in r1 and r2 together and stores the result in r0:
+	add r0, r1, r2 
 
 	/* The branch exchange instruction (BX) branches execution to the address 
 	 * and instruction specified by a provided register. Here it's used to 

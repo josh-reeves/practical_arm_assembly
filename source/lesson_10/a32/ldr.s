@@ -22,12 +22,15 @@ _start:
 	 *
 	 * Because the location of var1 isn't known, the ldr command can also be 
 	 * used to load the memory location of a specified variable by appending the
-	 * = character to the variables name:*/
-	ldr r0, =var1 /* The Load Register command assigns the memory address of 
-				   * variable var1 to r0.*/
-				   
-	ldr r0, [r0] /* Now the ldr command is used to load the value stored at the 
-				  * memory location specified by r0 and stores it in r0.*/
+	 * '=' character to the variables name.*/
+
+	/* The Load Register command assigns the memory address of 
+	 * variable var1 to r0:*/
+	ldr r0, =var1 
+	
+	/* Now the ldr command is used to load the value stored at the memory
+	 * location specified by r0 and stores it in r0:*/
+	ldr r0, [r0] 
 
 end:
 	mov r7, #0x1

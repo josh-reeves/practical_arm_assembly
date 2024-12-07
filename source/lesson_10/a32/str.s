@@ -20,11 +20,13 @@ _start:
 	 * the location of a declared variable:.*/
 	ldr r1, =var1 // Loads the value of the variable var1 into register r1.
 	
-	str r0, [r1]  /* Stores the value of r0 at the memory location specified by 
-				   * the value of r1*/
+	/* Stores the value of r0 at the memory location specified by the value of
+	 * of r1:*/
+	str r0, [r1]  
 
-	ldr r0, [r1] /* Reloads the value that was just stored in r0 so that it can
-				  * be queried via the exit code.*/
+	/* Reloads the value that was just stored in r0 so that it can be queried
+	 * via the exit code:*/
+	ldr r0, [r1] 
 
 end:
 	mov r7, #0x1

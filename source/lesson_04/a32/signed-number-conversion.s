@@ -16,22 +16,27 @@ _start:
  *
  * Each hexadecimal digit is equal to 4 binary digits.*/
 
-	mov r0, #0x19 /* Hexadecimal: 00000019
-		       * Binary: 0000 0000 0000 0000 0000 0000 0001 1001
-		       * Decimal: 25*/
+	/* Hexadecimal: 00000019
+	 * Binary: 0000 0000 0000 0000 0000 0000 0001 1001
+	 * Decimal: 25*/
+	mov r0, #0x19
 
-	mov r1, #-0x19 /* Hexadecimal: ffffffe7
-		        * Binary: 1111 1111 1111 1111 1111 1111 1110 0111
-	  		* Positive: 0000 0000 0000 0000 0000 0000 0001 1001
-			* Decimal: -25*/
+	/* Hexadecimal: ffffffe7
+	 * Binary: 1111 1111 1111 1111 1111 1111 1110 0111
+	 * Positive: 0000 0000 0000 0000 0000 0000 0001 1001
+	 * Decimal: -25*/
+	mov r1, #-0x19 
 
-	mov r2, #0x10 /* Hexadecimal: 00000010
-		       * Binary: 0000 0000 0000 0000 0000 0000 0001 0000
-		       * Decimal: 16*/
+	/* Hexadecimal: 00000010
+	 * Binary: 0000 0000 0000 0000 0000 0000 0001 0000
+	 * Decimal: 16*/
+	mov r2, #0x10 
 
-	mov r3, #-0x10 /* Hexadecimal: fffffff0
-	                * Binary: 1111 1111 1111 1111 1111 1111 1111 0000
-		        * Positive: 0000 0000 0000 0000 0000 0000 0001 0000
-		     	* Decimal: -16*/
+	/* Hexadecimal: fffffff0
+	 * Binary: 1111 1111 1111 1111 1111 1111 1111 0000
+	 * Positive: 0000 0000 0000 0000 0000 0000 0001 0000
+	 * Decimal: -16*/
+	mov r3, #-0x10 
+
 	mov r7, #0x1
 	swi 0
