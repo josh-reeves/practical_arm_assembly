@@ -6,9 +6,13 @@ _start:
 	 * The source and destination registers can be the same. The register will be padded with zeros. Bits that "fall off" the
 	 * register are lost.*/
 	mov r0, #0X8
-	lsr r0, r0, #0X2 /* Shifts the value stored in r0 - 00000000000000000000000000001000 (8) - to the right by 2 bits. The result
-		          * will be 00000000000000000000000000000010 (2). This is effectively the same as dividing the source value by two
-                          * the number of times specified by the shift value.*/
+
+	/* Shifts the value stored in r0 - 00000000000000000000000000001000 (8) - to
+	 * the right by 2 bits. The result will be 00000000000000000000000000000010 
+	 * (2). This is effectively the same as dividing the source value by two the
+     * number of times specified by the shift value:*/
+	lsr r0, r0, #0X2 
+
 	mov r7, #0x1
 	swi 0
 
