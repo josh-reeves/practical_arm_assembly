@@ -36,7 +36,7 @@ _start:
     
 	/* The below just moves the value from the CPSR register into r0 and shifts
 	 * it so that bits 29, 30 and 31 are the rightmost bits and appear in the
-	 * exitcode:*/
+	 * exit code:*/
 	mrs r0, cpsr 
 
 	/* Because the N flag was set to 1 before the shift, this will be 4 in 

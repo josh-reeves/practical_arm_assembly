@@ -5,7 +5,7 @@ _start:
 	mov r1, #0x27 // Moves the value 39 into r1.
 	mov r2, #0x13 // Moves the value 19 into r2.
 
-	/* Lesson 11 introduced the concept of memory allocation. As explained in 
+	/* Lesson 12 introduced the concept of memory allocation. As explained in 
 	 * that lesson, memory from the stack must be allocated before it can be 
 	 * safely used to store data. This process typically requires calculating 
 	 * the amount of memory needed in bytes, subtracting that many bytes from 

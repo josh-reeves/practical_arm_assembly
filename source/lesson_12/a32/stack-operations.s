@@ -1,7 +1,7 @@
 .global _start
 
 _start:
-	/* Lesson 9 introduced the concept of the PCS, which, among other things, 
+	/* Lesson 10 introduced the concept of the PCS, which, among other things, 
 	 * recommends limiting the registers used to pass arguments to procedure 
 	 * calls to registers r0 - r3:*/
 	mov r0, #0x3 // Argument 1
