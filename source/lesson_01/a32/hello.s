@@ -1,4 +1,8 @@
-.global _start // Global ensures that the value '_start' is visible outside of the program for the linker. '_start' references a location in memory. Similar to function name.
+/* ARM assembly is organized into labels: Symbolic references to the memory 
+ * address of an instruction or piece of data. The below makes the symbol for
+ * the program's entry point: "_start" visible to the linker so that it can be
+ * exported appropriately:*/
+.global _start 
 
 _start:
 	/* The Move command (mov) is used to set the value of a register by 
