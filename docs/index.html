@@ -3,68 +3,17 @@
     <head>
         <title>Practical ARM Assembly Notes</title>
         <link rel="stylesheet" href="assets/styles/default-styles.css">
-        <script src="scripts/utils.js"></script>
+        <script src="assets/scripts/utils.js"></script>
+        <script src="assets/components/page-header.js"></script>
+        <script src="assets/components/nav-menu.js"></script>
     </head>
     <body>
+        <page-header/>
 
-        <header style="margin: 0px;">
-            <div class="vertical-center" style="text-align: center; color: #FAFAFA;">
-                <h1>Practical ARM Assembly</h1>
-                <p>A collection of documents, notes and other material created to accompany the <a href="https://github.com/josh-reeves/practical_arm_assembly">Practical Arm Assembly</a> repository.</p>
-            </div>
-        </header>
         <main>
-
             <table class="body-frame">
                 <td style="width: 12%;">
-                    <div class="menu-container">
-                        <div class="menu-item" style="background-color: #27272A;" onclick="window.location.href='./index.html'">
-                            <p style="opacity: 20%;">About</p>
-                        </div>
-                        <div class="menu-item" onclick="toggleStyle('submenu-item', 'submenu-item-active', 'lessons')">
-                            <p>Lesson Notes</p>
-                        </div>  
-                        <div id="lessons">
-                            <div class="submenu-item" onclick="window.location.href='./pages/lessons/introduction/introduction.html'">
-                                <p >Introduction</p>
-                            </div>                        
-                            <div class="submenu-item" onclick="window.location.href='./pages/lessons/lesson-01/lesson-01.html'">
-                                <p>Lesson 01: MOV, Exit Syscall</p>
-                            </div>
-                            <div class="submenu-item" >
-                                <p>Lesson 02: ADD, SUB, MUL, set CPSR</p>
-                            </div>
-                            <div class="submenu-item" >
-                                <p>Lesson 03: LDR, STR</p>
-                            </div>
-                            <div class="submenu-item" onclick="window.location.href='./pages/lessons/lesson-04/lesson-04.html'">
-                                <p>Lesson 04: Logical Operators</p>
-                            </div>
-                            <div class="submenu-item" >
-                                <p>Lesson 05: Signed Number Conversions</p>
-                            </div>
-                            <div class="submenu-item" >
-                                <p>Lesson 06: Shift and Rotate</p>
-                            </div>
-                            <div class="submenu-item" >
-                                <p>Lesson 07: CMP</p>
-                            </div>
-                            <div class="submenu-item" >
-                                <p>Lesson 08: Branching</p>
-                            </div>
-                            <div class="submenu-item" >
-                                <p>Lesson 09: While Loops</p>
-                            </div>
-                            <div class="submenu-item" >
-                                <p>Lesson 10: Function Calls</p>
-                            </div>
-                            <div class="submenu-item" >
-                                <p>Lesson 11: Stack Operations</p>
-                            </div>
-                        </div>
-                        <div class="menu-item"><p>Resources</p></div>
-                        <div class="menu-item"><p>Miscellaneous</p></div>
-                    </div>
+                    <nav-menu/>
                 </td>
                 <td>        
                     <div class="scroll-container">
