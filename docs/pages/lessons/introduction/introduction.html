@@ -2,97 +2,38 @@
 <html>
     <head>
         <title>Practical ARM Assembly Notes</title>
-        <link rel="stylesheet" href="../../../assets/styles/default-styles.css">
-        <script src="../../../scripts/utils.js"></script>
+        <link rel="stylesheet" href="/assets/styles/default-styles.css">
+        <script src="/assets/scripts/utils.js"></script>
+        <script src="/assets/components/page-header.js"></script>
+        <script src="/assets/components/nav-menu.js"></script>
     </head>
     <body>
 
-        <header>
-            <div class="vertical-center" style="text-align: center; color: #FAFAFA;">
-                <h1>Practical ARM Assembly</h1>
-                <p>A collection of documents, notes and other material created to accompany the <a href="https://github.com/josh-reeves/practical_arm_assembly">Practical Arm Assembly</a> repository.</p>
-            </div>
-        </header>
+        <page-header/>
+
+        <nav-menu/>
 
         <main>
-            <table class="body-frame">
-                <td style="width: 12%;">
-                    <div class="menu-container">
-                        <div class="menu-item" onclick="window.location.href='../../../index.html'">
-                            <p>About</p>
-                        </div>
-                        <div class="menu-item" onclick="toggleStyle('submenu-item-active', 'submenu-item', 'lessons')">
-                            <p>Lesson Notes</p>
-                        </div>  
-                        <div id="lessons">
-                            <div class="submenu-item-active" style="background-color: #333338;" onclick="window.location.href='../introduction/introduction.html'">
-                                <p style="opacity: 20%;">Introduction</p>
-                            </div>                        
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-01/lesson-01.html'">
-                                <p>Lesson 01: MOV, Exit Syscall</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-02/lesson-02.html'">
-                                <p>Lesson 02: ADD, SUB, MUL, set CPSR</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-03/lesson-03.html'">
-                                <p>Lesson 03: LDR, STR</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-04/lesson-04.html'">
-                                <p>Lesson 04: Logical Operators</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-05/lesson-05.html'">
-                                <p>Lesson 05: Signed Number Conversions</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-06/lesson-06.html'">
-                                <p>Lesson 06: Shift and Rotate</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-07/lesson-07.html'">
-                                <p>Lesson 07: CMP</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-08/lesson-08.html'">
-                                <p>Lesson 08: Branching</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-09/lesson-09.html'">
-                                <p>Lesson 09: While Loops</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-10/lesson-10.html'">
-                                <p>Lesson 10: Function Calls</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-01/lesson-11.html'">
-                                <p>Lesson 11: Stack Operations</p>
-                            </div>
-                        </div>
-                        <div class="menu-item"><p>Resources</p></div>
-                        <div class="menu-item"><p>Miscellaneous</p></div>
-                    </div>
-                </td>
-                <td>        
-                    <div class="scroll-container">
-                        <div class="content-container">
-                            <h2>About ARM Assembly</h2>
-                            <p class="content-section">Generally speaking, all computer processors are only capable of understanding a limited set of relatively basic instructions. These instructions typically provide, among other things, basic arithmetic, logical operations and ways to access computer memory. All activity performed by the processor is, at most, an aggregate of these basic operations.</p>
-                            <p class="content-section">Assembly languages are low-level programming languages that provide a way to directly invoke these instructions. As opposed to higher-level languages (e.g. Python, Rust, the C variants, etc.), which provide controlled and highly-abstracted access to these operations via relatively human-readable code, assembly languages feature a strong correlation between the instructions they provide to the developer and those the processor is actually able to understand. Due to this correlation, assembly languages are architecture specific. This documentation and the associated repository specifically specifically focus on assembly language for ARM processors.</p>
-                            <p class="content-section">The set of instructions a processor can understand and the the manner in which they are carried out are part of it's ISA (Instruction Set Architecture). The ARM standard includes multiple ISAs. Of these, these notes are primarily concerned with the 32-bit A32 ISA and the 64-bit A64 ISA.</p>
-                            <br>
-                            <br>
-                            <h2>Why Learn Assembly?</h2>
-                            <p class="content-section">Due to the level of interaction with the computer's hardware, learning assembly builds a fundamental understanding of how the various operations a computer is instructed to perform are actually carried out. This additional understanding is beneficial for making informed and detailed decisions about the design of programs written in higher-level languages and troubleshooting complex issues where the cause may not be immediately apparent.</p>
-                            <p class="content-section">Additionally, because they lack many of the conventions and conveniences of higher-level languages, affective user of assembly requires a deep understanding of the many patterns that comprise modern programming. As with anything, limitations foster creativity and understanding.</p>                    
-                            <br>
-                            <br>
-                            <h2>Notable Deviations from Source Material</h2>
-                            <p class="content-section">While the code and concepts provided by this project do adhere closely to those provided by the original tutorial series. It does deviate from the source material in a few notable ways.</p> 
-                            <p class="content-section">The source code was written and compiled on a bare-metal system built around a 64-bit ARM Cortex-A76 processor. This provided both additional opportunities and additional challenges, which ultimately resulted in the following changes:</p>
-                            <ul class="content-section" style="margin-top: 5px;">
-                                <li style="margin-bottom: 20px;">Because some of the original lessons make extensive use of CPULator to examine the value of specific registers or other memory locations, the registers used by the source code in the associated repository often differ from the ones used in the tutorial series. This is done so that the results of various operations can be queried via the programs' exit codes.</li>
-                                <li style="margin-bottom: 20px;">For the same reason, additional instructions are sometimes executed for the purpose of moving program results into the appropriate register. This includes load/store operations as well as any other operations required to ultimately move the program result into the location required for the exit code.</li>
-                                <li style="margin-bottom: 20px;">While the use of the gcc-arm-linux-gnueabi toolchain from the tutorial series results in 32-bit executables, the use of a 64-bit processor provides an opportunity to export the A64 ISA as well. For this reason, 64-bit versions of the various exercises are provided. These were compiled using the gcc-aarch64-linux-gnu toolchain and serve to demonstrate the differences between the 32-bit and 64-bit ARM ISAs. Because of this, the comments within this source code are largely limited to noting these differences.</li>
-                                <li>In addition to the above, there may be occasional stylistic changes that do not affect the execution of the exercises themselves. An example of this is the data segment, which is placed above the text segment in the repository source code instead of beneath it as in the original tutorials.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-            </table>
+            <h2>About ARM Assembly</h2>
+            <p class="content-section">Generally speaking, all computer processors are only capable of understanding a limited set of relatively basic instructions. These instructions typically provide, among other things, basic arithmetic, logical operations and ways to access computer memory. All activity performed by the processor is, at most, an aggregate of these basic operations.</p>
+            <p class="content-section">Assembly languages are low-level programming languages that provide a way to directly invoke these instructions. As opposed to higher-level languages (e.g. Python, Rust, the C variants, etc.), which provide controlled and highly-abstracted access to these operations via relatively human-readable code, assembly languages feature a strong correlation between the instructions they provide to the developer and those the processor is actually able to understand. Due to this correlation, assembly languages are architecture specific. This documentation and the associated repository specifically specifically focus on assembly language for ARM processors.</p>
+            <p class="content-section">The set of instructions a processor can understand and the the manner in which they are carried out are part of it's ISA (Instruction Set Architecture). The ARM standard includes multiple ISAs. Of these, these notes are primarily concerned with the 32-bit A32 ISA and the 64-bit A64 ISA.</p>
+            <br>
+            <br>
+            <h2>Why Learn Assembly?</h2>
+            <p class="content-section">Due to the level of interaction with the computer's hardware, learning assembly builds a fundamental understanding of how the various operations a computer is instructed to perform are actually carried out. This additional understanding is beneficial for making informed and detailed decisions about the design of programs written in higher-level languages and troubleshooting complex issues where the cause may not be immediately apparent.</p>
+            <p class="content-section">Additionally, because they lack many of the conventions and conveniences of higher-level languages, affective user of assembly requires a deep understanding of the many patterns that comprise modern programming. As with anything, limitations foster creativity and understanding.</p>                    
+            <br>
+            <br>
+            <h2>Notable Deviations from Source Material</h2>
+            <p class="content-section">While the code and concepts provided by this project do adhere closely to those provided by the original tutorial series. It does deviate from the source material in a few notable ways.</p> 
+            <p class="content-section">The source code was written and compiled on a bare-metal system built around a 64-bit ARM Cortex-A76 processor. This provided both additional opportunities and additional challenges, which ultimately resulted in the following changes:</p>
+            <ul class="content-section" style="margin-top: 5px;">
+                <li style="margin-bottom: 20px;">Because some of the original lessons make extensive use of CPULator to examine the value of specific registers or other memory locations, the registers used by the source code in the associated repository often differ from the ones used in the tutorial series. This is done so that the results of various operations can be queried via the programs' exit codes.</li>
+                <li style="margin-bottom: 20px;">For the same reason, additional instructions are sometimes executed for the purpose of moving program results into the appropriate register. This includes load/store operations as well as any other operations required to ultimately move the program result into the location required for the exit code.</li>
+                <li style="margin-bottom: 20px;">While the use of the gcc-arm-linux-gnueabi toolchain from the tutorial series results in 32-bit executables, the use of a 64-bit processor provides an opportunity to export the A64 ISA as well. For this reason, 64-bit versions of the various exercises are provided. These were compiled using the gcc-aarch64-linux-gnu toolchain and serve to demonstrate the differences between the 32-bit and 64-bit ARM ISAs. Because of this, the comments within this source code are largely limited to noting these differences.</li>
+                <li>In addition to the above, there may be occasional stylistic changes that do not affect the execution of the exercises themselves. An example of this is the data segment, which is placed above the text segment in the repository source code instead of beneath it as in the original tutorials.</li>
+            </ul>
         </main>
 
     </body>
