@@ -113,18 +113,22 @@ html
 body
 {
     background-color: #FAFAFA;
-    background-size: cover;
 
 }
 
 main
 {
+    max-height: 86vh;
     overflow-y: auto;
-    height: 86vh;
+
+}
+
+div.content-container
+{
     padding-top: 5vh;
     padding-right: 5vh;
     padding-left: 5vh;
-    padding-bottom: 14vh;
+    padding-bottom: 10vh;
 
 }
 
@@ -263,16 +267,6 @@ div.scroll-container
     scrollbar-width: thin;
     background-color: #F4F4F5;
     box-shadow: 0px 1px 3px;
-
-}
-
-div.content-container
-{
-    margin-left: auto;
-    margin-right: auto;
-    width: 85%;
-    padding-top: 60px;
-    padding-bottom: 60px;
 
 }
 
