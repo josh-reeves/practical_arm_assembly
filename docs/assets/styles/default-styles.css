@@ -123,26 +123,6 @@ main
 
 }
 
-div.content-container
-{
-    padding-top: 5vh;
-    padding-right: 5vh;
-    padding-left: 5vh;
-    padding-bottom: 10vh;
-
-}
-
-header.page-header
-{
-    height: 14vh;
-    width: 100%;
-    background-color: #18181B;
-    position: relative;
-    color: #FAFAFA;
-    text-align: center;
-
-}
-
 h1
 {
     font-family: robotoregular;
@@ -199,7 +179,7 @@ div.menu-container
 div.menu-item
 {
     cursor: pointer;
-    height: 5vh;
+    height: 7vh;
     background-color: #18181B;
 
 }
@@ -225,7 +205,7 @@ div.submenu-item
     margin: 0;
     display: block;
     cursor: pointer;
-    height: 5vh;
+    height: 7vh;
     background-color: #181818;
 
 }
@@ -365,5 +345,25 @@ ul.content-section li
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+
+}
+
+div.content-container
+{
+    padding-top: 7vh;
+    padding-right: 7vh;
+    padding-left: 7vh;
+    padding-bottom: 10vh;
+
+}
+
+header.page-header
+{
+    height: 14vh;
+    width: 100%;
+    background-color: #18181B;
+    position: relative;
+    color: #FAFAFA;
+    text-align: center;
 
 }
