@@ -35,7 +35,7 @@ customElements.define(
                             <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-04/lesson-04.html'">
                                 <p>Lesson 04: Signed Number Conversion</p>
                             </div>
-                            <div class="submenu-item-hidden" onclick="window.location.href='pages/lessons/lesson-05/lesson-05.html'">
+                            <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-05/lesson-05.html'">
                                 <p>Lesson 05: Shift and Rotate</p>
                             </div>
                             <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-06/lesson-06.html'">

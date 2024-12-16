@@ -2,84 +2,23 @@
 <html>
     <head>
         <title>Practical ARM Assembly Notes</title>
-        <link rel="stylesheet" href="../../../assets/styles/default-styles.css">
-        <script src="../../../scripts/utils.js"></script>
+        <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">
+        <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
+        <script src="/practical_arm_assembly/assets/components/page-header.js"></script>
+        <script src="/practical_arm_assembly/assets/components/nav-menu.js"></script>
     </head>
     <body>
 
-        <header>
-            <div class="vertical-center" style="text-align: center; color: #FAFAFA;">
-                <h1>Practical ARM Assembly</h1>
-                <p>A collection of documents, notes and other material created to accompany the <a href="https://github.com/josh-reeves/practical_arm_assembly">Practical Arm Assembly</a> repository.</p>
-            </div>
-        </header>
+        <page-header/>
+
+        <nav-menu/>
 
         <main>
-            <table class="body-frame">
-                <td style="width: 12%;">
-                    <div class="menu-container">
-                        <div class="menu-item" style="background-color: #27272A;" onclick="window.location.href='../../../index.html'">
-                            <p>About</p>
-                        </div>
-                        <div class="menu-item" onclick="toggleStyle('submenu-item-active', 'submenu-item', 'lessons')">
-                            <p>Lesson Notes</p>
-                        </div>  
-                        <div id="lessons">
-                            <div class="submenu-item-active" onclick="window.location.href='../introduction/introduction.html'">
-                                <p >Introduction</p>
-                            </div>                        
-                            <div class="submenu-item-active" style="background-color: #333338;" onclick="window.location.href='../lesson-01/lesson-01.html'">
-                                <p style="opacity: 20%;">Lesson 01: MOV, Exit Syscall</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-02/lesson-02.html'">
-                                <p>Lesson 02: ADD, SUB, MUL, set CPSR</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-03/lesson-03.html'">
-                                <p>Lesson 03: LDR, STR</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-04/lesson-04.html'">
-                                <p>Lesson 04: Logical Operators</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-05/lesson-05.html'">
-                                <p>Lesson 05: Signed Number Conversions</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-06/lesson-06.html'">
-                                <p>Lesson 06: Shift and Rotate</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-07/lesson-07.html'">
-                                <p>Lesson 07: CMP</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-08/lesson-08.html'">
-                                <p>Lesson 08: Branching</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-09/lesson-09.html'">
-                                <p>Lesson 09: While Loops</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-10/lesson-10.html'">
-                                <p>Lesson 10: Function Calls</p>
-                            </div>
-                            <div class="submenu-item-active" onclick="window.location.href='../lesson-01/lesson-11.html'">
-                                <p>Lesson 11: Stack Operations</p>
-                            </div>
-                        </div>
-                        <div class="menu-item" onclick="window.location.href='../../resources/resources.html'">
-                            <p>Resources</p>
-                        </div>
-                        <div class="menu-item" onclick="window.location.href='../../../index.html'">
-                            <p>Miscellaneous</p>
-                        </div>
-                    </div>
-                </td>
-                <td>        
-                    <div class="scroll-container">
-                        <div class="content-container">
-                            <h2>MOV</h2>
-                            <h2>What is a Register?</h2>
-                            <h2>Invoking the Exit Syscall</h2>
-                        </div>
-                    </div>
-                </td>
-            </table>
+            <div class="content-container">
+                <h2>MOV</h2>
+                <h2>What is a Register?</h2>
+                <h2>Invoking the Exit Syscall</h2>
+            </div>
         </main>
 
     </body>
