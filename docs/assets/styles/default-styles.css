@@ -118,7 +118,7 @@ body
 
 main
 {
-    max-height: 86vh;
+    max-height: 93vh;
     overflow-y: auto;
 
 }
@@ -163,11 +163,37 @@ li
 
 }
 
+/** Header **/
+header.page-header
+{
+    height: 7vh;
+    min-height: 100px;
+    width: 100%;
+    background-color: #18181B;
+    position: relative;
+    color: #FAFAFA;
+    text-align: left;
+    padding-left: 20px;
+    overflow: hidden;
+
+}
+
+header.page-header div
+{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    line-height: 1;
+
+}
+
 /** Menu Containers **/
 div.menu-container
 {
-    height: 86vh;
-    width: 15vh;
+    height: 93vh;
+    width: 20vh;
     min-width: 180px;
     background-color: #18181B;
     overflow-y: auto;
@@ -180,7 +206,7 @@ div.menu-container
 div.menu-item
 {
     cursor: pointer;
-    height: 7vh;
+    height: 4vh;
     background-color: #18181B;
 
 }
@@ -206,7 +232,7 @@ div.submenu-item
     margin: 0;
     display: block;
     cursor: pointer;
-    height: 7vh;
+    height: 4vh;
     background-color: #181818;
 
 }
@@ -340,15 +366,6 @@ ul.content-section li
 
 }
 
-.vertical-center 
-{
-    height: 80%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-
-}
-
 div.content-container
 {
     padding-top: 7vh;
@@ -358,24 +375,3 @@ div.content-container
 
 }
 
-header.page-header
-{
-    height: 10vh;
-    min-height: 100px;
-    width: 100%;
-    background-color: #18181B;
-    position: relative;
-    color: #FAFAFA;
-    text-align: left;
-    padding-left: 20px;
-    overflow: hidden;
-
-}
-
-header.page-header p
-{
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-
-}
