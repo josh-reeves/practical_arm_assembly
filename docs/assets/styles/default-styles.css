@@ -167,7 +167,8 @@ li
 div.menu-container
 {
     height: 86vh;
-    width: 15%;
+    width: 15vh;
+    min-width: 180px;
     background-color: #18181B;
     overflow-y: auto;
     scrollbar-width: thin;
@@ -341,10 +342,10 @@ ul.content-section li
 
 .vertical-center 
 {
-    margin: 0;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 
 }
 
@@ -359,11 +360,22 @@ div.content-container
 
 header.page-header
 {
-    height: 14vh;
+    height: 10vh;
+    min-height: 100px;
     width: 100%;
     background-color: #18181B;
     position: relative;
     color: #FAFAFA;
-    text-align: center;
+    text-align: left;
+    padding-left: 20px;
+    overflow: hidden;
+
+}
+
+header.page-header p
+{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
 }
