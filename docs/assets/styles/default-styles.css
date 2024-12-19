@@ -166,26 +166,49 @@ li
 /** Header **/
 header.page-header
 {
-    height: 7vh;
-    min-height: 100px;
+    height: 10vh;
     width: 100%;
-    background-color: #18181B;
+    background-color: #262626;
     position: relative;
     color: #FAFAFA;
     text-align: left;
-    padding-left: 20px;
     overflow: hidden;
+    line-height: 1;
+    display: flex;
 
 }
 
-header.page-header div
+header.page-header img
+{
+    padding: 15px;
+    
+}
+
+header.page-header div.left
+{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 40%;
+    height: 100%;
+
+}
+
+header.page-header div.right
 {
     display: flex;
     flex-flow: column;
     justify-content: center;
     width: 50%;
     height: 100%;
-    line-height: 1;
+    float: right;
+
+}
+
+header.page-header h1
+{
+    font-size: 32pt;
+
 
 }
 
@@ -195,7 +218,7 @@ div.menu-container
     height: 93vh;
     width: 20vh;
     min-width: 180px;
-    background-color: #18181B;
+    background-color: #262626;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #C0C0C0 #181818;
@@ -207,7 +230,6 @@ div.menu-item
 {
     cursor: pointer;
     height: 4vh;
-    background-color: #18181B;
 
 }
 
@@ -233,7 +255,6 @@ div.submenu-item
     display: block;
     cursor: pointer;
     height: 4vh;
-    background-color: #181818;
 
 }
 
@@ -263,17 +284,12 @@ div.submenu-item-hidden
 }
 
 /** Body Containters **/
-div.scroll-container
+div.content-container
 {
-    width: 65%;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: thin;
-    background-color: #F4F4F5;
-    box-shadow: 0px 1px 3px;
+    padding-top: 5vh;
+    padding-right: 5vh;
+    padding-left: 5vh;
+    padding-bottom: 10vh;
 
 }
 
@@ -365,13 +381,3 @@ ul.content-section li
     text-wrap: pretty;
 
 }
-
-div.content-container
-{
-    padding-top: 7vh;
-    padding-right: 7vh;
-    padding-left: 7vh;
-    padding-bottom: 10vh;
-
-}
-
