@@ -118,8 +118,10 @@ body
 
 main
 {
-    max-height: 93vh;
+    max-height: calc(100vh - 100px);
     overflow-y: auto;
+    display: flex;
+    flex-flow: column;
 
 }
 
@@ -168,64 +170,67 @@ li
 
 }
 
+hr
+{
+    background-color: gray;
+    height: 1px;
+
+}
+
 /** Header **/
 header.page-header
 {
-    height: 10vh;
+    height: 100px;
     width: 100%;
     background-color: #262626;
     position: relative;
     color: #FAFAFA;
     text-align: left;
     overflow: hidden;
-    line-height: 1;
-    display: flex;
+
 
 }
 
-header.page-header img
+header.page-header div.left img
 {
-    padding: 1vh 0vh;
-    display: flex;
-    flex-flow: column;
+    margin: 20px;
 
 }
 
 header.page-header div.left
 {
     display: flex;
-    flex-flow: column;
-    justify-content: center;
-    width: 40%;
+    align-items: center;
+    width: 50%;
     height: 100%;
-
+    float: left;
 }
 
 header.page-header div.right
 {
     display: flex;
-    flex-flow: column;
-    justify-content: center;
+    align-items: center;
     width: 50%;
     height: 100%;
     float: right;
-
 
 }
 
 header.page-header div.left h1
 {
     font-size: 32pt;
-    overflow: hidden;;
+    overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    height: 100%;
+    align-content: center;
 
 }
 
 /** Menu Containers **/
 div.menu-container
 {
-    height: 93vh;
+    height: calc(100vh - 100px);
     width: 20vh;
     min-width: 180px;
     background-color: #262626;
@@ -319,7 +324,6 @@ details.content-container[open]
 
 details.content-container summary
 {
-
     font-family: robotoregular;
     font-size: 24pt;
     font-weight: 300;
@@ -358,7 +362,7 @@ div.illustration
 {
     margin-left: auto;
     margin-right: auto;
-    width: 45%;
+    width: 60%;
     margin-top: 20px;
 
 }
@@ -418,5 +422,12 @@ table.content-section td
     padding: 15px; 
     margin-left: 10px;
     border: 1.5px solid #18181B;
+
+}
+
+button.next
+{
+    margin: 25px;
+    float: right;
 
 }
