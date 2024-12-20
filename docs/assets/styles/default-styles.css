@@ -134,8 +134,13 @@ h1
 h2
 {
     font-family: robotoregular;
-    font-size: x-large;
+    font-size: 24pt;
     font-weight: 300;
+    background-color: #E4E4E7;
+    text-indent: 10px;
+    overflow: hidden;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
 
 }
 
@@ -180,8 +185,10 @@ header.page-header
 
 header.page-header img
 {
-    padding: 15px;
-    
+    padding: 1vh 0vh;
+    display: flex;
+    flex-flow: column;
+
 }
 
 header.page-header div.left
@@ -203,12 +210,15 @@ header.page-header div.right
     height: 100%;
     float: right;
 
+
 }
 
-header.page-header h1
+header.page-header div.left h1
 {
     font-size: 32pt;
-
+    overflow: hidden;;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
 }
 
@@ -293,6 +303,57 @@ div.content-container
 
 }
 
+details.content-container
+{
+    padding-top: 5vh;
+    padding-right: 5vh;
+    padding-left: 5vh;
+
+}
+
+details.content-container[open]
+{
+    padding-bottom: 5vh;
+
+}
+
+details.content-container summary
+{
+
+    font-family: robotoregular;
+    font-size: 24pt;
+    font-weight: 300;
+    background-color: #E4E4E7;
+    text-indent: 10px;
+    overflow: hidden;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    border-radius: 5px;
+
+}
+
+details.content-container p
+{
+    padding: 10px; 
+    margin-left: 10px;
+    text-wrap: pretty;
+
+}
+
+details.content-container ul
+{
+    margin-top: 5px;
+    margin-left: 60px;
+
+}
+
+details.content-container li
+{
+    text-wrap: pretty;
+    margin-bottom: 20px;
+
+}
+
 div.illustration
 {
     margin-left: auto;
@@ -321,14 +382,6 @@ div.codebox p
 div.codebox a
 {
     color: #FAFAFA;
-
-}
-
-p.content-section
-{
-    padding: 10px; 
-    margin-left: 10px;
-    text-wrap: pretty;
 
 }
 
@@ -365,19 +418,5 @@ table.content-section td
     padding: 15px; 
     margin-left: 10px;
     border: 1.5px solid #18181B;
-
-}
-
-ul.content-section
-{
-    margin-top: 10px;
-    margin-left: 60px;
-
-}
-
-ul.content-section li
-{
-    margin-bottom: 10px;
-    text-wrap: pretty;
 
 }
