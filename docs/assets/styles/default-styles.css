@@ -316,6 +316,7 @@ details.content-container[open]
 
 details.content-container summary
 {
+    list-style-type: none;
     font-family: robotoregular;
     font-size: 24pt;
     font-weight: 300;
@@ -325,6 +326,25 @@ details.content-container summary
     text-wrap: nowrap;
     text-overflow: ellipsis;
     border-radius: 5px;
+    cursor: pointer;
+
+}
+
+details.content-container summary::before
+{
+    content: '\25B8';
+    display: inline-flex;
+    margin-right: 10px;
+    width: 30px;
+
+}
+
+details.content-container[open] summary::before
+{
+    content: '\25BE';
+    display: inline-flex;
+    padding-right: 10px;
+    width: 20px;
 
 }
 
@@ -333,6 +353,7 @@ details.content-container p
     padding: 10px; 
     margin-left: 10px;
     text-wrap: pretty;
+
 
 }
 
@@ -438,5 +459,6 @@ nav-button
     font-weight: lighter;
     line-height: 50px;
     text-align: center;
+    cursor: pointer;
 
 }
