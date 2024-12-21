@@ -6,7 +6,6 @@ customElements.define(
         {
             super();
 
-
         }
 
         connectedCallback()
