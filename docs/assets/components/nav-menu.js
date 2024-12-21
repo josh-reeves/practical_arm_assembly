@@ -27,7 +27,7 @@ customElements.define(
                                 <p>Lesson 01: MOV, Exit Syscall</p>
                             </div>
                             <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-02/lesson-02.html'">
-                                <p>Lesson 02: ADD, SUB, MUL, set CPSR</p>
+                                <p>Lesson 02: ADD, SUB, MUL</p>
                             </div>
                             <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-03/lesson-03.html'">
                                 <p>Lesson 03: Logical Operators</p>
