@@ -102,7 +102,7 @@
 
 }
 
-/****************************** Header ******************************/
+/****************************** General ******************************/
 html
 {
     height: 100%;
@@ -208,7 +208,7 @@ header.page-header div.right
 
 }
 
-header.page-header div.right input
+header.page-header div.right form input[type="text"]
 {
     background-color: #FAFAFA;
     margin: 20px;
@@ -405,9 +405,11 @@ div.illustration h3
 
 div.codebox
 {
+    position: relative;
     background-color: #27272A;
     border: 1px solid #18181B;
     border-radius: 3px;
+    overflow-x: scroll;
 
 }
 
@@ -416,6 +418,16 @@ div.codebox p
     font-family: 'Courier New', Courier, monospace;
     color: #FAFAFA;
     padding: 15px;
+    text-wrap: nowrap;
+
+}
+
+div.codebox span.comment
+{
+    font-family: 'Courier New', Courier, monospace;
+    color: #4CAF50;
+    padding: 15px;
+    padding-right: 75px;
 
 }
 
@@ -460,7 +472,6 @@ table.content-table td
 
 }
 
-/** Other **/
 hr.page-end
 {
     background-color: gray;
@@ -470,6 +481,35 @@ hr.page-end
 }
 
 /****************************** Buttons ******************************/
+div.floating-button
+{
+    position: sticky;
+    left: 0px;
+    top: 10px;
+
+}
+
+button.copy
+{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 10px;
+    padding: 5px;
+    height: 36px;
+    width: 36px;
+    border-radius: 5px;
+    background-color: #FAFAFA50;
+    
+}
+
+button.copy:hover
+{
+    background-color: #FAFAFAC0;
+
+}
+
 nav-button
 {
     margin: 20px;

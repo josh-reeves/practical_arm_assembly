@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">
         <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
         <script src="/practical_arm_assembly/assets/components/components.js" type="module"></script>
+        </script>
     </head>
     <body>
 
@@ -15,7 +16,7 @@
         <main>
             <details class="content-container" open>
                 <summary>Processor Architecture Explained Like I'm Five</summary>
-                <p>At a very general level, a processor can be thought of as a group of circuits used to perform basic operations and communicate with each other. These operations usually include basic arithmetic, logical comparisons, memory access circuitry, etc.</p>     
+                <p>At a very general level, a processor can be thought of as a group of circuits used to perform basic operations and communicate with each other. These operations usually include basic arithmetic, logical comparisons, memory access, etc.</p>     
                 <p>Each of these circuits has a series of components capable of carrying a charge. These charges are used to represent numbers in a binary format, with the lack of a charge indicating a 0 and the presence of a charge indicating a 1. We refer to these as bits. The number of charges the components in the processor can work with at one time determine the processor's "bit-ness" (i.e. 32-bit, 64-bit, etc.).</p>
             </details>
 
@@ -54,14 +55,24 @@
                     <li>x30 is also used as the lr register.</li>
                     <li>A set of system registers.</li>
                 </ul>
-                <p>The MOV instruction can be used to store a value in one of the general purpose registers. In order to invoke the instruction, it's keyword, or mnemonic, is used along with a series and operands. The MOV instruction takes two operands: The first is the register in which the value will be stored. The second can either be another register, in which case the value stored in that register will be used, or an immediate: A numerical constant denoted with an octothorpe:</p>
+                <p>The MOV instruction can be used to store a value in one of the general purpose registers. In order to invoke the instruction, it's keyword, or mnemonic, is used along with a series and operands. The MOV instruction takes two operands: The first is the register in which the value will be stored. The second can either be another register, in which case the value stored in that register will be used, or an immediate: A numerical constant denoted with an octothorpe.</p>
+                <p>The code below moves the immediate value 38 into register r0. The use of "0x" at the beginning of the number indicates that the value is being provided in Hexadecimal. Decimal and Binary input are also supported. The mnemonic and register name are not case sensitive:</p>
                 <div class="illustration codebox">
                     <p>mov r0, #0x26</p>
                 </div>
             </details>
 
             <details class="content-container" open>
-                <summary>Invoking a Software Interrupt</summary>
+                <summary>Exiting the Program</summary>
+                <p>In order to gracefully end program execution, control must be returned to the operating system. This can be done with a software interrupt. Software interrupts switch the processor into "supervisor" mode, allowing it to make a request of the operating system kernel. This can be used to request that the operating system exit the program.
+                <p>A system interrupt can be triggered with the swi mnemonic. The action taken when this interrupt is called depends on the value of a predefined register. For A32, this is register r7. The value required to trigger an exit SysCall is 1. The code below moves the appropriate value into r7 and then triggers a software interrupt. Note the value following the swi mnemonic would typically be invalid, as it is neither a register or an immediate. This can be done because this value, while required, is never actually used or parsed by the instruction:</p>
+                <div class="illustration codebox">
+                    <div class="floating-button">                    
+                        <button class="copy"><img src="/practical_arm_assembly/assets/icons/icon_copy_001.svg" width="90%"></img></button>
+                    </div>
+                    <p>mov r7, #0x1 <span class="comment">// Moves the value 1 into register r7 so it can be used by the system interrupt.</span></p>
+                    <p>swi 0 <span class="comment">// Note that the 0 here is never used.</span></p>
+                </div>
             </details>
 
             <details class="content-container" open>
@@ -83,5 +94,7 @@
 
         </main>
 
+
+        
     </body>
 </html>
