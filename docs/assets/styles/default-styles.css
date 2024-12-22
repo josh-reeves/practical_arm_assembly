@@ -102,7 +102,7 @@
 
 }
 
-/***** General *****/
+/****************************** Header ******************************/
 html
 {
     height: 100%;
@@ -146,9 +146,8 @@ h2
 
 h3
 {
-    font-family: robotomedium;
-    font-size: 20px;
-    font-weight: 400;
+    font-family: robotoregular;
+    font-size: 16pt;
 
 }
 
@@ -169,7 +168,7 @@ li
 }
 
 
-/***** Header *****/
+/****************************** Header ******************************/
 header.page-header
 {
     height: 100px;
@@ -179,7 +178,6 @@ header.page-header
     color: #FAFAFA;
     text-align: left;
     overflow: hidden;
-
 
 }
 
@@ -196,15 +194,28 @@ header.page-header div.left
     width: 50%;
     height: 100%;
     float: left;
+
 }
 
 header.page-header div.right
 {
     display: flex;
     align-items: center;
+    justify-content: end;
     width: 50%;
     height: 100%;
     float: right;
+
+}
+
+header.page-header div.right input
+{
+    background-color: #FAFAFA;
+    margin: 20px;
+    height: 20px;
+    width: 400px;
+    border-radius: 5px;
+    padding: 12px;
 
 }
 
@@ -219,7 +230,7 @@ header.page-header div.left h1
 
 }
 
-/** Menu Containers **/
+/****************************** Menu Containers ******************************/
 div.menu-container
 {
     height: calc(100vh - 100px);
@@ -291,16 +302,7 @@ div.submenu-item-hidden
 }
 
 
-/** Body Containters **/
-div.content-container
-{
-    padding-top: 5vh;
-    padding-right: 5vh;
-    padding-left: 5vh;
-    padding-bottom: 10vh;
-
-}
-
+/****************************** Body Containers ******************************/
 details.content-container
 {
     padding-top: 32px;
@@ -326,14 +328,15 @@ details.content-container summary
     overflow: hidden;
     text-wrap: nowrap;
     text-overflow: ellipsis;
+    user-select: none;
     border-radius: 5px;
     cursor: pointer;
 
 }
 
-details.content-container summary::-webkit-details-marker
+details.content-container summary::-webkit-details-marker 
 {
-    list-style-type: none;
+    display: none;
 
 }
 
@@ -378,12 +381,25 @@ details.content-container li
 
 }
 
+details.content-container h3
+{
+    margin-left: 16px;
+
+}
+
 div.illustration
 {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
     margin-top: 20px;
+
+}
+
+div.illustration h3
+{
+    margin-left: 10px; 
+    margin-bottom: 10px;
 
 }
 
@@ -409,7 +425,7 @@ div.codebox a
 
 }
 
-table.content-section
+table.content-table
 {
     padding: 10px; 
     margin-left: auto;
@@ -421,16 +437,7 @@ table.content-section
 
 }
 
-hr.page-end
-{
-    background-color: gray;
-    height: 1px;
-    margin-top: 32px;
-    
-}
-
-/** Other **/
-table.content-section th
+table.content-table th
 {
     font-family: robotoregular;
     font-weight: lighter;
@@ -442,7 +449,7 @@ table.content-section th
 
 }
 
-table.content-section td
+table.content-table td
 {
     font-family: robotoregular;
     font-weight: lighter;
@@ -453,11 +460,21 @@ table.content-section td
 
 }
 
+/** Other **/
+hr.page-end
+{
+    background-color: gray;
+    height: 1px;
+    margin-top: 32px;
+    
+}
+
+/****************************** Buttons ******************************/
 nav-button
 {
     margin: 20px;
-    padding: 0px 10px;
-    width: 200px;
+    padding: 0px 20px;
+    width: 190px;
     color: #E4E4E7;
     background-color: #262626;
     border-radius: 5px;

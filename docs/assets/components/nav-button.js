@@ -1,6 +1,6 @@
 customElements.define(
     "nav-button",
-    class extends HTMLElement
+    class NavButton extends HTMLElement
     {
         constructor()
         {

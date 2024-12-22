@@ -4,31 +4,36 @@
         <title>Practical ARM Assembly Notes</title>
         <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">
         <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
-        <script src="/practical_arm_assembly/assets/components/page-header.js"></script>
-        <script src="/practical_arm_assembly/assets/components/nav-menu.js"></script>
-        <script src="/practical_arm_assembly/assets/components/nav-button.js"></script>
+        <script src="/practical_arm_assembly/assets/components/components.js" type="module"></script>
     </head>
     <body>
 
-        <page-header/>
+        <page-header></page-header>
 
-        <nav-menu/>
+        <nav-menu></nav-menu>
 
         <main>
             <details class="content-container" open>
                 <summary>Processor Architecture Explained Like I'm Five</summary>
                 <p>At a very general level, a processor can be thought of as a group of circuits used to perform basic operations and communicate with each other. These operations usually include basic arithmetic, logical comparisons, memory access circuitry, etc.</p>     
-                <p>Each of these circuits has a series of components capable of carrying a charge. These charges are used to represent numbers in a binary format, with the lack of a charge indicating a 0 and the presence of the charge indicating a 1. We refer to these as bits. The number of charges the components in the processor can work with at one time determine the processor's "bit-ness" (i.e. 32-bit, 64-bit, etc.).</p>
-                <p>One of the processor's components is used to store values. This is typically a series of very small, very quick memory locations implemented by circuits built directly into the chip. These memory locations are typically used to hold the values that the processor is actively working with.</p>
+                <p>Each of these circuits has a series of components capable of carrying a charge. These charges are used to represent numbers in a binary format, with the lack of a charge indicating a 0 and the presence of a charge indicating a 1. We refer to these as bits. The number of charges the components in the processor can work with at one time determine the processor's "bit-ness" (i.e. 32-bit, 64-bit, etc.).</p>
 
             </details>
 
             <details class="content-container" open>
-                <summary>Basic ARM Assembly Syntax</summary>
+                <summary>Creating an Assembly Source File</summary>
             </details>
 
             <details class="content-container" open>
-                <summary>MOV</summary>
+                <summary>Storing a Value</summary>
+                <p>One of the components the processor contains is referred to as a register. Registers are typically a series of very small, very quick memory circuits built directly into the chip that can be used to store any data the processor is currently working with and track the system's state.</p>
+                <p>A32 Provides access to the following registers:</p>
+                <ul>
+                    <li>13 general purpose registers: r0 - r12.</li>
+                    <li>2 registers that perform a special function but can be manipulated in the same manner as general purpose registers and used as such: lr and sp.</li>
+                    <li>1 program counter (pc) register.</li>
+                    <li>1 application program status register (apsr/cpsr).</li>
+                </ul>
             </details>
 
             <details class="content-container" open>
@@ -36,8 +41,8 @@
             </details>
 
             <hr class="page-end"/>
-            <nav-button href="/practical_arm_assembly/pages/lessons/introduction/introduction.html" class="left">Prev: Introduction</nav-button>
-            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-02/lesson-02.html" class="right">Next: Lesson 02: ADD, SUB, MUL</button>    
+            <nav-button href="/practical_arm_assembly/pages/lessons/introduction/introduction.html" class="left">Introduction</nav-button>
+            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-02/lesson-02.html" class="right">Lesson 02: ADD, SUB, MUL</button>    
 
         </main>
 
