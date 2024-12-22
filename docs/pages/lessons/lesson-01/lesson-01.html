@@ -17,11 +17,24 @@
                 <summary>Processor Architecture Explained Like I'm Five</summary>
                 <p>At a very general level, a processor can be thought of as a group of circuits used to perform basic operations and communicate with each other. These operations usually include basic arithmetic, logical comparisons, memory access circuitry, etc.</p>     
                 <p>Each of these circuits has a series of components capable of carrying a charge. These charges are used to represent numbers in a binary format, with the lack of a charge indicating a 0 and the presence of a charge indicating a 1. We refer to these as bits. The number of charges the components in the processor can work with at one time determine the processor's "bit-ness" (i.e. 32-bit, 64-bit, etc.).</p>
-
             </details>
 
             <details class="content-container" open>
                 <summary>Creating an Assembly Source File</summary>
+                <p>ARM assembly is organized into labels: Symbolic references to the memory address of an instruction or piece of data. In order to create an executable program, the symbol representing the program's entry point must be made available to other software. This can be done using the ".global" directive. A directive is a special instruction that controls the assembly process.</p>
+                <p>The associated examples use the label "_start" as their entry point. The following code is used at the beginning of each example to export the label using the .global directive:</p>
+                <div class="illustration codebox">
+                    <p>.global _start</p>
+                </div>
+                <br>
+                <br>
+                <p>Next, the label must be created and given a body:</p>
+                <div class="illustration codebox">
+                    <p>.global _start</p>
+                    <br>
+                    <p>_start:</p>
+                    <br>
+                </div>
             </details>
 
             <details class="content-container" open>
@@ -34,10 +47,34 @@
                     <li>1 program counter (pc) register.</li>
                     <li>1 application program status register (apsr/cpsr).</li>
                 </ul>
+                <p>A64 Provides access to the following registers:</p>
+                <ul>
+                    <li>31 general purpose registers. These can be either 64-bit (x0 - x30) or 32-bit (w0 - w30).</li>
+                    <li>An sp register. Though it can still be used with a subset of operations, this cannot be used as a general purpose register.</li>
+                    <li>x30 is also used as the lr register.</li>
+                    <li>A set of system registers.</li>
+                </ul>
+                <p>The MOV instruction can be used to store a value in one of the general purpose registers. In order to invoke the instruction, it's keyword, or mnemonic, is used along with a series and operands. The MOV instruction takes two operands: The first is the register in which the value will be stored. The second can either be another register, in which case the value stored in that register will be used, or an immediate: A numerical constant denoted with an octothorpe:</p>
+                <div class="illustration codebox">
+                    <p>mov r0, #0x26</p>
+                </div>
             </details>
 
             <details class="content-container" open>
                 <summary>Invoking a Software Interrupt</summary>
+            </details>
+
+            <details class="content-container" open>
+                <summary>Assembling and Running the Program</summary>
+            </details>
+
+            <details class="content-container" open>
+                <summary>Review</summary>
+                <p>Examples</p>
+                <ul>
+                    <li><a href="https://github.com/josh-reeves/practical_arm_assembly/tree/main/source/lesson_01/a32/hello.s">32-bit</a></li>
+                    <li><a href="https://github.com/josh-reeves/practical_arm_assembly/tree/main/source/lesson_01/a64/hello.s">64-bit</a></li>
+                </ul>
             </details>
 
             <hr class="page-end"/>
