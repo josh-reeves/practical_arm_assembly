@@ -15,9 +15,23 @@ customElements.define("copy-button",
 
         copy = function() 
         {
-           navigator.clipboard.writeText(document.getElementById(this.getAttribute("target")).innerText);
+            if (document.getElementById(this.getAttribute("target")) != null)
+            {
+                navigator.clipboard.writeText(document.getElementById(this.getAttribute("target")).innerText);
+
+                return;
+
+            }
+
+            var element = this.parentElement;
+            
+            while (element.innerText == null)
+                element = element.parentElement;
+
+            navigator.clipboard.writeText(element.innerText);
+
+            return;
 
         }
 
-        
     });

@@ -24,9 +24,9 @@
                 <summary>Creating an Assembly Source File</summary>
                 <p>ARM assembly is organized into labels: Symbolic references to the memory address of an instruction or piece of data. In order to create an executable program, the symbol representing the program's entry point must be made available to other software. This can be done using the ".global" directive. A directive is a special instruction that controls the assembly process.</p>
                 <p>The associated examples use the label "_start" as their entry point. The following code is used at the beginning of each example to export the label using the .global directive:</p>
-                <div id="codebox1" class="illustration codebox">
+                <div class="illustration codebox">
                     <div class="floating-button">
-                        <copy-button target="codebox1"><img src="/practical_arm_assembly/assets/icons/icon_copy_002_mix_002.svg"></img></copy-button>
+                        <copy-button></copy-button>
                     </div>
                     <p>.global _start</p>
                 </div>
@@ -34,8 +34,8 @@
                 <br>
                 <p>Next, the label must be created and given a body:</p>
                 <div class="illustration codebox">
-                    <div id="codebox2" class="floating-button">
-                        <copy-button target="codebox2"><img src="/practical_arm_assembly/assets/icons/icon_copy_002_mix_002.svg"></img></copy-button>
+                    <div class="floating-button">
+                        <copy-button></copy-button>
                     </div>
                     <p>.global _start</p>
                     <br>
@@ -63,9 +63,9 @@
                 </ul>
                 <p>The MOV instruction can be used to store a value in one of the general purpose registers. In order to invoke the instruction, it's keyword, or mnemonic, is used along with a series and operands. The MOV instruction takes two operands: The first is the register in which the value will be stored. The second can either be another register, in which case the value stored in that register will be used, or an immediate: A numerical constant denoted with an octothorpe.</p>
                 <p>The code below moves the immediate value 38 into register r0. The use of "0x" at the beginning of the number indicates that the value is being provided in Hexadecimal. Decimal and Binary input are also supported. The mnemonic and register name are not case sensitive:</p>
-                <div id="codebox3" class="illustration codebox">
+                <div class="illustration codebox">
                     <div class="floating-button">
-                        <copy-button target="codebox3"><img src="/practical_arm_assembly/assets/icons/icon_copy_002_mix_002.svg"></img></copy-button>
+                        <copy-button></copy-button>
                     </div>
                     <p>mov r0, #0x26</p>
                 </div>
@@ -75,9 +75,9 @@
                 <summary>Exiting the Program</summary>
                 <p>In order to gracefully end program execution, control must be returned to the operating system. This can be done with a software interrupt. Software interrupts switch the processor into "supervisor" mode, allowing it to make a request of the operating system kernel. This can be used to request that the operating system exit the program.
                 <p>A system interrupt can be triggered with the swi mnemonic. The action taken when this interrupt is called depends on the value of a predefined register. For A32, this is register r7. The value required to trigger an exit SysCall is 1. The code below moves the appropriate value into r7 and then triggers a software interrupt. Note the value following the swi mnemonic would typically be invalid, as it is neither a register or an immediate. This can be done because this value, while required, is never actually used or parsed by the instruction:</p>
-                <div id="codebox4" class="illustration codebox">
+                <div class="illustration codebox">
                     <div class="floating-button">                    
-                        <copy-button target="codebox4"><img src="/practical_arm_assembly/assets/icons/icon_copy_002_mix_002.svg"></img></copy-button>
+                        <copy-button></copy-button>
                     </div>
                     <p>mov r7, #0x1 <span class="comment">// Moves the value 1 into register r7 so it can be used by the system interrupt.</span></p>
                     <p>swi 0 <span class="comment">// Note that the 0 here is never used.</span></p>
