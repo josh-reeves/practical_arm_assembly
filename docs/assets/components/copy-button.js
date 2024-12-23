@@ -25,10 +25,19 @@ customElements.define("copy-button",
 
             var element = this.parentElement;
             
-            while (element.innerText == null)
-                element = element.parentElement;
+            try
+            {
+                while (element.innerText == '')
+                    element = element.parentElement;
 
-            navigator.clipboard.writeText(element.innerText);
+                navigator.clipboard.writeText(element.innerText);
+
+            }
+            catch(err)
+            {
+                console.log("Error: " + err);
+
+            }
 
             return;
 
