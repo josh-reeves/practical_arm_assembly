@@ -413,6 +413,12 @@ div.codebox
 
 }
 
+div.codebox:hover > div.floating-button
+{
+    display: block;
+
+}
+
 div.codebox p
 {
     font-family: 'Courier New', Courier, monospace;
@@ -483,30 +489,38 @@ hr.page-end
 /****************************** Buttons ******************************/
 div.floating-button
 {
+    display: none;
     position: sticky;
     left: 0px;
     top: 10px;
 
 }
 
-button.copy
+copy-button
 {
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     right: 10px;
+    height: 21px;
+    width: 21px;
     padding: 5px;
-    height: 36px;
-    width: 36px;
     border-radius: 5px;
     background-color: #FAFAFA50;
+    user-select: none;
     
 }
 
-button.copy:hover
+copy-button:hover
 {
     background-color: #FAFAFAC0;
+
+}
+
+copy-button:active
+{
+    background-color: #FAFAFA50;
 
 }
 
@@ -526,6 +540,18 @@ nav-button
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+}
+
+nav-button:hover
+{
+    background-color: #3F3F46;
+
+}
+
+nav-button:active
+{
+    background-color: #262626;
 
 }
 

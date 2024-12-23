@@ -9,14 +9,15 @@ customElements.define("copy-button",
 
         connectedCallback()
         {
-            this.addEventListener("click", this.copy())
+            this.addEventListener("click", this.copy)
 
         }
 
         copy = function() 
         {
-
+           navigator.clipboard.writeText(document.getElementById(this.getAttribute("target")).innerText);
 
         }
 
+        
     });
