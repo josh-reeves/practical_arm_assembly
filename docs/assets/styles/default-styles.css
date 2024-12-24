@@ -102,6 +102,23 @@
 
 }
 
+
+/****************************** Animations ******************************/
+@keyframes notification
+{
+    0% {top: 10%; opacity: 0%;}
+    100% {top: 15%; opacity: 100%;}
+
+}
+
+@keyframes slide 
+{
+    0% {height: 0%;}
+    100% {height: 100%;}
+    
+}
+
+
 /****************************** General ******************************/
 html
 {
@@ -173,7 +190,7 @@ header.page-header
 {
     height: 100px;
     width: 100%;
-    background-color: #262626;
+    background-color: #27272A;
     position: relative;
     color: #FAFAFA;
     text-align: left;
@@ -236,7 +253,7 @@ div.menu-container
     height: calc(100vh - 100px);
     width: 20vh;
     min-width: 180px;
-    background-color: #262626;
+    background-color: #27272A;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #C0C0C0 #181818;
@@ -301,7 +318,6 @@ div.submenu-item-hidden
 
 }
 
-
 /****************************** Body Containers ******************************/
 details.content-container
 {
@@ -342,19 +358,22 @@ details.content-container summary::-webkit-details-marker
 
 details.content-container summary::before
 {
-    content: '\25B8';
+    content: url("/practical_arm_assembly/assets/icons/icon_list_001_outline_001.svg");
     display: inline-flex;
-    margin-right: 10px;
-    width: 30px;
+    width: 32px;
+    height: 36px;
+    scale: 2;
+    position: relative;
+    bottom: 17px;
 
 }
 
 details.content-container[open] summary::before
 {
-    content: '\25BE';
-    display: inline-flex;
-    padding-right: 10px;
-    width: 20px;
+    content: url("/practical_arm_assembly/assets/icons/icon_list_001_outline_001.svg");
+    top: 6px;
+    left: 19px;
+    transform: rotate(90deg);
 
 }
 
@@ -408,8 +427,9 @@ div.codebox
     position: relative;
     background-color: #27272A;
     border: 1px solid #18181B;
-    border-radius: 3px;
+    border-radius: 5px;
     overflow-x: scroll;
+    scrollbar-width: thin;
 
 }
 
@@ -440,6 +460,25 @@ div.codebox span.comment
 div.codebox a
 {
     color: #FAFAFA;
+
+}
+
+div.notification
+{
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    width: 225px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E4E4E7;
+    border: 1px solid #18181B;
+    border-radius: 5px;
+    box-shadow: 0px 1px 2px;
+    font-family: robotoregular;
+    animation: notification 200ms;
 
 }
 
@@ -531,7 +570,8 @@ nav-button
     padding: 0px 20px;
     width: 190px;
     color: #E4E4E7;
-    background-color: #262626;
+    background-color: #27272A;
+    border: 1px solid #18181B;
     border-radius: 5px;
     font-family: robotoregular;
     font-weight: lighter;
@@ -552,7 +592,7 @@ nav-button:hover
 
 nav-button:active
 {
-    background-color: #262626;
+    background-color: #27272A;
 
 }
 

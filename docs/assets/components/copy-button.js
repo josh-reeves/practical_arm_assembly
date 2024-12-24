@@ -1,3 +1,5 @@
+import { notification } from "./notification.js";
+
 customElements.define("copy-button",
     class CopyButton extends HTMLElement
     {
@@ -38,6 +40,8 @@ customElements.define("copy-button",
                 console.log("Error: " + err);
 
             }
+
+            notification("Text copied to clipboard.", 1500, "notification");
 
             return;
 
