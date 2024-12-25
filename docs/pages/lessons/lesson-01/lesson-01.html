@@ -2,9 +2,9 @@
 <html>
     <head>
         <title>Practical ARM Assembly Notes</title>
-        <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">
-        <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
-        <script src="/practical_arm_assembly/assets/components/components.js" type="module"></script>
+        <link rel="stylesheet" href="/assets/styles/default-styles.css">
+        <script src="/assets/scripts/utils.js"></script>
+        <script src="/assets/components/components.js" type="module"></script>
         </script>
     </head>
     <body>
@@ -16,8 +16,8 @@
         <main>
             <details class="content-container" open>
                 <summary>Processor Architecture Explained Like I'm Five</summary>
-                <p>At a very general level, a processor can be thought of as a group of circuits used to perform basic operations and communicate with each other. These operations usually include basic arithmetic, logical comparisons, memory access, etc.</p>     
-                <p>Each of these circuits has a series of components capable of carrying a charge. These charges are used to represent numbers in a binary format, with the lack of a charge indicating a 0 and the presence of a charge indicating a 1. We refer to these as bits. The number of charges the components in the processor can work with at one time determine the processor's "bit-ness" (i.e. 32-bit, 64-bit, etc.).</p>
+                    <p>At a very general level, a processor can be thought of as a group of circuits used to perform basic operations and communicate with each other. These operations usually include basic arithmetic, logical comparisons, memory access, etc.</p>     
+                    <p>Each of these circuits has a series of components capable of carrying a charge. These charges are used to represent numbers in a binary format, with the lack of a charge indicating a 0 and the presence of a charge indicating a 1. We refer to these as bits. The number of charges the components in the processor can work with at one time determine the processor's "bit-ness" (i.e. 32-bit, 64-bit, etc.).</p>
             </details>
 
             <details class="content-container" open>
@@ -67,7 +67,7 @@
                     <div class="floating-button">
                         <copy-button></copy-button>
                     </div>
-                    <p>mov r0, #0x26</p>
+                    <p>mov r0, #0x26 <span class="comment">// Moves the value 38 (in hexadecimal) into register r0.</span></p>
                 </div>
             </details>
 
@@ -143,8 +143,20 @@
                 </ul>
                 <h3>New Instructions</h3>
                 <ul>
-                    <li>MOV</li>
-                    <li>SWI</li>
+                    <li><a href="https://developer.arm.com/documentation/ddi0406/c/Application-Level-Architecture/Instruction-Details/Alphabetical-list-of-instructions/MOV--immediate-">MOV{S}{c}{q} Rd, #const / Rm</a> </li>
+                    <ul>
+                        <li>Stores the value specified by #const or contained in register Rm in register Rd.</li>
+                    </ul>
+                    <li><a href="https://developer.arm.com/documentation/ddi0406/cb/Application-Level-Architecture/Instruction-Details/Alphabetical-list-of-instructions/SVC--previously-SWI-?lang=en">SWI #const</a></li>
+                    <ul>
+                        <li>Switches the CPU into supervisor mode. Used to request services from the operating system.</li>
+                        <li>The service requested is determined by the value stored in register r7.</li>
+                        <li>Replaced by SVC in newer versions of ARM.</li>
+                    </ul>
+                    <li><a href="https://developer.arm.com/documentation/ddi0406/cb/Application-Level-Architecture/Instruction-Details/Alphabetical-list-of-instructions/SVC--previously-SWI-?lang=en">SVC #const</a></li>
+                    <ul>
+                        <li>Replaces SWI in newer versions of ARM.</li>
+                    </ul>
                 </ul>
                 <h3>Examples</h3>
                 <ul>

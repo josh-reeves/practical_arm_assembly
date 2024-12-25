@@ -17,6 +17,10 @@ customElements.define("copy-button",
 
         copy = function() 
         {
+            var message = "Text copied to clipboard!";
+            var duration = 1250;
+            var className = "notification";
+
             if (document.getElementById(this.getAttribute("target")) != null)
             {
                 navigator.clipboard.writeText(document.getElementById(this.getAttribute("target")).innerText);
@@ -41,7 +45,7 @@ customElements.define("copy-button",
 
             }
 
-            notification("Text copied to clipboard.", 1500, "notification");
+            notification(message, duration, className);
 
             return;
 
