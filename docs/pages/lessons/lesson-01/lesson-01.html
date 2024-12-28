@@ -63,12 +63,24 @@
                 </ul>
                 <p>The MOV instruction can be used to store a value in one of the general purpose registers. In order to invoke the instruction, it's keyword, or mnemonic, is used along with a series and operands. The MOV instruction takes two operands: The first is the register in which the value will be stored. The second can either be another register, in which case the value stored in that register will be used, or an immediate: A numerical constant denoted with an octothorpe.</p>
                 <p>The code below moves the immediate value 38 into register r0. The use of "0x" at the beginning of the number indicates that the value is being provided in Hexadecimal. Decimal and Binary input are also supported. The mnemonic and register name are not case sensitive:</p>
-                <div class="illustration codebox">
-                    <div class="floating-button">
-                        <copy-button></copy-button>
+                <div class="illustration">
+                    <p>A32:</p>
+                    <div class="codebox">
+                        <div class="floating-button">
+                            <copy-button></copy-button>
+                        </div>
+                        <p>mov r0, #0x26 <span class="comment">// Moves the value 38 (in hexadecimal) into register r0.</span></p>
                     </div>
-                    <p>mov r0, #0x26 <span class="comment">// Moves the value 38 (in hexadecimal) into register r0.</span></p>
                 </div>
+                <div class="illustration">
+                    <p>A64:</p>
+                    <div class="codebox">
+                        <div class="floating-button">
+                            <copy-button></copy-button>
+                        </div>
+                        <p>mov x0, #0x26 <span class="comment">// Moves the value 38 (in hexadecimal) into register x0.</span></p>    
+                    </div>
+                </div>            
             </details>
 
             <details class="content-container" open>
@@ -96,6 +108,15 @@
                         <p>arm-linux-gnueabi-as [sourcefile.s] -o [output.o] <span class="comment"># Assembles program. Brackets not included in final command.</span></p>
                     </div>
                 </div>
+                <div class="illustration">
+                    <p>A64:</p>
+                    <div class="codebox">
+                        <div class="floating-button">
+                            <copy-button></copy-button>
+                        </div>
+                        <p>aarch64-linux-gnu-as [sourcefile.s] -o [output.o] <span class="comment"># Assembles program. Brackets not included in final command.</span></p>
+                    </div>
+                </div>
                 <br>
                 <br>
                 <p>Where sourcefile.s is the name of the source file created and output.o is the name of the object file to be created. The created file is not executable. In order to create a runnable program, the object file must be linked. This can be done with the following commands:</p>
@@ -106,6 +127,15 @@
                             <copy-button></copy-button>
                         </div>
                         <p>arm-linux-gnueabi-gcc [object.o] -o [output-executable] -nostdlib <span class="comment"># Links program. Brackets not included in final command.</span></p>
+                    </div>
+                </div>
+                <div class="illustration">
+                    <p>A64:</p>
+                    <div class="codebox">
+                        <div class="floating-button">
+                            <copy-button></copy-button>
+                        </div>
+                        <p>aarch64-linux-gnu-gcc [object.o] -o [output-executable] -nostdlib <span class="comment"># Links program. Brackets not included in final command.</span></p>
                     </div>
                 </div>
                 <br>

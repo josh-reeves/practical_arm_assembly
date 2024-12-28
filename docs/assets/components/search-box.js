@@ -36,6 +36,7 @@ customElements.define(
                     document.getElementById("search-button").addEventListener("click", ()=>
                     {
                         var searchText = document.getElementById("search-input").value;
+
                         this.search(searchText);
 
                     });
@@ -46,11 +47,11 @@ customElements.define(
 
         search(searchText)
         {
+            if (document.getElementById("search-results"))
+                document.body.removeChild(document.getElementById("search-results"));
+
             var searchResults = document.createElement("div");
-            var backdrop = document.createElement("div");
             searchResults.id = "search-results";
-            backdrop.id = "backdrop";
-            backdrop.setAttribute("height", "10px");
             
             stupidSearch(searchText).then((response) =>
                 {
@@ -81,7 +82,16 @@ customElements.define(
 
                 });
 
-            document.body.appendChild(backdrop);
+            if (!document.getElementById("backdrop"))
+            {
+                var backdrop = document.createElement("div");
+                backdrop.id = "backdrop";
+                backdrop.setAttribute("height", "10px");
+
+                document.body.appendChild(backdrop);
+
+            }
+
             document.body.appendChild(searchResults);
 
             function exit(event)
@@ -95,10 +105,10 @@ customElements.define(
 
                 }
 
-                if (!searchResults.contains(event.target))
+                if (!searchResults.contains(event.target) && !document.getElementById("search-box").contains(event.target))
                 {
-                    document.body.removeChild(searchResults);
-                    document.body.removeChild(backdrop);
+                    document.body.removeChild(document.getElementById("search-results"));
+                    document.body.removeChild(document.getElementById("backdrop"));
 
                 }
 
