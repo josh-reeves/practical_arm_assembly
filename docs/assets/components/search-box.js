@@ -6,13 +6,19 @@ customElements.define(
     {
         constructor()
         {
-            super();
-            
+            super();   
 
         }
         
         connectedCallback()
         {
+            var styleSheet = document.createElement("link");
+            styleSheet.rel = "stylesheet";
+            styleSheet.type = "text/css";
+            styleSheet.href = "/practical_arm_assembly/assets/styles/search-box.css";
+
+            document.head.appendChild(styleSheet);
+
             var placeholder = this.getAttribute("placeholder");
 
             this.innerHTML =
@@ -40,12 +46,26 @@ customElements.define(
 
         search(searchText)
         {
-
             var searchResults = document.createElement("div");
-
+            var backdrop = document.createElement("div");
+            searchResults.id = "search-results";
+            backdrop.id = "backdrop";
+            backdrop.setAttribute("height", "10px");
+            
             stupidSearch(searchText).then((response) =>
                 {
                     console.log(response);
+
+                    if (response.length <= 0)
+                    {
+                        var emptyMsg = document.createElement("p");
+                        emptyMsg.innerText = "No results found :(";
+
+                        searchResults.append(emptyMsg);
+
+                        return;
+
+                    }
 
                     response.forEach((result) =>
                     {
@@ -60,31 +80,8 @@ customElements.define(
                     });
 
                 });
-                
-                var bounds = this.getBoundingClientRect();
 
-                console.log(bounds);
-
-                searchResults.setAttribute(
-                    "style",
-                    `
-                        position: fixed;
-                        top: ${bounds.bottom}px;
-                        left: ${bounds.left}px;
-                        width: ${bounds.width}px;
-                        max-height: 300px;
-                        display: inline;
-                        background-color: white;
-                        overflow-y: auto;
-                        border-radius: 5px;
-                        box-shadow: 0px 1px 2px;
-                        margin-top: 10px;
-                        margin-left: -10px;
-                        padding: 5px 10px 15px 10px;
-                        line-height: 2;
-        
-                    `);
-        
+            document.body.appendChild(backdrop);
             document.body.appendChild(searchResults);
 
             function exit(event)
@@ -92,13 +89,18 @@ customElements.define(
                 if (event.type == "resize")
                 {
                     document.body.removeChild(searchResults);
+                    document.body.removeChild(backdrop);
 
                     return;
 
                 }
 
-                if (event.target != searchResults)
+                if (!searchResults.contains(event.target))
+                {
                     document.body.removeChild(searchResults);
+                    document.body.removeChild(backdrop);
+
+                }
 
             }
 

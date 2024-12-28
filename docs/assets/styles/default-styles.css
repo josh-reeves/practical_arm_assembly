@@ -225,48 +225,6 @@ header.page-header div.right
 
 }
 
-header.page-header div.right search-box
-{
-    width: 400px;
-    margin: 25px;
-}
-
-header.page-header div.right search-box div
-{
-    display: flex;
-    background-color: #FAFAFA;
-    height: 20px;
-    border-radius: 5px;
-    padding: 12px;
-
-}
-
-header.page-header div.right search-box input
-{
-    width: 100%;
-
-}
-
-header.page-header div.right search-box img
-{
-    content: url("/practical_arm_assembly/assets/icons/icon_search_001_outline_001.svg");
-    border-radius: 5px;
-    scale: 1.5;
-    padding: 3px;
-
-}
-
-header.page-header div.right search-box img:hover
-{
-    background-color: #E4E4E7;
-
-}
-
-header.page-header div.right search-box img:active
-{
-    opacity: 50%;
-
-}
 
 header.page-header div.left h1
 {
