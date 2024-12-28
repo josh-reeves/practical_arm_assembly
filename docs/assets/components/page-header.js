@@ -1,4 +1,4 @@
-import { stupidSearch } from "./stupidSearch.js";
+import "./search-box.js";
 
 customElements.define(
     "page-header", 
@@ -7,12 +7,11 @@ customElements.define(
         constructor() 
         {
             super();
-
     
         }
     
         connectedCallback()
-        {    
+        {
             this.innerHTML =
                 `
                     <header class="page-header">
@@ -21,27 +20,9 @@ customElements.define(
                             <h1>Practical ARM Assembly</h1>
                         </div>
                         <div class="right">
-                        <form id="search">
-                            <input id="search-box" type="text" placeholder="Search">
-                            <img id="search-button" src="/practical_arm_assembly/assets/icons/icon_search_001_outline_001.svg"></img>
-                        <form>
-                        </div>
+                        <search-box placeholder="Search"></search-box>
                     </header>
                 `;
-
-            setTimeout(
-                () =>
-                {
-                    document.getElementById("search-button").addEventListener("click", ()=>
-                    {
-                        var searchText = document.getElementById("search-box").value;
-                        stupidSearch(searchText);
-
-                    });
-                    
-                }
-
-            );
 
         }
     

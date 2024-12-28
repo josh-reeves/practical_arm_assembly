@@ -16,7 +16,7 @@ export function notification(message, timeout, classList = null)
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color: white;");
+                background-color: white;
 
             `);
 
