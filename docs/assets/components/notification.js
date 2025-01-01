@@ -1,32 +1,22 @@
-export function notification(message, timeout, classList = null)
+import { createStyleSheet } from "../scripts/createStyleSheet.js";
+
+export function notification(message, timeout)
 {
-    var frame = document.createElement("div");
+    document.head.append(createStyleSheet("/practical_arm_assembly/assets/styles/notification.css"));
+        
+    var messageBox = document.createElement("div");
+    messageBox.id="message-box";
 
-    frame.textContent = message;
+    var content = document.createElement("p");
+    content.innerText = message;
 
-    frame.classList.add(classList);
+    messageBox.append(content);
 
-    if (classList === null)
-    {
-        frame.setAttribute(
-            "style",
-            `
-                position: absolute;
-                top: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background-color: white;
-
-            `);
-
-    }
-
-    document.body.appendChild(frame);
+    document.body.appendChild(messageBox);
 
     setTimeout(() => 
         {
-            document.body.removeChild(frame);
+            document.body.removeChild(messageBox);
             
         }, 
         timeout);

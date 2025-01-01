@@ -1,31 +1,46 @@
 import "./search-box.js";
+import { createStyleSheet } from "../scripts/createStyleSheet.js";
 
-customElements.define(
-    "page-header", 
-    class PageHeader extends HTMLElement
+class PageHeader extends HTMLElement
+{
+    constructor() 
     {
-        constructor() 
-        {
-            super();
-    
-        }
-    
-        connectedCallback()
-        {
-            this.innerHTML =
-                `
-                    <header class="page-header">
-                        <div class="left ">
-                        <img src="/practical_arm_assembly/assets/icons/icon_cpu_001_fill_003.svg" width=48/>
-                            <h1>Practical ARM Assembly</h1>
-                        </div>
-                        <div class="right">
-                        <search-box placeholder="Search"></search-box>
-                    </header>
-                `;
+        super();
 
-        }
-    
     }
 
-);
+    connectedCallback()
+    {
+        document.head.append(createStyleSheet("/practical_arm_assembly/assets/styles/page-header.css"));
+
+        var header = document.createElement("header");
+        header.classList.add("page-header");
+
+        var leftSection = document.createElement("div");
+        leftSection.classList.add("left");
+
+        var rightSection = document.createElement("div");
+        rightSection.classList.add("right");
+
+        var siteIcon = document.createElement("img");
+        siteIcon.id = "site-icon";
+
+        var searchBox = document.createElement("search-box");
+        searchBox.id = "search-box";
+        searchBox.setAttribute("placeholder", "Search");
+
+        var title = document.createElement("h1");
+        title.innerText = "Practical ARM Assembly";
+
+        rightSection.append(searchBox);
+        leftSection.append(siteIcon, title);
+
+        header.append(leftSection, rightSection);
+
+        this.append(header);
+
+    }
+
+}
+
+customElements.define("page-header", PageHeader);

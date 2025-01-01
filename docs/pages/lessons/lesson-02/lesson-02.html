@@ -13,10 +13,80 @@
         <nav-menu></nav-menu>
 
         <main>
-            
-            <div class="content-container">
-                            
-            </div>
+            <details class="content-container" open>
+                <summary>Arithmetic Operations</summary>
+                    <p>The ARM ISAs generally provide instructions for executing addition, subtraction and multiplication operations.
+                    <h3>Addition</h3>
+                    <p>Addition can be accomplished with the ADD instruction. The ADD instruction typically takes three operands:</p>
+                    <ul>
+                        <li>The register in which the result of the operation will be stored.</li>
+                        <li>An immediate or a register containing the first value to add.</li>
+                        <li>An immediate or a register containing the second value to add.</li>
+                    </ul>
+                    <p>The same register can be used as both the destination register either of the other operands:</p>
+                    <div class="illustration codebox">
+                        <p>_start:</p>
+                        <p>&emsp; mov r0, #0x12 <span class="comment">// Moves the value 18 into register r0.</span></p>
+                        <p>&emsp; mov r1, #0x34 <span class="comment">// Moves the value 52 into register r1.</span></p>
+                        <br>
+                        <p>&emsp; add r0, r0, r1 <span class="comment">// Adds the values stored in r0 and r1 and stores the result in r0.</span></p>
+                    </div>
+                    <br>
+                    <br>
+                    <p>The third operand can also be omitted entirely. When this is done, the first operand is treated as both the destination register and one of the values to be added:</p>
+                    <div class="illustration codebox">
+                        <p>add r0, r1 <span class="comment">// Adds the values stored in r0 and r1 and stores the result in r0.</span></p>
+                    </div>
+                    <br>
+                    <br>
+                    <h3>Subtraction</h3>
+                    <p>Subtraction can be accomplished with the SUB instruction. The SUB instruction typically takes three operands:</p>
+                    <ul>
+                        <li>The register in which the result of the operation will be stored.</li>
+                        <li>An immediate or a register containing the value to subtract from.</li>
+                        <li>An immediate or a register containing the value to subtract.</li>
+                    </ul>
+                    <p>As with the add command, the destination register can be the same as either of the operands. If the third operand is omitted, the first will be used as both the value to subtract from and the destination register:</p>
+                    <div class="illustration codebox">
+                        <p>sub r0, r1 <span class="comment">// Subtracts the value stored in r1 from the value stored in r0 and stores the result in r0.</span></p>
+                    </div>
+                    <br>
+                    <br>
+                    <h3>Multiplication</h3>
+                    <p>Multiplication can be accomplished with the MUL instruction. The MUL instruction also takes three operands:</p>
+                    <ul>
+                        <li>The register in which the result of the operation will be stored.</li>
+                        <li>The register containing the first value to be multiplied.</li>
+                        <li>The register containing the second value to be multiplied.</li>
+                    </ul>
+                    <p>Unlike the ADD and SUB instructions, however, the values to be multiplied must be provided via registers. Immediate values are not allowed:</p>
+                    <div class="illustration codebox">
+                        <p>_start:</p>
+                        <p>&emsp; mov r1, #0x04 <span class="comment">// Moves the value 4 into register r0.</span></p>
+                        <p>&emsp; mov r2, #0x09 <span class="comment">// Moves the value 9 into register r1.</span></p>
+                        <br>
+                        <p>&emsp; mul r0, r1, r2 <span class="comment">// Multiplies the values stored in r1 and r2 and stores the result in r0. The values must be provided via register.</span></p>
+                    </div>
+                    <br>
+                    <br>
+                    <p>Additionally, while the MUL instruction still allows for the exclusion of an operand (as with the ADD and SUB instructions), when all three operands are provided, the destination register cannot be the same as either of the value registers:</p>
+                    <div class="illustration codebox">
+                        <p>mul r0, r1<span class="comment">// Multiplies the values stored in r0 and r1 and stores the result in r0.</span></p>
+                        <p>mul r0, r1, r2 <span class="comment">// Multiplies the values stored in r1 and r2 and stores the result in r0. Each operand must be different.</span></p>
+                    </div>
+            </details>
+
+            <details class="content-container">
+                <summary>Division</summary>
+            </details>
+
+            <details class="content-container">
+                <summary>Review</summary>
+            </details>
+
+            <hr class="page-end"/>
+            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-01/lesson-01.html" class="left">Lesson 01: MOV, Exit Syscall</nav-button>
+            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-03/lesson-03.html" class="right">Lesson 03: Logical Operators</button>    
 
         </main>
     </body>

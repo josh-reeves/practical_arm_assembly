@@ -87,8 +87,8 @@
                 <summary>Exiting the Program</summary>
                 <p>In order to gracefully end program execution, control must be returned to the operating system. This can be done with a software interrupt. Software interrupts switch the processor into "supervisor" mode, allowing it to make a request of the operating system kernel. This can be used to request that the operating system exit the program.
                 <p>A system interrupt can be triggered with the swi mnemonic. The action taken when this interrupt is called depends on the value of a predefined register. For A32, this is register r7. The value required to trigger an exit SysCall is 1. The code below moves the appropriate value into r7 and then triggers a software interrupt. Note the value following the swi mnemonic would typically be invalid, as it is neither a register or an immediate. This can be done because this value, while required, is never actually used or parsed by the instruction:</p>
-                <div class="illustration codebox">
-                    <div class="floating-button">                    
+                <div class="illustration codebox">                
+                    <div class="floating-button">
                         <copy-button></copy-button>
                     </div>
                     <p>mov r7, #0x1 <span class="comment">// Moves the value 1 into register r7 so it can be used by the system interrupt.</span></p>

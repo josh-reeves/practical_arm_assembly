@@ -102,23 +102,6 @@
 
 }
 
-
-/****************************** Animations ******************************/
-@keyframes notification
-{
-    0% {top: 10%; opacity: 0%;}
-    100% {top: 15%; opacity: 100%;}
-
-}
-
-@keyframes slide 
-{
-    0% {height: 0px}
-    100% {height: 500px;}
-    
-}
-
-
 /****************************** General ******************************/
 html
 {
@@ -181,59 +164,6 @@ li
     font-family: robotoregular;
     font-weight: lighter;
     line-height: 1.5;
-
-}
-
-
-/****************************** Header ******************************/
-header.page-header
-{
-    height: 100px;
-    width: 100%;
-    background-color: #27272A;
-    position: relative;
-    color: #FAFAFA;
-    text-align: left;
-    overflow: hidden;
-
-}
-
-header.page-header div.left img
-{
-    margin: 20px;
-
-}
-
-header.page-header div.left
-{
-    display: flex;
-    align-items: center;
-    width: 50%;
-    height: 100%;
-    float: left;
-
-}
-
-header.page-header div.right
-{
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    width: 50%;
-    height: 100%;
-    float: right;
-
-}
-
-
-header.page-header div.left h1
-{
-    font-size: 32pt;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    height: 100%;
-    align-content: center;
 
 }
 
@@ -349,19 +279,20 @@ details.content-container summary::-webkit-details-marker
 
 details.content-container summary::before
 {
-    content: url("/practical_arm_assembly/assets/icons/icon_list_001_outline_001.svg");
+    content: url("/assets/icons/icon_list_001_outline_001.svg");
     display: inline-flex;
     width: 32px;
     height: 36px;
     scale: 2;
     position: relative;
     bottom: 17px;
+    filter: invert(71%) sepia(7%) saturate(287%) hue-rotate(202deg) brightness(91%) contrast(84%);
 
 }
 
 details.content-container[open] summary::before
 {
-    content: url("/practical_arm_assembly/assets/icons/icon_list_001_outline_001.svg");
+    content: url("/assets/icons/icon_list_001_outline_001.svg");
     top: 6px;
     left: 19px;
     transform: rotate(90deg);
@@ -397,12 +328,6 @@ details.content-container h3
 
 }
 
-div.sliding-open
-{
-    animation: slide 200ms ease-in-out;
-
-}
-
 div.illustration
 {
     margin-left: auto;
@@ -422,17 +347,13 @@ div.illustration h3
 div.codebox
 {
     position: relative;
+    top: 0px;
     background-color: #27272A;
     border: 1px solid #18181B;
     border-radius: 5px;
-    overflow-x: scroll;
     scrollbar-width: thin;
-
-}
-
-div.codebox:hover > div.floating-button
-{
-    display: block;
+    overflow-x: auto;
+    scrollbar-color: #C0C0C0 transparent;
 
 }
 
@@ -457,25 +378,6 @@ div.codebox span.comment
 div.codebox a
 {
     color: #FAFAFA;
-
-}
-
-div.notification
-{
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    width: 225px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #E4E4E7;
-    border: 1px solid #18181B;
-    border-radius: 5px;
-    box-shadow: 0px 1px 2px;
-    font-family: robotoregular;
-    animation: notification 200ms ease-in-out;
 
 }
 
@@ -523,44 +425,6 @@ hr.page-end
 }
 
 /****************************** Buttons ******************************/
-div.floating-button
-{
-    display: none;
-    position: sticky;
-    left: 0px;
-    top: 10px;
-
-}
-
-copy-button
-{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    right: 10px;
-    height: 21px;
-    width: 21px;
-    padding: 5px;
-    border-radius: 5px;
-    background-color: #FAFAFA50;
-    user-select: none;
-    content: url("/practical_arm_assembly/assets/icons/icon_copy_001_mix_001.svg");
-    
-}
-
-copy-button:hover
-{
-    background-color: #FAFAFAC0;
-
-}
-
-copy-button:active
-{
-    background-color: #FAFAFA50;
-
-}
-
 nav-button
 {
     margin: 20px;
@@ -604,3 +468,4 @@ nav-button.left
     float: left;
 
 }
+

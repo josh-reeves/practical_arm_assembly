@@ -1,141 +1,147 @@
 import { stupidSearch } from "../scripts/stupidSearch.js";
+import { createStyleSheet } from "../scripts/createStyleSheet.js";
 
-customElements.define(
-    "search-box",
-    class SearchBox extends HTMLElement
+class SearchBox extends HTMLElement
+{
+    //#region Private Fields
+    #observer;
+    #observerConfig;
+
+    //#endregion
+    
+    //#region Constructor
+    constructor()
     {
-        constructor()
-        {
-            super();   
-
-        }
+        super();
         
-        connectedCallback()
-        {
-            var styleSheet = document.createElement("link");
-            styleSheet.rel = "stylesheet";
-            styleSheet.type = "text/css";
-            styleSheet.href = "/practical_arm_assembly/assets/styles/search-box.css";
-
-            document.head.appendChild(styleSheet);
-
-            var placeholder = this.getAttribute("placeholder");
-
-            this.innerHTML =
-                `
-                    <div id="search-box" part="box">
-                        <input id="search-input" type="text" placeholder="${placeholder}"></input>
-                        <img id="search-button"></img>
-                    </div>
-
-                `;
-
-
-            setTimeout(() =>
+        this.#observer = new MutationObserver((mutationList, observer) =>
+            {
+                mutationList.forEach((mutation) => 
                 {
-                    document.getElementById("search-button").addEventListener("click", ()=>
+                    if (mutation.removedNodes[0] === document.getElementById("search-results"))
                     {
-                        var searchText = document.getElementById("search-input").value;
-
-                        this.search(searchText);
-
-                    });
-                    
-                });
-
-        }
-
-        search(searchText)
-        {
-            if (document.getElementById("search-results"))
-                document.body.removeChild(document.getElementById("search-results"));
-
-            var searchResults = document.createElement("div");
-            searchResults.id = "search-results";
-            
-            stupidSearch(searchText).then((response) =>
-                {
-                    console.log(response);
-
-                    if (response.length <= 0)
-                    {
-                        var emptyMsg = document.createElement("p");
-                        emptyMsg.innerText = "No results found :(";
-
-                        searchResults.append(emptyMsg);
-
-                        return;
+                        window.removeEventListener("mouseup", this.#exit);
+                        window.removeEventListener("resize", this.#exit);
 
                     }
-
-                    response.forEach((result) =>
-                    {
-                        var link = document.createElement("a");
-
-                        link.setAttribute("href", result);
-                        link.innerText = result;
-
-                        searchResults.append(link);
-                        searchResults.append(document.createElement("br"));
-
-                    });
-
+                        
                 });
 
-            if (!document.getElementById("backdrop"))
+            });
+
+        this.#observerConfig = { attributes: true, childList: true, subtree: true };
+        
+        this.#observer.observe(document.body, this.#observerConfig);
+
+    }
+
+    //#endregion
+
+    //#region Methods
+    connectedCallback()
+    {
+        document.head.appendChild(createStyleSheet("/practical_arm_assembly/assets/styles/search-box.css"));
+
+        var searchContainer = document.createElement("div");
+        searchContainer.id = "search-box";
+        
+        var searchInput = document.createElement("input");
+        searchInput.id = "search-input";
+        searchInput.placeholder = this.getAttribute("placeholder");
+
+        var searchButton = document.createElement("img");
+        searchButton.id = "search-button";
+
+        searchContainer.append(searchInput, searchButton);
+
+        this.appendChild(searchContainer);
+
+        searchButton.addEventListener("click", ()=>
             {
-                var backdrop = document.createElement("div");
-                backdrop.id = "backdrop";
-                backdrop.setAttribute("height", "10px");
+                var searchText = searchInput.value;
 
-                document.body.appendChild(backdrop);
+                this.search(searchText);
 
-            }
+            });
 
-            document.body.appendChild(searchResults);
+    }
 
-            function exit(event)
+    search(searchText)
+    {
+        if (document.getElementById("search-results"))
+            document.body.removeChild(document.getElementById("search-results"));
+
+        var searchResults = document.createElement("div");
+        searchResults.id = "search-results";
+        
+        stupidSearch(searchText).then((response) =>
             {
-                if (event.type == "resize")
+                console.log(response);
+
+                if (response.length <= 0)
                 {
-                    document.body.removeChild(searchResults);
-                    document.body.removeChild(backdrop);
+                    var emptyMsg = document.createElement("p");
+                    emptyMsg.innerText = "No results found :(";
+
+                    searchResults.append(emptyMsg);
 
                     return;
 
                 }
 
-                if (!searchResults.contains(event.target) && !document.getElementById("search-box").contains(event.target))
+                response.forEach((result) =>
                 {
-                    document.body.removeChild(document.getElementById("search-results"));
-                    document.body.removeChild(document.getElementById("backdrop"));
+                    var link = document.createElement("a");
 
-                }
+                    link.setAttribute("href", result);
+                    link.innerText = result;
 
-            }
+                    searchResults.append(link);
+                    searchResults.append(document.createElement("br"));
 
-            window.addEventListener("mouseup", exit);
-            window.addEventListener("resize", exit);
-
-            var config = { attributes: true, childList: true, subtree: true };
-            
-            var observer = new MutationObserver((mutationList, observer) =>
-                {
-                    mutationList.forEach((mutation) => 
-                    {
-                        if (mutation.removedNodes[0] === searchResults)
-                        {
-                            window.removeEventListener("mouseup", exit);
-                            window.removeEventListener("resize", exit);
-
-                        }
-                            
-                    });
-    
                 });
 
-            observer.observe(document.body, config);
+            });
+
+        if (!document.getElementById("backdrop"))
+        {
+            var backdrop = document.createElement("div");
+            backdrop.id = "backdrop";
+            backdrop.setAttribute("height", "10px");
+
+            document.body.appendChild(backdrop);
 
         }
-        
-    });
+
+        document.body.appendChild(searchResults);
+
+        window.addEventListener("mouseup", this.#exit);
+        window.addEventListener("resize", this.#exit);
+
+    }
+
+    #exit(event)
+    {
+        if (event.type == "resize")
+        {
+            document.body.removeChild(document.getElementById("search-results"));
+            document.body.removeChild(document.getElementById("backdrop"));
+
+            return;
+
+        }
+
+        if (!document.getElementById("search-results").contains(event.target) && !document.getElementById("search-box").contains(event.target))
+        {
+            document.body.removeChild(document.getElementById("search-results"));
+            document.body.removeChild(document.getElementById("backdrop"));
+
+        }
+
+    }
+
+    //#endregion
+
+}
+
+customElements.define("search-box", SearchBox);

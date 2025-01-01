@@ -1,4 +1,5 @@
 import { notification } from "./notification.js";
+import { createStyleSheet } from "../scripts/createStyleSheet.js";
 
 customElements.define("copy-button",
     class CopyButton extends HTMLElement
@@ -11,15 +12,19 @@ customElements.define("copy-button",
 
         connectedCallback()
         {
-            this.addEventListener("click", this.copy)
+            const styleSheetID = "copy-button-styles";
+            
+            if (!document.getElementById(styleSheetID))
+                document.head.append(createStyleSheet("/practical_arm_assembly/assets/styles/copy-button.css"));
 
+            this.addEventListener("click", this.copy)
+    
         }
 
-        copy = function() 
+        copy() 
         {
             var message = "Text copied to clipboard!";
             var duration = 1250;
-            var className = "notification";
 
             if (document.getElementById(this.getAttribute("target")) != null)
             {
@@ -45,7 +50,7 @@ customElements.define("copy-button",
 
             }
 
-            notification(message, duration, className);
+            notification(message, duration);
 
             return;
 

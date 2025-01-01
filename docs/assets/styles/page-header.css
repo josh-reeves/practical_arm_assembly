@@ -1,0 +1,55 @@
+#site-icon
+{
+    content: url("/assets/icons/icon_cpu_001_fill_003.svg");
+    width: 48px;
+
+}
+
+header.page-header
+{
+    height: 100px;
+    width: 100%;
+    background-color: #27272A;
+    position: relative;
+    color: #FAFAFA;
+    text-align: left;
+    overflow: hidden;
+
+}
+header.page-header div.left
+{
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    float: left;
+
+}
+
+header.page-header div.left h1
+{
+    font-size: 32pt;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 100%;
+    align-content: center;
+
+}
+
+header.page-header div.left img
+{
+    margin: 20px;
+
+}
+
+header.page-header div.right
+{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 50%;
+    height: 100%;
+    float: right;
+
+}

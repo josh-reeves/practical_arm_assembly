@@ -1,0 +1,43 @@
+div.floating-button
+{
+    display: none;
+    position: sticky;
+    left: 0px;
+    top: 10px;
+
+}
+
+div.codebox:hover > div.floating-button
+{
+    display: block;
+    
+}
+
+copy-button
+{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 10px;
+    height: 21px;
+    width: 21px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #FAFAFA50;
+    user-select: none;
+    content: url("/assets/icons/icon_copy_001_mix_001.svg");
+    
+}
+
+copy-button:hover
+{
+    background-color: #FAFAFAC0;
+
+}
+
+copy-button:active
+{
+    background-color: #FAFAFA50;
+
+}
