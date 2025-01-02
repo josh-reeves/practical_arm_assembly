@@ -279,7 +279,7 @@ details.content-container summary::-webkit-details-marker
 
 details.content-container summary::before
 {
-    content: url("/assets/icons/icon_list_001_outline_001.svg");
+    content: url("/practical_arm_assembly/assets/icons/icon_list_001_outline_001.svg");
     display: inline-flex;
     width: 32px;
     height: 36px;
@@ -292,7 +292,7 @@ details.content-container summary::before
 
 details.content-container[open] summary::before
 {
-    content: url("/assets/icons/icon_list_001_outline_001.svg");
+    content: url("/practical_arm_assembly/assets/icons/icon_list_001_outline_001.svg");
     top: 6px;
     left: 19px;
     transform: rotate(90deg);

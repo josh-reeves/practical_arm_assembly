@@ -74,14 +74,32 @@
                         <p>mul r0, r1<span class="comment">// Multiplies the values stored in r0 and r1 and stores the result in r0.</span></p>
                         <p>mul r0, r1, r2 <span class="comment">// Multiplies the values stored in r1 and r2 and stores the result in r0. Each operand must be different.</span></p>
                     </div>
+                    <br>
+                    <br>
+                    <h3>Division</h3>
+                    <p>While certain ARM architecture profiles do provide an explicit division instruction, it isn't standard. This is because, unlike the other arithmetic operations, many of the platform's architecture profiles do not have the hardware required to perform division directly.</p>
+                    <p>Instead, division is usually accomplished via a combination of other commands. As a result of this, division is not currently covered by these notes.</p>
             </details>
 
-            <details class="content-container">
-                <summary>Division</summary>
-            </details>
-
-            <details class="content-container">
+            <details class="content-container" open>
                 <summary>Review</summary>
+                <br>
+                <h3>Concepts</h3>
+                <ul>
+                    <li>Addition</li>
+                    <li>Subtraction</li>
+                    <li>Multiplication</li>
+                </ul>
+                <h3>Instructions</h3>
+                <ul>
+                    <li>ADD</li>
+                    <li>SUB</li>
+                    <li>MUL</li>
+                </ul>
+                <h3>Examples</h3>
+                <ul>
+                    <li><a href="https://github.com/josh-reeves/practical_arm_assembly/tree/main/source/lesson_02/a32">32-bit</a></li>
+                </ul>
             </details>
 
             <hr class="page-end"/>
