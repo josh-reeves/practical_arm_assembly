@@ -40,7 +40,7 @@ class SearchBox extends HTMLElement
     //#region Methods
     connectedCallback()
     {
-        document.head.appendChild(createStyleSheet("/assets/styles/search-box.css"));
+        document.head.appendChild(createStyleSheet("/practical_arm_assembly/assets/styles/search-box.css"));
 
         var searchContainer = document.createElement("div");
         searchContainer.id = "search-box";
