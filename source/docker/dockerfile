@@ -3,3 +3,7 @@ RUN apt update
 RUN apt install gcc-arm-linux-gnueabi -y
 RUN apt install gcc-aarch64-linux-gnu -y 
 RUN apt install binutils-gold -y
+RUN apt install nano -y
+RUN useradd user --home /home/user
+USER user
+WORKDIR /home/user
