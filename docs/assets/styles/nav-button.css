@@ -1,0 +1,45 @@
+nav-button.prev
+{
+    float: left;
+
+}
+
+nav-button.next
+{
+    float: right;
+
+}
+
+button.nav-button
+{
+    margin: 20px;
+    padding: 0px 20px;
+    width: 220px;
+    color: #E4E4E7;
+    background-color: #27272A;
+    border: 1px solid #18181B;
+    border-radius: 5px;
+    font-family: robotoregular;
+    font-weight: lighter;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+button.nav-button:hover
+{
+    background-color: #3F3F46;
+
+}
+
+button.nav-button:active
+{
+    background-color: #27272A;
+
+}
+
+

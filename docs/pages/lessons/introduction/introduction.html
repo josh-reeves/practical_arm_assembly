@@ -5,6 +5,7 @@
         <title>Practical ARM Assembly Notes</title>
         <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">
         <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
+        <script src="/practical_arm_assembly/assets/scripts/eventListeners.js"></script>
         <script src="/practical_arm_assembly/assets/components/components.js" type="module"></script>
     </head>
 
@@ -15,20 +16,26 @@
 
         <main>
             <details class="content-container" open>
-                <summary>About ARM Assembly</summary>
+                <summary><p>About ARM Assembly</p></summary>
                 <p>Generally speaking, all computer processors are only capable of understanding a limited set of relatively basic instructions. These instructions typically provide, among other things, basic arithmetic, logical operations and ways to access computer memory. All activity performed by the processor is, at most, an aggregate of these basic operations.</p>
                 <p>Assembly languages are low-level programming languages that provide a way to directly invoke these instructions. As opposed to higher-level languages (e.g. Python, Rust, the C variants, etc.), which provide controlled and highly-abstracted access to these operations via relatively human-readable code, assembly languages feature a strong correlation between the instructions they provide to the developer and those the processor is actually able to understand. Due to this correlation, assembly languages are architecture specific. This documentation and the associated repository specifically specifically focus on assembly language for ARM processors.</p>
-                <p>The set of instructions a processor can understand and the the manner in which they are carried out are part of it's ISA (Instruction Set Architecture). The ARM standard includes multiple ISAs. Of these, these notes are primarily concerned with the 32-bit A32 ISA and the 64-bit A64 ISA.</p>
+                <p>The set of instructions a processor can understand and the the manner in which they are carried out are part of it's ISA (Instruction Set Architecture). The ARM standard includes multiple ISAs. These notes are primarily concerned with the 32-bit A32 ISA and the 64-bit A64 ISA.</p>
             </details>
             
             <details class="content-container" open>
-                <summary>Why Learn Assembly</summary>
-                <p>Due to the level of interaction with the computer's hardware, learning assembly builds a fundamental understanding of how the various operations a computer is instructed to perform are actually carried out. This additional understanding is beneficial for making informed and detailed decisions about the design of programs written in higher-level languages and troubleshooting complex issues where the cause may not be immediately apparent.</p>
-                <p>Additionally, because they lack many of the conventions and conveniences of higher-level languages, affective user of assembly requires a deep understanding of the many patterns that comprise modern programming. As with anything, limitations foster creativity and understanding.</p>                    
+                <summary><p>Using These Notes</p></summary>
+                <p>Due to the significant differences between A32 and A64, presenting information for both ISAs simultaneously would negatively impact the clarity and utility of the resulting material. For this reason, the following steps have been taken to organize the included information:</p>
+                <ul>
+                    <li>Each lesson has been broken into sections. Each of these sections can be collapsed by clicking the section header.</li>
+                    <li>Furthermore, many of these sections will include an option to display either 32-bit or 64-bit content. In these situations, the section header will include the buttons shown below. Clicking either button will show content relevant to associated ISA.</li>
+                </ul>
+                <div class="illustration">
+                    <img src="/practical_arm_assembly/assets/images/toggle-example.png"></img>
+                </div>
             </details>
 
             <details class="content-container" open>
-                <summary>Getting Started</summary>
+                <summary><p>Getting Started</p></summary>
                 <p>The example source code was written and compiled on a Raspberry Pi 5 running Ubuntu Server 24.04. In order to enage with the material to its fullest, a similar setup is recommended. Any 64-bit ARM processor running on a Debian-based Linux distro should be sufficient. The popular system emulator, <a href="https://www.qemu.org/">QEMU</a> can also be used to emulate the necessary architecture.</p>
                 <p>Once the system is set up, the toolchains required to assemble and link the code will need to be installed. The 32-bit examples were assembled and linked using the gcc-arm-linux-gnueabi toolchain, which can be installed with the following command:</p>
                 <div class="illustration codebox">
@@ -45,6 +52,24 @@
                         <copy-button></copy-button>
                     </div>
                     <p>sudo apt-get install gcc-aarch64-linux-gnu -y</p>
+                </div>
+                <br>
+                <br>
+                <p>For simplicity, a docker image has been created that has the above toolchains preinstalled along with the other packages required to compile and run the associated examples and a text editor. For more information, reference the docker file located <a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/docker/dockerfile">here</a>. It can be run with the following command, adding any desired volumes or bind mounts as desired:</p>
+                <div class="illustration codebox">
+                    <div class="floating-button">
+                        <copy-button></copy-button>
+                    </div>
+                    <p>sudo docker run -dit --name practical-arm-assembly joshreeves/practical-arm-assembly</p>
+                </div>
+                <br>
+                <br>
+                <p>Once to container is running, the following command can be used to enter its terminal and begin interacting with it:</p>
+                <div class="illustration codebox">
+                    <div class="floating-button">
+                        <copy-button></copy-button>
+                    </div>
+                    <p>sudo docker exec -it practical-arm-assembly sh</p>
                 </div>
                 <br>
                 <br>

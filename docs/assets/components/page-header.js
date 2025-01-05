@@ -11,7 +11,13 @@ class PageHeader extends HTMLElement
 
     connectedCallback()
     {
-        document.head.append(createStyleSheet("/practical_arm_assembly/assets/styles/page-header.css"));
+        const styleID = "page-header-styles";
+        
+        if (!document.getElementById(styleID))
+            document.head.append(createStyleSheet("/practical_arm_assembly/assets/styles/page-header.css", styleID));
+
+        if (document.getElementsByClassName("page-header").length >= 1)
+            return;
 
         var header = document.createElement("header");
         header.classList.add("page-header");

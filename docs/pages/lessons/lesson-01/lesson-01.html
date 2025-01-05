@@ -15,13 +15,13 @@
 
         <main>
             <details class="content-container" open>
-                <summary>Processor Architecture Explained Like I'm Five</summary>
+                <summary><p>Processor Architecture Explained Like I'm Five</p></summary>
                     <p>At a very general level, a processor can be thought of as a group of circuits used to perform basic operations and communicate with each other. These operations usually include basic arithmetic, logical comparisons, memory access, etc.</p>     
                     <p>Each of these circuits has a series of components capable of carrying a charge. These charges are used to represent numbers in a binary format, with the lack of a charge indicating a 0 and the presence of a charge indicating a 1. We refer to these as bits. The number of charges the components in the processor can work with at one time determine the processor's "bit-ness" (i.e. 32-bit, 64-bit, etc.).</p>
             </details>
 
             <details class="content-container" open>
-                <summary>Creating an Assembly Source File</summary>
+                <summary><p>Creating an Assembly Source File</p></summary>
                 <p>ARM assembly is organized into labels: Symbolic references to the memory address of an instruction or piece of data. In order to create an executable program, the symbol representing the program's entry point must be made available to other software. This can be done using the ".global" directive. A directive is a special instruction that controls the assembly process.</p>
                 <p>The associated examples use the label "_start" as their entry point. The following code is used at the beginning of each example to export the label using the .global directive:</p>
                 <div class="illustration codebox">
@@ -45,7 +45,7 @@
             </details>
 
             <details class="content-container" open>
-                <summary>Storing a Value</summary>
+                <summary><p>Storing a Value</p></summary>
                 <p>One of the components the processor contains is referred to as a register. Registers are typically a series of very small, very quick memory circuits built directly into the chip that can be used to store any data the processor is currently working with and track the system's state.</p>
                 <p>A32 Provides access to the following registers:</p>
                 <ul>
@@ -84,7 +84,7 @@
             </details>
 
             <details class="content-container" open>
-                <summary>Exiting the Program</summary>
+                <summary><p>Exiting the Program</p></summary>
                 <p>In order to gracefully end program execution, control must be returned to the operating system. This can be done with a software interrupt. Software interrupts switch the processor into "supervisor" mode, allowing it to make a request of the operating system kernel. This can be used to request that the operating system exit the program.
                 <p>A system interrupt can be triggered with the swi mnemonic. The action taken when this interrupt is called depends on the value of a predefined register. For A32, this is register r7. The value required to trigger an exit SysCall is 1. The code below moves the appropriate value into r7 and then triggers a software interrupt. Note the value following the swi mnemonic would typically be invalid, as it is neither a register or an immediate. This can be done because this value, while required, is never actually used or parsed by the instruction:</p>
                 <div class="illustration codebox">                
@@ -97,7 +97,7 @@
             </details>
 
             <details class="content-container" open>
-                <summary>Assembling and Running the Program</summary>
+                <summary><p>Assembling and Running the Program</p></summary>
                 <p>Assembly source files use a ".s" extension. Before the program can be run, it must be assembled into an object file containing the machine code for the program and then linked into an executable. On a linux system configured with the recommended toolchains, the following commands can be used to assemble the program. More information about the recommended configuration can be found under the Getting Started section of the introduction.</p>
                 <div class="illustration">
                     <p>A32:</p>
@@ -162,7 +162,7 @@
             </details>
 
             <details class="content-container" open>
-                <summary>Review</summary>
+                <summary><p>Review</p></summary>
                 <br>
                 <h3>Concepts</h3>
                 <ul>

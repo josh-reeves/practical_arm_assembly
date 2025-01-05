@@ -14,14 +14,14 @@ class NavMenu extends HTMLElement
     //#region Methods
     connectedCallback()
     {
-        const styleSheetID = "nav-menu-styles";
+        const styleID = "nav-menu-styles";
         const containerID = "menu-container";
 
         if (document.getElementById(containerID))
             return;
 
-        if (!document.getElementById(styleSheetID))
-            document.head.append(createStyleSheet("/practical_arm_assembly/assets/styles/nav-menu.css", styleSheetID));
+        if (!document.getElementById(styleID))
+            document.head.append(createStyleSheet("/practical_arm_assembly/assets/styles/nav-menu.css", styleID));
 
         var menuContainer = document.createElement("div");
         menuContainer.id = containerID;

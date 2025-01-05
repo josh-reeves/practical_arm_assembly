@@ -4,6 +4,7 @@
         <title>Practical ARM Assembly Notes</title>
         <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">
         <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
+        <script src="/practical_arm_assembly/assets/scripts/eventListeners.js"></script>
         <script src="/practical_arm_assembly/assets/components/components.js" type="module"></script>
     </head>
 
@@ -14,8 +15,9 @@
 
         <main>
             <details class="content-container" open>
-                <summary>Arithmetic Operations</summary>
-                    <p>The ARM ISAs generally provide instructions for executing addition, subtraction and multiplication operations.
+                <summary><p>Arithmetic Operations</p><div><button class="x86-toggle inactive">32-bit</button><button class="x64-toggle">64-bit</button></div></summary>
+                <div class="x86-content">
+                    <p>The ARM ISAs generally provide instructions for executing addition, subtraction and multiplication operations.</p>
                     <h3>Addition</h3>
                     <p>Addition can be accomplished with the ADD instruction. The ADD instruction typically takes three operands:</p>
                     <ul>
@@ -79,10 +81,11 @@
                     <h3>Division</h3>
                     <p>While certain ARM architecture profiles do provide an explicit division instruction, it isn't standard. This is because, unlike the other arithmetic operations, many of the platform's architecture profiles do not have the hardware required to perform division directly.</p>
                     <p>Instead, division is usually accomplished via a combination of other commands. As a result of this, division is not currently covered by these notes.</p>
+                </div>
             </details>
 
             <details class="content-container" open>
-                <summary>Review</summary>
+                <summary><p>Summary</p></summary>
                 <br>
                 <h3>Concepts</h3>
                 <ul>
@@ -103,8 +106,8 @@
             </details>
 
             <hr class="page-end"/>
-            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-01/lesson-01.html" class="left">Lesson 01: MOV, Exit Syscall</nav-button>
-            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-03/lesson-03.html" class="right">Lesson 03: Logical Operators</button>    
+            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-01/lesson-01.html" class="prev">Lesson 01: MOV, Exit Syscall</nav-button>
+            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-03/lesson-03.html" class="next">Lesson 03: Logical Operators</nav-button>    
 
         </main>
     </body>

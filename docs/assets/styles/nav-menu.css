@@ -1,0 +1,70 @@
+/****************************** Menu Containers ******************************/
+div.menu-container
+{
+    height: calc(100vh - 100px);
+    width: 20vh;
+    min-width: 180px;
+    background-color: #27272A;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #C0C0C0 #181818;
+    float: left;
+
+}
+
+div.menu-item
+{
+    cursor: pointer;
+    height: 4vh;
+
+}
+
+div.menu-item:hover
+{
+    background-color: #3F3F46;
+
+}
+
+div.menu-item p
+{
+    margin-left: 20px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FAFAFA;
+
+}
+
+div.submenu-item
+{
+    margin: 0;
+    display: block;
+    cursor: pointer;
+    height: 4vh;
+
+}
+
+div.submenu-item:hover
+{
+    background-color: #3F3F46;
+
+}
+
+div.submenu-item p
+{
+    margin-left: 45px;
+    margin-right: 20px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #FAFAFA;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+div.submenu-item-hidden
+{
+    display: none;
+
+}
