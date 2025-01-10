@@ -21,7 +21,7 @@
                 <p>Assembly languages are low-level programming languages that provide a way to directly invoke these instructions. As opposed to higher-level languages (e.g. Python, Rust, the C variants, etc.), which provide controlled and highly-abstracted access to these operations via relatively human-readable code, assembly languages feature a strong correlation between the instructions they provide to the developer and those the processor is actually able to understand. Due to this correlation, assembly languages are architecture specific. This documentation and the associated repository specifically specifically focus on assembly language for ARM processors.</p>
                 <p>The set of instructions a processor can understand and the the manner in which they are carried out are part of it's ISA (Instruction Set Architecture). The ARM standard includes multiple ISAs. These notes are primarily concerned with the 32-bit A32 ISA and the 64-bit A64 ISA.</p>
             </details>
-            
+
             <details class="content-container" open>
                 <summary><p>Using These Notes</p></summary>
                 <p>Due to the significant differences between A32 and A64, presenting information for both ISAs simultaneously would negatively impact the clarity and utility of the resulting material. For this reason, the following steps have been taken to organize the included information:</p>
@@ -36,44 +36,42 @@
 
             <details class="content-container" open>
                 <summary><p>Getting Started</p></summary>
-                <p>The example source code was written and compiled on a Raspberry Pi 5 running Ubuntu Server 24.04. In order to enage with the material to its fullest, a similar setup is recommended. Any 64-bit ARM processor running on a Debian-based Linux distro should be sufficient. The popular system emulator, <a href="https://www.qemu.org/">QEMU</a> can also be used to emulate the necessary architecture.</p>
-                <p>Once the system is set up, the toolchains required to assemble and link the code will need to be installed. The 32-bit examples were assembled and linked using the gcc-arm-linux-gnueabi toolchain, which can be installed with the following command:</p>
+                <p>The assembly source code from the various examples in these notes and the associated repository can be viewed and modified with any simple text editor. In order to assemble and link the the source code into executable files, however, appropriate toolchains will need to be installed. To run the resulting executable files, an aarch64 capable system is also required. More information on the recommended system and toolchains can be found below. Multiple options are provided in order to support a variety of development environments:</p>
+                <h3>Docker</h3>
+                <p>For simplicity, a Docker image has been created that already has the required software installed. The image is based on the latest version of Ubuntu and includes the toolchains required for assembly and execution along with their dependencies. For simplicity, the Nano text editor is also included. For more information, reference the docker file located <a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/docker/dockerfile">here</a>.</p>
+                <p>The container is multi-platform and leverages QEMU for cross-architecture support. It can be run on any 64-bit system with the following command, adding any bind mounts or other volumes as desired:</p>
                 <div class="illustration codebox">
                     <div class="floating-button">
                         <copy-button></copy-button>
                     </div>
-                    <p>sudo apt-get install gcc-arm-linux-gnueabi -y</p>
+                    <p>docker run -dit --name practical-arm-assembly joshreeves/practical-arm-assembly sh</p>
                 </div>
                 <br>
                 <br>
-                <p>The 64-bit examples were assembled and linked with the gcc-aarch64-linux-gnu toolchain, which can be installed with the following command:</p>
+                <p>Once to container is running, the following command can be used to enter its terminal:</p>
                 <div class="illustration codebox">
                     <div class="floating-button">
                         <copy-button></copy-button>
                     </div>
-                    <p>sudo apt-get install gcc-aarch64-linux-gnu -y</p>
+                    <p>docker exec -it practical-arm-assembly sh</p>
                 </div>
                 <br>
                 <br>
-                <p>For simplicity, a docker image has been created that has the above toolchains preinstalled along with the other packages required to compile and run the associated examples and a text editor. For more information, reference the docker file located <a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/docker/dockerfile">here</a>. It can be run with the following command, adding any desired volumes or bind mounts as desired:</p>
+                <h3>Baremetal</h3>
+                <p>The original examples were written and assembled on a Raspberry Pi 5 running Ubuntu Server 24.04.1. The following commands can be used to install the toolchains required to assemble and link the source code:</p>
                 <div class="illustration codebox">
                     <div class="floating-button">
                         <copy-button></copy-button>
                     </div>
-                    <p>sudo docker run -dit --name practical-arm-assembly joshreeves/practical-arm-assembly</p>
+                    <p>sudo apt-get install gcc-arm-linux-gnueabi -y <span class="comment"># Toolchain required for 32-bit examples.</span></p>
+                    <p>sudo apt-get install gcc-aarch64-linux-gnu -y <span class="comment"># Toolchain required for 64-bit examples.</span></p>
                 </div>
                 <br>
                 <br>
-                <p>Once to container is running, the following command can be used to enter its terminal and begin interacting with it:</p>
-                <div class="illustration codebox">
-                    <div class="floating-button">
-                        <copy-button></copy-button>
-                    </div>
-                    <p>sudo docker exec -it practical-arm-assembly sh</p>
-                </div>
-                <br>
-                <br>
-                <p>Alternatively, the <a href="https://cpulator.01xz.net/">CPULator</a> site can be used to execute most of the code from the 32-bit examples. This has the benefit of displaying the values held by various components as the program executes, but some commands cannot be accurately emulated (i.e. The system interruped command). Only the 32-bit examples can be executed this way. The 64-bit examples are not supported.</p>
+                <h3>QEMU</h3>
+                <p>If neither of the above options can be used, QEMU can be used to emulate the appropriate architecture. QEMU is a full system emulator that allows systems of one architecture to simulate a system of another architecture. For more information visit the <a href="https://www.qemu.org/">QEMU site</a>.</p>
+                <h3>CPULator</h3>
+                <p>Alternatively, the <a href="https://cpulator.01xz.net/">CPULator</a> site can be used to execute most of the code from the 32-bit examples. This has the benefit of displaying the values held by various components as the program executes, but some commands cannot be accurately emulated (i.e. The system interrupt command). Only the 32-bit examples can be executed this way. The 64-bit examples are not supported.</p>
                 <p>More detailed instructions for all of the methods described above can be found on the Resources page.</p>
             </details>
 

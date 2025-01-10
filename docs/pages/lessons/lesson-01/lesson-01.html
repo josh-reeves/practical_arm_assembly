@@ -4,6 +4,7 @@
         <title>Practical ARM Assembly Notes</title>
         <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">
         <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
+        <script src="/practical_arm_assembly/assets/scripts/eventListeners.js"></script>
         <script src="/practical_arm_assembly/assets/components/components.js" type="module"></script>
         </script>
     </head>
@@ -45,99 +46,131 @@
             </details>
 
             <details class="content-container" open>
-                <summary><p>Storing a Value</p></summary>
+                <summary><p>Storing a Value</p><div><button class="x86-toggle inactive">32-bit</button><button class="x64-toggle">64-bit</button></summary>
                 <p>One of the components the processor contains is referred to as a register. Registers are typically a series of very small, very quick memory circuits built directly into the chip that can be used to store any data the processor is currently working with and track the system's state.</p>
-                <p>A32 Provides access to the following registers:</p>
-                <ul>
-                    <li>13 general purpose registers: r0 - r12.</li>
-                    <li>2 registers that perform a special function but can be manipulated in the same manner as general purpose registers and used as such: lr and sp.</li>
-                    <li>1 program counter (pc) register.</li>
-                    <li>1 application program status register (apsr/cpsr).</li>
-                </ul>
-                <p>A64 Provides access to the following registers:</p>
-                <ul>
-                    <li>31 general purpose registers. These can be either 64-bit (x0 - x30) or 32-bit (w0 - w30).</li>
-                    <li>An sp register. Though it can still be used with a subset of operations, this cannot be used as a general purpose register.</li>
-                    <li>x30 is also used as the lr register.</li>
-                    <li>A set of system registers.</li>
-                </ul>
-                <p>The MOV instruction can be used to store a value in one of the general purpose registers. In order to invoke the instruction, it's keyword, or mnemonic, is used along with a series and operands. The MOV instruction takes two operands: The first is the register in which the value will be stored. The second can either be another register, in which case the value stored in that register will be used, or an immediate: A numerical constant denoted with an octothorpe.</p>
-                <p>The code below moves the immediate value 38 into register r0. The use of "0x" at the beginning of the number indicates that the value is being provided in Hexadecimal. Decimal and Binary input are also supported. The mnemonic and register name are not case sensitive:</p>
-                <div class="illustration">
-                    <p>A32:</p>
-                    <div class="codebox">
-                        <div class="floating-button">
-                            <copy-button></copy-button>
+
+                <div class="x86-content">
+                    <p>A32 Provides access to the following registers:</p>
+                    <ul>
+                        <li>13 general purpose registers: r0 - r12.</li>
+                        <li>2 registers that perform a special function but can be manipulated in the same manner as general purpose registers and used as such: lr and sp.</li>
+                        <li>1 program counter (pc) register.</li>
+                        <li>1 application program status register (apsr/cpsr).</li>
+                    </ul>
+                    <p>The MOV instruction can be used to store a value in one of the general purpose registers. In order to invoke the instruction, it's keyword, or mnemonic, is used along with a series and operands. The MOV instruction takes two operands: The first is the register in which the value will be stored. The second can either be another register, in which case the value stored in that register will be used, or an immediate: A numerical constant denoted with an octothorpe.</p>
+                    <p>The code below moves the immediate value 38 into register r0. The use of "0x" at the beginning of the number indicates that the value is being provided in Hexadecimal. Decimal and Binary input are also supported. The mnemonic and register name are not case sensitive:</p>
+                    <div class="illustration">
+                        <div class="codebox">
+                            <div class="floating-button">
+                                <copy-button></copy-button>
+                            </div>
+                            <p>mov r0, #0x26 <span class="comment">// Moves the value 38 (in hexadecimal) into register r0.</span></p>
                         </div>
-                        <p>mov r0, #0x26 <span class="comment">// Moves the value 38 (in hexadecimal) into register r0.</span></p>
                     </div>
                 </div>
-                <div class="illustration">
-                    <p>A64:</p>
-                    <div class="codebox">
-                        <div class="floating-button">
-                            <copy-button></copy-button>
+
+                <div class="x64-content">
+                    <p>A64 Provides access to the following registers:</p>
+                    <ul>
+                        <li>31 general purpose registers. These can be either 64-bit (x0 - x30) or 32-bit (w0 - w30).</li>
+                        <li>An sp register. Though it can still be used with a subset of operations, this cannot be used as a general purpose register.</li>
+                        <li>x30 is also used as the lr register.</li>
+                        <li>A set of system registers.</li>
+                    </ul>
+                    <p>The MOV instruction can be used to store a value in one of the general purpose registers. In order to invoke the instruction, it's keyword, or mnemonic, is used along with a series and operands. The MOV instruction takes two operands: The first is the register in which the value will be stored. The second can either be another register, in which case the value stored in that register will be used, or an immediate: A numerical constant denoted with an octothorpe.</p>
+                    <p>The code below moves the immediate value 38 into register x0. The use of "0x" at the beginning of the number indicates that the value is being provided in Hexadecimal. Decimal and Binary input are also supported. The mnemonic and register name are not case sensitive:</p>
+                    <div class="illustration">
+                        <div class="codebox">
+                            <div class="floating-button">
+                                <copy-button></copy-button>
+                            </div>
+                            <p>mov x0, #0x26 <span class="comment">// Moves the value 38 (in hexadecimal) into register x0.</span></p>    
                         </div>
-                        <p>mov x0, #0x26 <span class="comment">// Moves the value 38 (in hexadecimal) into register x0.</span></p>    
                     </div>
-                </div>            
+                </div>
+
             </details>
 
             <details class="content-container" open>
-                <summary><p>Exiting the Program</p></summary>
+                <summary><p>Exiting the Program</p><div><button class="x86-toggle inactive">32-bit</button><button class="x64-toggle">64-bit</button></summary>
                 <p>In order to gracefully end program execution, control must be returned to the operating system. This can be done with a software interrupt. Software interrupts switch the processor into "supervisor" mode, allowing it to make a request of the operating system kernel. This can be used to request that the operating system exit the program.
-                <p>A system interrupt can be triggered with the swi mnemonic. The action taken when this interrupt is called depends on the value of a predefined register. For A32, this is register r7. The value required to trigger an exit SysCall is 1. The code below moves the appropriate value into r7 and then triggers a software interrupt. Note the value following the swi mnemonic would typically be invalid, as it is neither a register or an immediate. This can be done because this value, while required, is never actually used or parsed by the instruction:</p>
-                <div class="illustration codebox">                
-                    <div class="floating-button">
-                        <copy-button></copy-button>
-                    </div>
-                    <p>mov r7, #0x1 <span class="comment">// Moves the value 1 into register r7 so it can be used by the system interrupt.</span></p>
-                    <p>swi 0 <span class="comment">// Note that the 0 here is never used.</span></p>
+                
+                <div class="x86-content">
+                    <p>A system interrupt can be triggered with the svc mnemonic. The action taken when this interrupt is called depends on the value of a predefined register. For A32, this is register r7. The value required to trigger an exit SysCall is 1. The code below moves the appropriate value into r7 and then triggers a software interrupt. Note the value following the svc mnemonic would typically be invalid, as it is neither a register or an immediate. This can be done because this value, while required, is never actually used or parsed by the instruction:</p>
+                    <div class="illustration codebox">                
+                        <div class="floating-button">
+                            <copy-button></copy-button>
+                        </div>
+                        <p>mov r7, #0x1 <span class="comment">// Moves the value 1 into register r7 so it can be used by the system interrupt.</span></p>
+                        <p>svc 0 <span class="comment">// Note that the 0 here is never used.</span></p>
+                    </div>    
                 </div>
+
+                <div class="x64-content">
+                    <p>A system interrupt can be triggered with the svc mnemonic. The action taken when this interrupt is called depends on the value of a predefined register. For A64, this is register x8. The value required to trigger an exit SysCall is 93 (0x5d). The code below moves the appropriate value into x8 and then triggers a software interrupt. Note the value following the svc mnemonic would typically be invalid, as it is neither a register or an immediate. This can be done because this value, while required, is never actually used or parsed by the instruction:</p>
+                    <div class="illustration codebox">                
+                        <div class="floating-button">
+                            <copy-button></copy-button>
+                        </div>
+                        <p>mov x8, #0x5d <span class="comment">// Moves the value 93 into register x8 so it can be used by the system interrupt.</span></p>
+                        <p>svc 0 <span class="comment">// Note that the 0 here is never used.</span></p>
+                    </div>    
+                </div>
+
             </details>
 
             <details class="content-container" open>
-                <summary><p>Assembling and Running the Program</p></summary>
+                <summary><p>Assembling and Running the Program</p><div><button class="x86-toggle inactive">32-bit</button><button class="x64-toggle">64-bit</button></div></summary>
                 <p>Assembly source files use a ".s" extension. Before the program can be run, it must be assembled into an object file containing the machine code for the program and then linked into an executable. On a linux system configured with the recommended toolchains, the following commands can be used to assemble the program. More information about the recommended configuration can be found under the Getting Started section of the introduction.</p>
-                <div class="illustration">
-                    <p>A32:</p>
-                    <div class="codebox">
-                        <div class="floating-button">
-                            <copy-button></copy-button>
+                
+                <div class="x86-content">
+                    <div class="illustration">
+                        <div class="codebox">
+                            <div class="floating-button">
+                                <copy-button></copy-button>
+                            </div>
+                            <p>arm-linux-gnueabi-as [sourcefile.s] -o [output.o] <span class="comment"># Assembles program. Brackets not included in final command.</span></p>
                         </div>
-                        <p>arm-linux-gnueabi-as [sourcefile.s] -o [output.o] <span class="comment"># Assembles program. Brackets not included in final command.</span></p>
                     </div>
                 </div>
-                <div class="illustration">
-                    <p>A64:</p>
-                    <div class="codebox">
-                        <div class="floating-button">
-                            <copy-button></copy-button>
+
+                <div class="x64-content">
+                    <div class="illustration">
+                        <div class="codebox">
+                            <div class="floating-button">
+                                <copy-button></copy-button>
+                            </div>
+                            <p>aarch64-linux-gnu-as [sourcefile.s] -o [output.o] <span class="comment"># Assembles program. Brackets not included in final command.</span></p>
                         </div>
-                        <p>aarch64-linux-gnu-as [sourcefile.s] -o [output.o] <span class="comment"># Assembles program. Brackets not included in final command.</span></p>
                     </div>
                 </div>
+
                 <br>
-                <br>
+                <br>     
                 <p>Where sourcefile.s is the name of the source file created and output.o is the name of the object file to be created. The created file is not executable. In order to create a runnable program, the object file must be linked. This can be done with the following commands:</p>
-                <div class="illustration">
-                    <p>A32:</p>
-                    <div class="codebox">
-                        <div class="floating-button">
-                            <copy-button></copy-button>
+                
+                <div class="x86-content">
+                    <div class="illustration">
+                        <div class="codebox">
+                            <div class="floating-button">
+                                <copy-button></copy-button>
+                            </div>
+                            <p>arm-linux-gnueabi-gcc [object.o] -o [output-executable] -nostdlib <span class="comment"># Links program. Brackets not included in final command.</span></p>
                         </div>
-                        <p>arm-linux-gnueabi-gcc [object.o] -o [output-executable] -nostdlib <span class="comment"># Links program. Brackets not included in final command.</span></p>
                     </div>
                 </div>
-                <div class="illustration">
-                    <p>A64:</p>
-                    <div class="codebox">
-                        <div class="floating-button">
-                            <copy-button></copy-button>
+
+                <div class="x64-content">
+                    <div class="illustration">
+                        <div class="codebox">
+                            <div class="floating-button">
+                                <copy-button></copy-button>
+                            </div>
+                            <p>aarch64-linux-gnu-gcc [object.o] -o [output-executable] -nostdlib <span class="comment"># Links program. Brackets not included in final command.</span></p>
                         </div>
-                        <p>aarch64-linux-gnu-gcc [object.o] -o [output-executable] -nostdlib <span class="comment"># Links program. Brackets not included in final command.</span></p>
                     </div>
                 </div>
+
                 <br>
                 <br>
                 <p>Where object.o is the output file from the assembly process and output-executable is the name of the final, executable program.</p>
@@ -162,7 +195,7 @@
             </details>
 
             <details class="content-container" open>
-                <summary><p>Review</p></summary>
+                <summary><p>Summary</p><div><button class="x86-toggle inactive">32-bit</button><button class="x64-toggle">64-bit</button></div></summary>
                 <br>
                 <h3>Concepts</h3>
                 <ul>
@@ -172,27 +205,43 @@
                     <li>Program assembly and execution.</li>
                 </ul>
                 <h3>Instructions</h3>
-                <ul>
-                    <li><a href="https://developer.arm.com/documentation/ddi0406/c/Application-Level-Architecture/Instruction-Details/Alphabetical-list-of-instructions/MOV--immediate-">MOV{S}{c}{q} Rd, #const / Rm</a> </li>
+                <div class="x86-content">
                     <ul>
-                        <li>Stores the value specified by #const or contained in register Rm in register Rd.</li>
+                        <li><a href="https://developer.arm.com/documentation/ddi0406/c/Application-Level-Architecture/Instruction-Details/Alphabetical-list-of-instructions/MOV--immediate-">MOV{S}{c}{q} Rd, #const / Rm</a> </li>
+                        <ul>
+                            <li>Stores the value specified by #const or contained in register Rm in register Rd.</li>
+                        </ul>
+                        <li><a href="https://developer.arm.com/documentation/ddi0406/cb/Application-Level-Architecture/Instruction-Details/Alphabetical-list-of-instructions/SVC--previously-SWI-?lang=en">SVC #const</a></li>
+                        <ul>
+                            <li>Switches the CPU into supervisor mode. Used to request services from the operating system.</li>
+                            <li>The service requested is determined by the value stored in register r7.</li>
+                            <li>Replaces SWI in newer versions of ARM.</li>
+                        </ul>
                     </ul>
-                    <li><a href="https://developer.arm.com/documentation/ddi0406/cb/Application-Level-Architecture/Instruction-Details/Alphabetical-list-of-instructions/SVC--previously-SWI-?lang=en">SWI #const</a></li>
+                </div>
+
+                <div class="x64-content">
                     <ul>
-                        <li>Switches the CPU into supervisor mode. Used to request services from the operating system.</li>
-                        <li>The service requested is determined by the value stored in register r7.</li>
-                        <li>Replaced by SVC in newer versions of ARM.</li>
+                        <li><a href="https://developer.arm.com/documentation/100069/0609/A64-General-Instructions/MOV--wide-immediate-">MOV{S}{c}{q} Xd, #const / Xm</a> </li>
+                        <ul>
+                            <li>Stores the value specified by #const or contained in register Xm in register Xd.</li>
+                        </ul>
+                        <li><a href="https://developer.arm.com/documentation/100069/0609/A64-General-Instructions/SVC">SVC #const</a></li>
+                        <ul>
+                            <li>Switches the CPU into supervisor mode. Used to request services from the operating system.</li>
+                            <li>The service requested is determined by the value stored in register x8.</li>
+                            <li>Replaces SWI in newer versions of ARM.</li>
+                        </ul>
                     </ul>
-                    <li><a href="https://developer.arm.com/documentation/ddi0406/cb/Application-Level-Architecture/Instruction-Details/Alphabetical-list-of-instructions/SVC--previously-SWI-?lang=en">SVC #const</a></li>
-                    <ul>
-                        <li>Replaces SWI in newer versions of ARM.</li>
-                    </ul>
-                </ul>
+                </div>
                 <h3>Examples</h3>
-                <ul>
-                    <li><a href="https://github.com/josh-reeves/practical_arm_assembly/tree/main/source/lesson_01/a32/hello.s">32-bit</a></li>
-                    <li><a href="https://github.com/josh-reeves/practical_arm_assembly/tree/main/source/lesson_01/a64/hello.s">64-bit</a></li>
-                </ul>
+                <div class="x86-content">
+                    <a href="https://github.com/josh-reeves/practical_arm_assembly/tree/main/source/lesson_01/a32/hello.s"><p>hello.s</p></a>
+                </div>
+
+                <div class="x64-content">
+                    <a href="https://github.com/josh-reeves/practical_arm_assembly/tree/main/source/lesson_01/a64/hello.s"><p>hello.s</p></a>
+                </div>
             </details>
 
             <hr class="page-end"/>

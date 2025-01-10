@@ -195,6 +195,7 @@ details.content-container summary
     cursor: pointer;
     overflow-x: auto;
     user-select: none;
+    margin-bottom: 5px;
 
 }
 
@@ -305,7 +306,14 @@ details.content-container li
 
 details.content-container h3
 {
+    margin-top: 10px;
     margin-left: 16px;
+
+}
+
+div.x64-content
+{
+    display: none;
 
 }
 
