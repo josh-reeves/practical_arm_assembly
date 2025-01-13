@@ -1,19 +1,19 @@
 document.addEventListener("DOMContentLoaded", () =>
 {
-    var x86Toggles = document.querySelectorAll(".x86-toggle");
-    var x64Toggles = document.querySelectorAll(".x64-toggle");
+    var x86Toggles = document.querySelectorAll(".a32-toggle");
+    var x64Toggles = document.querySelectorAll(".a64-toggle");
 
     x86Toggles.forEach((x86Toggle) =>
     {
         x86Toggle.addEventListener("click", () =>
         {
-            document.querySelectorAll(".x86-content").forEach((x86Content) =>
+            document.querySelectorAll(".a32-content").forEach((x86Content) =>
             {
                 x86Content.style.display = "block";
 
             });
 
-            document.querySelectorAll(".x64-content").forEach((x64Content) =>
+            document.querySelectorAll(".a64-content").forEach((x64Content) =>
             {
                 x64Content.style.display = "none";
 
@@ -39,13 +39,13 @@ document.addEventListener("DOMContentLoaded", () =>
     {
         x64Toggle.addEventListener("click", () =>
         {
-            document.querySelectorAll(".x86-content").forEach((x86Content) =>
+            document.querySelectorAll(".a32-content").forEach((x86Content) =>
             {
                 x86Content.style.display = "none";
 
             });
 
-            document.querySelectorAll(".x64-content").forEach((x64Content) =>
+            document.querySelectorAll(".a64-content").forEach((x64Content) =>
             {
                 x64Content.style.display = "block";
 

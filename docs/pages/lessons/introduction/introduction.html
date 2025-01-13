@@ -20,54 +20,67 @@
                 <p>Generally speaking, all computer processors are only capable of understanding a limited set of relatively basic instructions. These instructions typically provide, among other things, basic arithmetic, logical operations and ways to access computer memory. All activity performed by the processor is, at most, an aggregate of these basic operations.</p>
                 <p>Assembly languages are low-level programming languages that provide a way to directly invoke these instructions. As opposed to higher-level languages (e.g. Python, Rust, the C variants, etc.), which provide controlled and highly-abstracted access to these operations via relatively human-readable code, assembly languages feature a strong correlation between the instructions they provide to the developer and those the processor is actually able to understand. Due to this correlation, assembly languages are architecture specific. This documentation and the associated repository specifically specifically focus on assembly language for ARM processors.</p>
                 <p>The set of instructions a processor can understand and the the manner in which they are carried out are part of it's ISA (Instruction Set Architecture). The ARM standard includes multiple ISAs. These notes are primarily concerned with the 32-bit A32 ISA and the 64-bit A64 ISA.</p>
+                <h3>What's in a Name?</h3>
+                <p>As stated above, these notes concern the A32 and A64 ISAs. The ARM naming conventions, however, are far from straightforward. Originally, there were not A32 or A64 ISAs: Prior to ARMv8, ARM was a 32-bit architecture capable of 32-bit and 16-bit operations. When 64-bit support was introduced with ARMv8 the A64 ISA was introduced along with it, and the old ISA was subsequently renamed A32.</p>
+                <p>It's important to note that the two ISAs are entirely separate from each other: On post ARMv8 processors A32 instructions are executed via a special, 32-bit execution state: Aarch32. Similarly, A64 instructions are executed via the Aarch64 execution state. The two execution states are mutually exclusive, however: A processor in one execution state cannot execute instructions from the ISA associated with the other execution state.</p>
             </details>
 
             <details class="content-container" open>
-                <summary><p>Using These Notes</p></summary>
-                <p>Due to the significant differences between A32 and A64, presenting information for both ISAs simultaneously would negatively impact the clarity and utility of the resulting material. For this reason, the following steps have been taken to organize the included information:</p>
-                <ul>
-                    <li>Each lesson has been broken into sections. Each of these sections can be collapsed by clicking the section header.</li>
-                    <li>Furthermore, many of these sections will include an option to display either 32-bit or 64-bit content. In these situations, the section header will include the buttons shown below. Clicking either button will show content relevant to associated ISA.</li>
-                </ul>
+                <summary><p>About These Notes</p></summary>
+                <p>These notes were originally based around a single YouTube tutorial series (see the resources page for more information) that was chosen for its clarity and brevity. The original tutorial series, however, only covered the 32-bit ARMv7 architecture. In order to more fully explore ARM assembly, additional research was done which resulted in the inclusion of examples for the A64 created for ARMv8 assembly, among other deviations for the original source.</p>
+                <p>Due to the significant differences between the A32 and A64 ISAs mentioned above, however, source code for one is often incompatible with the other both syntactically and conceptually. While newer, post-ARMv8, processors are able to execute code written for the A32 ISA, they are only able to do so via a special execution state, which also prevents them from simultaneously executing A64 instructions. To work around this difficulty, sections have been divided into both A32 and A64 content where needed. Clicking the A32 or A64 button at the top of a section will cause the page to display content relevant to the associated ISA. Irrelevant content will be hidden. The A32 content is displayed by default:
                 <div class="illustration">
                     <img src="/practical_arm_assembly/assets/images/toggle-example.png"></img>
                 </div>
+                <br>
+                <br>
+                <p>Additionally, while many hours have been spent attempting to ensure that the information in these notes is accurate, it is in no way complete. The information here attempts to simplify ARM assembly, and as a result information is often excluded, either for brevity or parity between the way the two ISAs are presented.</p>
             </details>
 
             <details class="content-container" open>
                 <summary><p>Getting Started</p></summary>
                 <p>The assembly source code from the various examples in these notes and the associated repository can be viewed and modified with any simple text editor. In order to assemble and link the the source code into executable files, however, appropriate toolchains will need to be installed. To run the resulting executable files, an aarch64 capable system is also required. More information on the recommended system and toolchains can be found below. Multiple options are provided in order to support a variety of development environments:</p>
                 <h3>Docker</h3>
-                <p>For simplicity, a Docker image has been created that already has the required software installed. The image is based on the latest version of Ubuntu and includes the toolchains required for assembly and execution along with their dependencies. For simplicity, the Nano text editor is also included. For more information, reference the docker file located <a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/docker/dockerfile">here</a>.</p>
+                <p>For simplicity, a Docker image has been created that already has the required software installed. The image is based on the latest version of Ubuntu and includes the toolchains required for assembly and execution along with their dependencies. For convenience, the Nano text editor is also included. Reference the docker file located <a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/docker/dockerfile">here</a> for more information.</p>
+                <div class="illustration">
+                    <img src="/practical_arm_assembly/assets/images/docker-logo-blue.svg" width="300px"></img>
+                </div>
                 <p>The container is multi-platform and leverages QEMU for cross-architecture support. It can be run on any 64-bit system with the following command, adding any bind mounts or other volumes as desired:</p>
                 <div class="illustration codebox">
                     <div class="floating-button">
                         <copy-button></copy-button>
                     </div>
-                    <p>docker run -dit --name practical-arm-assembly joshreeves/practical-arm-assembly sh</p>
+                    <p>$ docker run -it --name practical-arm-assembly joshreeves/practical-arm-assembly sh</p>
                 </div>
-                <br>
-                <br>
-                <p>Once to container is running, the following command can be used to enter its terminal:</p>
+                <p>To exit and stop the container once it's running, simply type the "exit" command:</p> 
                 <div class="illustration codebox">
                     <div class="floating-button">
                         <copy-button></copy-button>
                     </div>
-                    <p>docker exec -it practical-arm-assembly sh</p>
+                    <p>$ exit</p>
                 </div>
-                <br>
-                <br>
+                <p>The following command can be used to start the container again and re-enter its terminal:</p>
+                <div class="illustration codebox">
+                    <div class="floating-button">
+                        <copy-button></copy-button>
+                    </div>
+                    <p>$ docker start -i practical-arm-assembly</p>
+                </div>
                 <h3>Baremetal</h3>
-                <p>The original examples were written and assembled on a Raspberry Pi 5 running Ubuntu Server 24.04.1. The following commands can be used to install the toolchains required to assemble and link the source code:</p>
+                <p>The original examples were written and assembled on a Raspberry Pi 5 running Ubuntu Server 24.04.1. For simplicity, a similar system is recommended:</p>
+                <ul>
+                    <li>A 64-Bit ARM CPU</li>
+                    <li>A Debian-based Linux distribution</li>
+                    <li>The APT package manager</li>
+                </ul>   
+                <p>The following commands can be used to install the toolchains required to assemble and link the source code:</p>
                 <div class="illustration codebox">
                     <div class="floating-button">
                         <copy-button></copy-button>
                     </div>
-                    <p>sudo apt-get install gcc-arm-linux-gnueabi -y <span class="comment"># Toolchain required for 32-bit examples.</span></p>
-                    <p>sudo apt-get install gcc-aarch64-linux-gnu -y <span class="comment"># Toolchain required for 64-bit examples.</span></p>
+                    <p>$ sudo apt-get install gcc-arm-linux-gnueabi -y <span class="comment"># Toolchain required for 32-bit examples.</span></p>
+                    <p>$ sudo apt-get install gcc-aarch64-linux-gnu -y <span class="comment"># Toolchain required for 64-bit examples.</span></p>
                 </div>
-                <br>
-                <br>
                 <h3>QEMU</h3>
                 <p>If neither of the above options can be used, QEMU can be used to emulate the appropriate architecture. QEMU is a full system emulator that allows systems of one architecture to simulate a system of another architecture. For more information visit the <a href="https://www.qemu.org/">QEMU site</a>.</p>
                 <h3>CPULator</h3>

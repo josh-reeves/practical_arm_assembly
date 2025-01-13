@@ -13,9 +13,10 @@ customElements.define("copy-button",
         connectedCallback()
         {
             const styleSheetID = "copy-button-styles";
+            const styleSheetPath = "/practical_arm_assembly/assets/styles/copy-button.css"
             
             if (!document.getElementById(styleSheetID))
-                document.head.append(createStyleSheet("/practical_arm_assembly/assets/styles/copy-button.css", styleSheetID));
+                document.head.append(createStyleSheet(styleSheetPath, styleSheetID));
 
             this.addEventListener("click", this.copy)
     

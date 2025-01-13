@@ -2,7 +2,11 @@ import { createStyleSheet } from "../scripts/createStyleSheet.js";
 
 export function notification(message, timeout)
 {
-    document.head.append(createStyleSheet("/practical_arm_assembly/assets/styles/notification.css"));
+    const styleSheetID = "notification-styles"
+    const styleSheetPath = "/practical_arm_assembly/assets/styles/notification.css";
+
+    if (!document.getElementById(styleSheetID))
+        document.head.append(createStyleSheet(styleSheetPath, styleSheetID));
         
     var messageBox = document.createElement("div");
     messageBox.id="message-box";

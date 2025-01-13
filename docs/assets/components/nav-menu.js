@@ -14,17 +14,15 @@ class NavMenu extends HTMLElement
     //#region Methods
     connectedCallback()
     {
-        const styleID = "nav-menu-styles";
+        const styleSheetID = "nav-menu-styles";
+        const styleSheetPath = "/practical_arm_assembly/assets/styles/nav-menu.css";
         const containerID = "menu-container";
 
         if (document.getElementById(containerID))
             return;
 
-        if (!document.getElementById(styleID))
-            document.head.append(createStyleSheet("/practical_arm_assembly/assets/styles/nav-menu.css", styleID));
-
-        var menuContainer = document.createElement("div");
-        menuContainer.id = containerID;
+        if (!document.getElementById(styleSheetID))
+            document.head.append(createStyleSheet(styleSheetPath, styleSheetID));
         
         this.innerHTML =
         `

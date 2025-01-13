@@ -15,10 +15,10 @@
 
         <main>
             <details class="content-container" open>
-                <summary><p>Arithmetic Operations</p><div><button class="x86-toggle inactive">32-bit</button><button class="x64-toggle">64-bit</button></div></summary>
-                <div class="x86-content">
-                    <p>The ARM ISAs generally provide instructions for executing addition, subtraction and multiplication operations.</p>
-                    <h3>Addition</h3>
+                <summary><p>Arithmetic Operations</p><div><button class="a32-toggle inactive">32-bit</button><button class="a64-toggle">64-bit</button></div></summary>
+                <p>The ARM ISAs generally provide instructions for executing addition, subtraction and multiplication operations.</p>
+                <h3>Addition</h3>
+                <div class="a32-content">
                     <p>Addition can be accomplished with the ADD instruction. The ADD instruction typically takes three operands:</p>
                     <ul>
                         <li>The register in which the result of the operation will be stored.</li>
@@ -33,15 +33,31 @@
                         <br>
                         <p>&emsp; add r0, r0, r1 <span class="comment">// Adds the values stored in r0 and r1 and stores the result in r0.</span></p>
                     </div>
-                    <br>
-                    <br>
                     <p>The third operand can also be omitted entirely. When this is done, the first operand is treated as both the destination register and one of the values to be added:</p>
                     <div class="illustration codebox">
                         <p>add r0, r1 <span class="comment">// Adds the values stored in r0 and r1 and stores the result in r0.</span></p>
                     </div>
-                    <br>
-                    <br>
-                    <h3>Subtraction</h3>
+                </div>
+
+                <div class="a64-content">
+                    <p>Addition can be accomplished with the ADD instruction. The ADD instruction typically takes three operands:</p>
+                    <ul>
+                        <li>The register in which the result of the operation will be stored.</li>
+                        <li>An immediate or a register containing the first value to add.</li>
+                        <li>An immediate or a register containing the second value to add.</li>
+                    </ul>
+                    <p>The same register can be used as both the destination register either of the other operands:</p>
+                    <div class="illustration codebox">
+                        <p>_start:</p>
+                        <p>&emsp; mov x0, #0x12 <span class="comment">// Moves the value 18 into register x0.</span></p>
+                        <p>&emsp; mov x1, #0x34 <span class="comment">// Moves the value 52 into register x1.</span></p>
+                        <br>
+                        <p>&emsp; add x0, x0, x1 <span class="comment">// Adds the values stored in x0 and x1 and stores the result in x0.</span></p>
+                    </div>             
+                </div>
+                
+                <h3>Subtraction</h3>
+                <div class="a32-content">
                     <p>Subtraction can be accomplished with the SUB instruction. The SUB instruction typically takes three operands:</p>
                     <ul>
                         <li>The register in which the result of the operation will be stored.</li>
@@ -52,57 +68,132 @@
                     <div class="illustration codebox">
                         <p>sub r0, r1 <span class="comment">// Subtracts the value stored in r1 from the value stored in r0 and stores the result in r0.</span></p>
                     </div>
-                    <br>
-                    <br>
-                    <h3>Multiplication</h3>
+                </div>
+
+                <div class="a64-content">
+                    <p>Subtraction can be accomplished with the SUB instruction. The SUB instruction typically takes three operands:</p>
+                    <ul>
+                        <li>The register in which the result of the operation will be stored.</li>
+                        <li>An immediate or a register containing the value to subtract from.</li>
+                        <li>An immediate or a register containing the value to subtract.</li>
+                    </ul>
+                    <p>As with the add command, the destination register can be the same as either of the operands:</p>
+                    <div class="illustration codebox">
+                        <p>sub x0, x1, x0 <span class="comment">// Subtracts the value stored in x1 from the value stored in x0 and stores the result in x0.</span></p>
+                    </div>
+                </div>
+
+                <h3>Multiplication</h3>
+                <div class="a32-content">
                     <p>Multiplication can be accomplished with the MUL instruction. The MUL instruction also takes three operands:</p>
                     <ul>
                         <li>The register in which the result of the operation will be stored.</li>
                         <li>The register containing the first value to be multiplied.</li>
                         <li>The register containing the second value to be multiplied.</li>
                     </ul>
-                    <p>Unlike the ADD and SUB instructions, however, the values to be multiplied must be provided via registers. Immediate values are not allowed:</p>
+                    <p>Unlike the ADD and SUB instructions, the values to be multiplied must be provided via registers. Immediate values are not allowed:</p>
                     <div class="illustration codebox">
                         <p>_start:</p>
-                        <p>&emsp; mov r1, #0x04 <span class="comment">// Moves the value 4 into register r0.</span></p>
-                        <p>&emsp; mov r2, #0x09 <span class="comment">// Moves the value 9 into register r1.</span></p>
+                        <p>&emsp; mov r1, #0x04 <span class="comment">// Moves the value 4 into register r1.</span></p>
+                        <p>&emsp; mov r2, #0x09 <span class="comment">// Moves the value 9 into register r2.</span></p>
                         <br>
                         <p>&emsp; mul r0, r1, r2 <span class="comment">// Multiplies the values stored in r1 and r2 and stores the result in r0. The values must be provided via register.</span></p>
                     </div>
-                    <br>
-                    <br>
                     <p>Additionally, while the MUL instruction still allows for the exclusion of an operand (as with the ADD and SUB instructions), when all three operands are provided, the destination register cannot be the same as either of the value registers:</p>
                     <div class="illustration codebox">
                         <p>mul r0, r1<span class="comment">// Multiplies the values stored in r0 and r1 and stores the result in r0.</span></p>
                         <p>mul r0, r1, r2 <span class="comment">// Multiplies the values stored in r1 and r2 and stores the result in r0. Each operand must be different.</span></p>
                     </div>
-                    <br>
-                    <br>
-                    <h3>Division</h3>
-                    <p>While certain ARM architecture profiles do provide an explicit division instruction, it isn't standard. This is because, unlike the other arithmetic operations, many of the platform's architecture profiles do not have the hardware required to perform division directly.</p>
-                    <p>Instead, division is usually accomplished via a combination of other commands. As a result of this, division is not currently covered by these notes.</p>
                 </div>
+            
+                <div class="a64-content">
+                    <p>Multiplication can be accomplished with the MUL instruction. The MUL instruction also takes three operands:</p>
+                    <ul>
+                        <li>The register in which the result of the operation will be stored.</li>
+                        <li>The register containing the first value to be multiplied.</li>
+                        <li>The register containing the second value to be multiplied.</li>
+                    </ul>
+                    <p>The destination register can be the same as either of the value registers. Unlike the ADD and SUB instructions, however, the values to be multiplied must be provided via registers. Immediate values are not allowed:</p>
+                    <div class="illustration codebox">
+                        <p>_start:</p>
+                        <p>&emsp; mov x0, #0x05 <span class="comment">// Moves the value 5 into register x0.</span></p>
+                        <p>&emsp; mov x1, #0x09 <span class="comment">// Moves the value 9 into register x1.</span></p>
+                        <br>
+                        <p>&emsp; mul x0, x0, x1 <span class="comment">// Multiplies the values stored in x0 and x1 and stores the result in x0. The values must be provided via register.</span></p>
+                    </div>            
+                </div>
+
+                <h3>Division</h3>
+                <p>While certain ARM architecture profiles do provide an explicit division instruction, it isn't standard. This is because, unlike the other arithmetic operations, many of the platform's architecture profiles do not have the hardware required to perform division directly.</p>
+                <p>Instead, division is usually accomplished via a combination of other commands. As a result of this, division is not currently covered in these notes.</p>
             </details>
 
             <details class="content-container" open>
-                <summary><p>Summary</p></summary>
+                <summary><p>Summary</p><div><button class="a32-toggle inactive">32-bit</button><button class="a64-toggle">64-bit</button></div></summary>
                 <br>
-                <h3>Concepts</h3>
-                <ul>
-                    <li>Addition</li>
-                    <li>Subtraction</li>
-                    <li>Multiplication</li>
-                </ul>
                 <h3>Instructions</h3>
-                <ul>
-                    <li>ADD</li>
-                    <li>SUB</li>
-                    <li>MUL</li>
-                </ul>
+                <div class="a32-content">
+                    <ul>
+                        <li><a href="https://developer.arm.com/documentation/dui0801/f/A32-and-T32-Instructions/ADD">ADD(S) rD, rN, #const / rM</a></li>
+                        <ul>
+                            <li>Adds the value of the provided immediate or register to the value stored in register rN and stores the result in rD.</li>
+                            <li>The destination register can be the same as one of the operands.</li>
+                            <li>If an operand is omitted, the destination register is used in its place.</li>
+                        </ul>
+                        <li><a href="https://developer.arm.com/documentation/dui0801/f/A32-and-T32-Instructions/SUB">SUB(S) rD, rN, #const / rM</a></li>
+                        <ul>
+                            <li>Subtracts the value of the provided immediate or register from the value stored in register rN and stores the result in rD.</li>
+                            <li>The destination register can be the same as one of the operands.</li>
+                            <li>If an operand is omitted, the destination register is used in its place.</li>
+                        </ul>
+                        <li><a href="https://developer.arm.com/documentation/dui0801/f/A32-and-T32-Instructions/MUL">MUL(S) rD, rN, rM</a></li>
+                        <ul>
+                            <li>Multiplies the value stored in register rM with the value stored in register rN and stores the result in rD.</li>
+                            <li>If an operand is omitted, the destination register is used in its place.</li>
+                            <li>If all three operands are provided, each operand must be different.</li>
+                        </ul>
+                    </ul>
+                </div>
+
+                <div class="a64-content">
+                    <ul>
+                        <li><a href="https://developer.arm.com/documentation/dui0801/l/A64-General-Instructions/ADD--immediate---A64-">ADD(S) xD, xN, #const / xM</a></li>
+                        <ul>
+                            <li>Adds the value of the provided immediate or register to the value stored in register xN and stores the result in xD.</li>
+                            <li>The destination register can be the same as one of the operands.</li>
+                            <li>All three operands must be provided.</li>
+                        </ul>
+                        <li><a href="https://developer.arm.com/documentation/dui0801/l/A64-General-Instructions/SUB--immediate---A64-">SUB(S) xD, xN, #const / xM</a></li>
+                        <ul>
+                            <li>Subtracts the value of the provided immediate or register from the value stored in register xN and stores the result in xD.</li>
+                            <li>The destination register can be the same as one of the operands.</li>
+                            <li>All three operands must be provided.</li>
+                        </ul>
+                        <li><a href="https://developer.arm.com/documentation/dui0801/l/A64-General-Instructions/MUL--A64-">MUL(S) xD, xN, xM</a></li>
+                        <ul>
+                            <li>Multiplies the value stored in register xM with the value stored in register xN and stores the result in xD.</li>
+                            <li>The destination register can be the same as one of the operands.</li>
+                            <li>All three operands must be provided.</li>
+                        </ul>
+                    </ul>
+                </div>
+
                 <h3>Examples</h3>
-                <ul>
-                    <li><a href="https://github.com/josh-reeves/practical_arm_assembly/tree/main/source/lesson_02/a32">32-bit</a></li>
-                </ul>
+                <div class="a32-content">
+                    <ul>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/lesson_02/a32/add.s">add.s</a></li>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/lesson_02/a32/sub.s">sub.s</a></li>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/lesson_02/a32/mul.s">mul.s</a></li>
+                    </ul>
+                </div>
+
+                <div class="a64-content">
+                    <ul>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/lesson_02/a64/add.s">add.s</a></li>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/lesson_02/a64/sub.s">sub.s</a></li>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/lesson_02/a64/mul.s">mul.s</a></li>
+                    </ul>                
+                </div>
             </details>
 
             <hr class="page-end"/>

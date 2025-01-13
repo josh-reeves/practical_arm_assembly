@@ -13,9 +13,10 @@ customElements.define(
         connectedCallback()
         {
             const styleSheetID = "nav-button-styles";
+            const styleSheetPath = "/practical_arm_assembly/assets/styles/nav-button.css"
 
             if (!document.getElementById(styleSheetID))
-                document.head.prepend(createStyleSheet("/practical_arm_assembly/assets/styles/nav-button.css", styleSheetID));
+                document.head.prepend(createStyleSheet(styleSheetPath, styleSheetID));
 
             var button = document.createElement("button");
             
