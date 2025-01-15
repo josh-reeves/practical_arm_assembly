@@ -15,7 +15,7 @@
 
         <main>
             <details class="content-container" open>
-                <summary><p>Arithmetic Operations</p><div><button class="a32-toggle inactive">32-bit</button><button class="a64-toggle">64-bit</button></div></summary>
+                <summary><p>Arithmetic Operations</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
                 <p>The ARM ISAs generally provide instructions for executing addition, subtraction and multiplication operations.</p>
                 <h3>Addition</h3>
                 <div class="a32-content">
@@ -25,7 +25,7 @@
                         <li>An immediate or a register containing the first value to add.</li>
                         <li>An immediate or a register containing the second value to add.</li>
                     </ul>
-                    <p>The same register can be used as both the destination register either of the other operands:</p>
+                    <p>The same register can be used as both the destination register and either of the other operands:</p>
                     <div class="illustration codebox">
                         <p>_start:</p>
                         <p>&emsp; mov r0, #0x12 <span class="comment">// Moves the value 18 into register r0.</span></p>
@@ -46,7 +46,7 @@
                         <li>An immediate or a register containing the first value to add.</li>
                         <li>An immediate or a register containing the second value to add.</li>
                     </ul>
-                    <p>The same register can be used as both the destination register either of the other operands:</p>
+                    <p>The same register can be used as both the destination register and either of the other operands:</p>
                     <div class="illustration codebox">
                         <p>_start:</p>
                         <p>&emsp; mov x0, #0x12 <span class="comment">// Moves the value 18 into register x0.</span></p>
@@ -129,7 +129,7 @@
             </details>
 
             <details class="content-container" open>
-                <summary><p>Summary</p><div><button class="a32-toggle inactive">32-bit</button><button class="a64-toggle">64-bit</button></div></summary>
+                <summary><p>Summary</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
                 <br>
                 <h3>Instructions</h3>
                 <div class="a32-content">

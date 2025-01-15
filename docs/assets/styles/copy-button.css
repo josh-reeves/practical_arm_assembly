@@ -1,4 +1,4 @@
-div.floating-button
+div.floating-frame
 {
     display: none;
     position: sticky;
@@ -7,16 +7,15 @@ div.floating-button
 
 }
 
-div.codebox:hover > div.floating-button
+div.codebox:hover > copy-button > div.floating-frame
 {
     display: block;
     
 }
 
-copy-button
+div.copy-button
 {
     position: absolute;
-    display: flex;
     justify-content: center;
     align-items: center;
     right: 10px;
@@ -30,13 +29,13 @@ copy-button
     
 }
 
-copy-button:hover
+div.copy-button:hover
 {
     background-color: #FAFAFAC0;
 
 }
 
-copy-button:active
+div.copy-button:active
 {
     background-color: #FAFAFA50;
 

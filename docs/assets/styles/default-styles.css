@@ -220,7 +220,7 @@ details.content-container summary::before
 
 details.content-container[open] summary::before
 {
-    content: url("/assets/icons/icon_list_001_outline_001.svg");
+    content: url("/practical_arm_assembly/assets/icons/icon_list_001_outline_001.svg");
     transform: rotate(0deg);
 
 }
@@ -256,7 +256,7 @@ details.content-container summary div button
 {
     border: 1px solid #18181B;
     border-radius: 5px;
-    padding: 7px 15px;
+    padding: 7px 20px;
     margin: 3px;
     cursor: pointer;
     font-size: 14px;
@@ -274,7 +274,7 @@ details.content-container summary div button.inactive
     border: 1px solid #A1A1AA;
     background-color: #D4D4D8;
     border-radius: 5px;
-    padding: 7px 15px;
+    padding: 7px 20px;
     margin: 3px;
     font-size: 14px;
     color: #A1A1AA;

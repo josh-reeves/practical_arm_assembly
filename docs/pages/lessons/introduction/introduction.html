@@ -47,23 +47,17 @@
                 </div>
                 <p>The container is multi-platform and leverages QEMU for cross-architecture support. It can be run on any 64-bit system with the following command, adding any bind mounts or other volumes as desired:</p>
                 <div class="illustration codebox">
-                    <div class="floating-button">
-                        <copy-button></copy-button>
-                    </div>
+                    <copy-button></copy-button>
                     <p>$ docker run -it --name practical-arm-assembly joshreeves/practical-arm-assembly sh</p>
                 </div>
                 <p>To exit and stop the container once it's running, simply type the "exit" command:</p> 
                 <div class="illustration codebox">
-                    <div class="floating-button">
-                        <copy-button></copy-button>
-                    </div>
+                    <copy-button></copy-button>
                     <p>$ exit</p>
                 </div>
                 <p>The following command can be used to start the container again and re-enter its terminal:</p>
                 <div class="illustration codebox">
-                    <div class="floating-button">
-                        <copy-button></copy-button>
-                    </div>
+                    <copy-button></copy-button>
                     <p>$ docker start -i practical-arm-assembly</p>
                 </div>
                 <h3>Baremetal</h3>
@@ -75,9 +69,7 @@
                 </ul>   
                 <p>The following commands can be used to install the toolchains required to assemble and link the source code:</p>
                 <div class="illustration codebox">
-                    <div class="floating-button">
-                        <copy-button></copy-button>
-                    </div>
+                    <copy-button></copy-button>
                     <p>$ sudo apt-get install gcc-arm-linux-gnueabi -y <span class="comment"># Toolchain required for 32-bit examples.</span></p>
                     <p>$ sudo apt-get install gcc-aarch64-linux-gnu -y <span class="comment"># Toolchain required for 64-bit examples.</span></p>
                 </div>

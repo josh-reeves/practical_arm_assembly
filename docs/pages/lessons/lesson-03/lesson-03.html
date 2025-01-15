@@ -4,6 +4,7 @@
         <title>Practical ARM Assembly Notes</title>
         <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">
         <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
+        <script src="/practical_arm_assembly/assets/scripts/eventListeners.js"></script>
         <script src="/practical_arm_assembly/assets/components/components.js" type="module"></script>
     </head>
 
@@ -15,10 +16,13 @@
         <main>
             <details class="content-container" open>
                 <summary><p>Logical Operators</p></summary>
-                <p class="content-section">Logical operators perform logical operations (e.g. comparison) on their inputs and provide a result based on the result of the calculation. Because of the way digital computers process data, the primary method of comparing values is bit-by-bit. For this reason, all logical operators are bitwise. The most prevalent logical operators included in the A32 ISA are AND, ORR, EOR and MVN.</p>
-                <br>
-                <h3>AND</h3>
-                <p class="content-section">For each pair of bits comprising the provided operands, the AND operator will return a 1 only if both input bits are also 1. To illustrate this we can construct a Truth Table: A table representing the output for each of the possible inputs a logical operator is capable of receiving:</p>
+                <p class="content-section">Logical operators perform logical operations (e.g. comparison) on their inputs and provide a result based on the result of the calculation. Because of the way digital computers process data, the primary method of comparing values is bit-by-bit. For this reason, many logical operators are bitwise. The most prevalent logical operators included in the A32 ISA are AND, ORR, EOR and MVN.</p>
+                
+            </details>
+
+            <details class="content-container" open>
+                <summary><p>AND</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></summary>
+                <p class="content-section">For each pair of bits comprising the provided operands, the AND comparison will return a 1 only if both input bits are also 1. This is illustrated via the below Truth Table: A table representing the output for each of the possible inputs a logical operator is capable of receiving:</p>
                 <div class="illustration" style="margin-bottom: 40px;">
                     <h3 >AND Truth Table</h3>
                     <table class="content-table">
@@ -49,7 +53,48 @@
                         </tr>
                     </table> 
                 </div>
-                <p>The hexadecimal values #0x42 and #0x26 (66 and 38 in decimal, respectively), for each of the <a href="https://github.com/josh-reeves/practical_arm_assembly/tree/main/source/lesson_04/A32">examples</a> in this section. The illustration below demonstrates the AND operation on the two test values. The result links to decimal and hexadecimal representations of its value:</p>
+
+                <p>AND comparisons can be accomplished via the AND instruction. The AND instruction typically takes three operands:</p>
+                <div class="a32-content">
+                    <ul>
+                        <li>The register in which the result of the comparison will be stored.</li>
+                        <li>A register or immediate containing the first value to compare.</li>
+                        <li>A register or immediate containing the second value to compare.</li>
+                    </ul>
+                    <p>The same register can be used as both the destination register and either of the other operands:</p>
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>_start:</p>
+                        <p>&emsp; mov r0, #0x12 <span class="comment">// Moves the value 18 into register r0.</span></p>
+                        <p>&emsp; mov r1, #0x26 <span class="comment">// Moves the value 38 into register r1.</span></p>
+                        <br>
+                        <p>&emsp; and r0, r0, r1 <span class="comment">// Performs a bitwise AND comparison on the values stored in registers r0 and r1 and stores the result in r0.</span></p>
+                    </div>
+                    <p>The third operand can also be omitted entirely. When this is done, the first operand is treated as both the destination register and one of the values to be compared:</p>
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>and r0, r1 <span class="comment">// Performs a bitwise AND comparison on the values stored in r0 and r1 and stores the result in r0.</span></p>
+                    </div>
+                </div>
+
+                <div class="a64-content">
+                    <ul>
+                        <li>The register in which the result of the comparison will be stored.</li>
+                        <li>A register containing the first value to compare.</li>
+                        <li>A register containing the second value to compare.</li>
+                    </ul>
+                    <p>While the A64 instruction does support immediate values, there are multiple restrictions on their use that make them impractical. The same register can be used as both the destination register and either of the other operands:</p>
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>_start:</p>
+                        <p>&emsp; mov x0, #0x12 <span class="comment">// Moves the value 18 into register x0.</span></p>
+                        <p>&emsp; mov x1, #0x26 <span class="comment">// Moves the value 38 into register x1.</span></p>
+                        <br>
+                        <p>&emsp; and x0, x0, x1 <span class="comment">// Performs a bitwise AND comparison on the values stored in registers x0 and x1 and stores the result in x0.</span></p>
+                    </div>
+                </div>
+
+                <p>The illustration below shows the result of the AND comparison in bit form. The result links to a page where the value can be converted between decimal, binary and hexadecimal:</p>
                 <div class="illustration" style="margin-bottom: 60px;">
                     <h3>AND Example</h3>
                     <div class="codebox" style="text-align: center;">
@@ -60,9 +105,11 @@
                     </div>
                 </div>
 
-                <h3>ORR</h3>
-                <p>For each pair of bits comprising the provided operands, the ORR operator will return a 1 if 1 or more of the inputs are 1:</p>
-                
+            </details>
+
+            <details class="content-container" open>
+                <summary><p>ORR</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></summary>
+                <p>For each pair of bits comprising the provided operands, the ORR comparison will return a 1 if 1 or more of the inputs are 1:</p>
                 <table style="width: 80%; margin-left: auto; margin-right: auto; margin-bottom: 60px;">
                     <td style="width: 50%;">
                         <div class="illustration" style="width: 90%;">
@@ -108,7 +155,49 @@
                         </div>
                     </td>
                 </table>
-                <h3>EOR</h3>
+                <p>ORR comparisons can be performed with the ORR instruction. The ORR instruction typically takes three operands:</p>
+                <div class="a32-content">
+                    <ul>
+                        <li>The register in which the result of the comparison will be stored.</li>
+                        <li>A register or immediate containing the first value to compare.</li>
+                        <li>A register or immediate containing the second value to compare.</li>
+                    </ul>
+                    <p>The same register can be used as both the destination register and either of the other operands:</p>
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>_start:</p>
+                        <p>&emsp; mov r0, #0x12 <span class="comment">// Moves the value 18 into register r0.</span></p>
+                        <p>&emsp; mov r1, #0x26 <span class="comment">// Moves the value 38 into register r1.</span></p>
+                        <br>
+                        <p>&emsp; orr r0, r0, r1 <span class="comment">// Performs a bitwise ORR comparison on the values stored in registers r0 and r1 and stores the result in r0.</span></p>
+                    </div>
+                    <p>The third operand can also be omitted entirely. When this is done, the first operand is treated as both the destination register and one of the values to be compared:</p>
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>orr r0, r1 <span class="comment">// Performs a bitwise ORR comparison on the values stored in r0 and r1 and stores the result in r0.</span></p>
+                    </div>
+                </div>
+
+                <div class="a64-content">
+                    <ul>
+                        <li>The register in which the result of the comparison will be stored.</li>
+                        <li>A register containing the first value to compare.</li>
+                        <li>A register containing the second value to compare.</li>
+                    </ul>
+                    <p>The same register can be used as both the destination register and either of the other operands:</p>
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>_start:</p>
+                        <p>&emsp; mov x0, #0x12 <span class="comment">// Moves the value 18 into register x0.</span></p>
+                        <p>&emsp; mov x1, #0x26 <span class="comment">// Moves the value 38 into register x1.</span></p>
+                        <br>
+                        <p>&emsp; orr x0, x0, x1 <span class="comment">// Performs a bitwise ORR comparison on the values stored in registers x0 and x1 and stores the result in x0.</span></p>
+                    </div>
+                </div>
+            </details>
+
+            <details class="content-container" open>
+                <summary><p>Exclusive-OR</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></summary>
                 <p>For each pair of bits comprising the provided operands, the EOR (Exclusive-OR) operator will return a 1 only when a single input bit is also 1. If both input bits are 1, 0 is returned:</p>           
                 <table style="width: 80%; margin-left: auto; margin-right: auto; margin-bottom: 60px;">
                     <td>
@@ -155,7 +244,50 @@
                         </div>
                     </td>
                 </table>
-                <h3>MVN</h3>
+                <p>Exclusive-OR comparisons can be performed with the EOR instruction. The EOR instruction typically takes three operands:</p>
+                <div class="a32-content">
+                    <ul>
+                        <li>The register in which the result of the comparison will be stored.</li>
+                        <li>A register or immediate containing the first value to compare.</li>
+                        <li>A register or immediate containing the second value to compare.</li>
+                    </ul>
+                    <p>The same register can be used as both the destination register and either of the other operands:</p>
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>_start:</p>
+                        <p>&emsp; mov r0, #0x12 <span class="comment">// Moves the value 18 into register r0.</span></p>
+                        <p>&emsp; mov r1, #0x26 <span class="comment">// Moves the value 38 into register r1.</span></p>
+                        <br>
+                        <p>&emsp; eor r0, r0, r1 <span class="comment">// Performs a bitwise Exclusive-OR comparison on the values stored in registers r0 and r1 and stores the result in r0.</span></p>
+                    </div>
+                    <p>The third operand can also be omitted entirely. When this is done, the first operand is treated as both the destination register and one of the values to be compared:</p>
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>eor r0, r1 <span class="comment">// Performs a bitwise Exclusive-OR comparison on the values stored in r0 and r1 and stores the result in r0.</span></p>
+                    </div>
+                </div>
+
+                <div class="a64-content">
+                    <ul>
+                        <li>The register in which the result of the comparison will be stored.</li>
+                        <li>A register containing the first value to compare.</li>
+                        <li>A register containing the second value to compare.</li>
+                    </ul>
+                    <p>The same register can be used as both the destination register and either of the other operands:</p>
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>_start:</p>
+                        <p>&emsp; mov x0, #0x12 <span class="comment">// Moves the value 18 into register x0.</span></p>
+                        <p>&emsp; mov x1, #0x26 <span class="comment">// Moves the value 38 into register x1.</span></p>
+                        <br>
+                        <p>&emsp; eor x0, x0, x1 <span class="comment">// Performs a bitwise Exclusive-OR comparison on the values stored in registers x0 and x1 and stores the result in x0.</span></p>
+                    </div>
+                </div>
+
+            </details>
+
+            <details class="content-container" open>
+                <summary><p>Move and Negate</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></summary>
                 <p>The MVN operator (Move and Negate) only takes one operand and will invert the value of each bit comprising that operand, returning 1 if the input is 0 and 0 if the input is 1:</p>           
                 <table style="width: 80%; margin-left: auto; margin-right: auto; margin-bottom: 60px;">
                     <td style="width: 50%;">
@@ -189,11 +321,36 @@
                         </div>
                     </td>
                 </table>
+                <p>The Move and Negate operation can be performed with the MVN instruction. The MVN instruction typically takes two operands:</p>
+                <div class="a32-content">
+                    <ul>
+                        <li>The register in which the result of the operation will be stored.</li>
+                        <li>The register or immediate to be negated and stored in the destination register.</li>
+                    </ul>
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>_start:</p>
+                        <p>&emsp; mvn r0, #0x12<span class="comment">// Negates the value 18 (#0x12 in hexadecimal) and stores the result in register r0.</span></p>
+                    </div>
+                </div>
 
+                <div class="a64-content">
+                    <ul>
+                        <li>The register in which the result of the comparison will be stored.</li>
+                        <li>A register containing the value to be negated and stored in the destination register.</li>
+                    </ul>
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>_start:</p>
+                        <p>&emsp; mov x0, #0x12 <span class="comment">// Moves the value 18 into register x0.</span></p>
+                        <br>
+                        <p>&emsp; mvn x0, x0 <span class="comment">// Negates the value in register x0 and stores the result in register x0.</span></p>
+                    </div>
+                </div>
             </details>
             
             <details class="content-container">
-                <summary><p>New Instructions</p></summary>
+                <summary><p>Summary</p></summary>
                 <ul>
                     <li><a href="https://developer.arm.com/documentation/ddi0597/2024-09/Base-Instructions/AND--ANDS--immediate---Bitwise-AND--immediate--?lang=en">AND{s}{c}{q} {Rd}, Rn, (Rm/#Imm):</a></li>
                     <ul>

@@ -15,11 +15,20 @@ customElements.define("copy-button",
             const styleSheetID = "copy-button-styles";
             const styleSheetPath = "/practical_arm_assembly/assets/styles/copy-button.css"
             
+            var frame = document.createElement("div");
+            var button = document.createElement("div");
+
             if (!document.getElementById(styleSheetID))
                 document.head.append(createStyleSheet(styleSheetPath, styleSheetID));
 
-            this.addEventListener("click", this.copy)
-    
+            frame.classList.add("floating-frame")
+            frame.appendChild(button);
+
+            button.classList.add("copy-button");
+            button.addEventListener("click", this.copy)
+ 
+            this.appendChild(frame);
+
         }
 
         copy() 

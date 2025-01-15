@@ -12,20 +12,20 @@ div.menu-container
 
 }
 
-div.menu-item
+.menu-item
 {
     cursor: pointer;
     height: 4vh;
 
 }
 
-div.menu-item:hover
+.menu-item:hover
 {
     background-color: #3F3F46;
 
 }
 
-div.menu-item p
+.menu-item p
 {
     margin-left: 20px;
     position: relative;
@@ -35,7 +35,7 @@ div.menu-item p
 
 }
 
-div.submenu-item
+.submenu-item
 {
     margin: 0;
     display: block;
@@ -44,13 +44,13 @@ div.submenu-item
 
 }
 
-div.submenu-item:hover
+.submenu-item:hover
 {
     background-color: #3F3F46;
 
 }
 
-div.submenu-item p
+.submenu-item p
 {
     margin-left: 45px;
     margin-right: 20px;
@@ -63,7 +63,7 @@ div.submenu-item p
     text-overflow: ellipsis;
 }
 
-div.submenu-item-hidden
+.submenu-item-hidden
 {
     display: none;
 

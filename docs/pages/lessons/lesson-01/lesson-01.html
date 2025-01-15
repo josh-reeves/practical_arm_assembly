@@ -26,16 +26,12 @@
                 <p>ARM assembly is organized into labels: Symbolic references to the memory address of an instruction or piece of data. In order to create an executable program, the symbol representing the program's entry point must be made available to other software. This can be done using the ".global" directive. A directive is a special instruction that controls the assembly process.</p>
                 <p>The associated examples use the label "_start" as their entry point. The following code is used at the beginning of each example to export the label using the .global directive:</p>
                 <div class="illustration codebox">
-                    <div class="floating-button">
-                        <copy-button></copy-button>
-                    </div>
+                <copy-button></copy-button>
                     <p>.global _start</p>
                 </div>
                 <p>Next, the label must be created and given a body:</p>
                 <div class="illustration codebox">
-                    <div class="floating-button">
-                        <copy-button></copy-button>
-                    </div>
+                    <copy-button></copy-button>
                     <p>.global _start</p>
                     <br>
                     <p>_start:</p>
@@ -59,9 +55,7 @@
                     <p>The code below moves the immediate value 38 into register r0. The use of "0x" at the beginning of the number indicates that the value is being provided in Hexadecimal. Decimal and Binary input are also supported. The mnemonic and register name are not case sensitive:</p>
                     <div class="illustration">
                         <div class="codebox">
-                            <div class="floating-button">
-                                <copy-button></copy-button>
-                            </div>
+                            <copy-button></copy-button>
                             <p>mov r0, #0x26 <span class="comment">// Moves the value 38 (in hexadecimal) into register r0.</span></p>
                         </div>
                     </div>
@@ -79,9 +73,7 @@
                     <p>The code below moves the immediate value 38 into register x0. The use of "0x" at the beginning of the number indicates that the value is being provided in Hexadecimal. Decimal and Binary input are also supported. The mnemonic and register name are not case sensitive:</p>
                     <div class="illustration">
                         <div class="codebox">
-                            <div class="floating-button">
-                                <copy-button></copy-button>
-                            </div>
+                            <copy-button></copy-button>
                             <p>mov x0, #0x26 <span class="comment">// Moves the value 38 (in hexadecimal) into register x0.</span></p>    
                         </div>
                     </div>
@@ -90,15 +82,13 @@
             </details>
 
             <details class="content-container" open>
-                <summary><p>Exiting the Program</p><div><button class="a32-toggle inactive">32-bit</button><button class="a64-toggle">64-bit</button></summary>
+                <summary><p>Exiting the Program</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></summary>
                 <p>In order to gracefully end program execution, control must be returned to the operating system. This can be done with a software interrupt. Software interrupts switch the processor into "supervisor" mode, allowing it to make a request of the operating system kernel. This can be used to request that the operating system exit the program.
                 
                 <div class="a32-content">
                     <p>A system interrupt can be triggered with the svc mnemonic. The action taken when this interrupt is called depends on the value of a predefined register. For A32, this is register r7. The value required to trigger an exit SysCall is 1. The code below moves the appropriate value into r7 and then triggers a software interrupt. Note the value following the svc mnemonic would typically be invalid, as it is neither a register or an immediate. This can be done because this value, while required, is never actually used or parsed by the instruction:</p>
                     <div class="illustration codebox">                
-                        <div class="floating-button">
-                            <copy-button></copy-button>
-                        </div>
+                        <copy-button></copy-button>
                         <p>mov r7, #0x1 <span class="comment">// Moves the value 1 into register r7 so it can be used by the system interrupt.</span></p>
                         <p>svc 0 <span class="comment">// Note that the 0 here is never used.</span></p>
                     </div>    
@@ -107,9 +97,7 @@
                 <div class="a64-content">
                     <p>A system interrupt can be triggered with the svc mnemonic. The action taken when this interrupt is called depends on the value of a predefined register. For A64, this is register x8. The value required to trigger an exit SysCall is 93 (0x5d). The code below moves the appropriate value into x8 and then triggers a software interrupt. Note the value following the svc mnemonic would typically be invalid, as it is neither a register or an immediate. This can be done because this value, while required, is never actually used or parsed by the instruction:</p>
                     <div class="illustration codebox">                
-                        <div class="floating-button">
-                            <copy-button></copy-button>
-                        </div>
+                        <copy-button></copy-button>
                         <p>mov x8, #0x5d <span class="comment">// Moves the value 93 into register x8 so it can be used by the system interrupt.</span></p>
                         <p>svc 0 <span class="comment">// Note that the 0 here is never used.</span></p>
                     </div>    
@@ -118,15 +106,13 @@
             </details>
 
             <details class="content-container" open>
-                <summary><p>Assembling and Running the Program</p><div><button class="a32-toggle inactive">32-bit</button><button class="a64-toggle">64-bit</button></div></summary>
+                <summary><p>Assembling and Running the Program</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
                 <p>Assembly source files use a ".s" extension. Before the program can be run, it must be assembled into an object file containing the machine code for the program and then linked into an executable. On a linux system configured with the recommended toolchains, the following commands can be used to assemble the program. More information about the recommended configuration can be found under the Getting Started section of the introduction.</p>
                 
                 <div class="a32-content">
                     <div class="illustration">
                         <div class="codebox">
-                            <div class="floating-button">
-                                <copy-button></copy-button>
-                            </div>
+                            <copy-button></copy-button>
                             <p>arm-linux-gnueabi-as [sourcefile.s] -o [output.o] <span class="comment"># Assembles program. Brackets not included in final command.</span></p>
                         </div>
                     </div>
@@ -135,9 +121,7 @@
                 <div class="a64-content">
                     <div class="illustration">
                         <div class="codebox">
-                            <div class="floating-button">
-                                <copy-button></copy-button>
-                            </div>
+                            <copy-button></copy-button>
                             <p>aarch64-linux-gnu-as [sourcefile.s] -o [output.o] <span class="comment"># Assembles program. Brackets not included in final command.</span></p>
                         </div>
                     </div>
@@ -148,9 +132,7 @@
                 <div class="a32-content">
                     <div class="illustration">
                         <div class="codebox">
-                            <div class="floating-button">
-                                <copy-button></copy-button>
-                            </div>
+                            <copy-button></copy-button>
                             <p>arm-linux-gnueabi-gcc [object.o] -o [output-executable] -nostdlib <span class="comment"># Links program. Brackets not included in final command.</span></p>
                         </div>
                     </div>
@@ -159,9 +141,7 @@
                 <div class="a64-content">
                     <div class="illustration">
                         <div class="codebox">
-                            <div class="floating-button">
-                                <copy-button></copy-button>
-                            </div>
+                            <copy-button></copy-button>
                             <p>aarch64-linux-gnu-gcc [object.o] -o [output-executable] -nostdlib <span class="comment"># Links program. Brackets not included in final command.</span></p>
                         </div>
                     </div>
@@ -170,22 +150,18 @@
                 <p>Where object.o is the output file from the assembly process and output-executable is the name of the final, executable program.</p>
                 <p>Once the executable is created, it can be run using the standard bash execution syntax:</p>
                 <div class="illustration codebox">
-                    <div class="floating-button">
-                        <copy-button></copy-button>
-                    </div>
+                    <copy-button></copy-button>
                     <p>.\[executable] <span class="comment"># Runs program. Brackets not included in final command.</span></p>
                 </div>
                 <p>Upon program completion no output appears in the shell. The majority of the examples in these notes make use of the program's return code in order to obtain their results. The return code is stored in r0. In order to obtain in, the echo command can be used:</p>
                 <div class="illustration codebox">
-                    <div class="floating-button">
-                        <copy-button></copy-button>
-                    </div>
+                    <copy-button></copy-button>
                     <p>echo $? <span class="comment"># Outputs return code from last command to console.</span></p>
                 </div>
             </details>
 
             <details class="content-container" open>
-                <summary><p>Summary</p><div><button class="a32-toggle inactive">32-bit</button><button class="a64-toggle">64-bit</button></div></summary>
+                <summary><p>Summary</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
                 <br>
                 <h3>Concepts</h3>
                 <ul>
