@@ -4,6 +4,7 @@
         <title>Practical ARM Assembly Notes</title>
         <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">
         <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
+        <script src="/practical_arm_assembly/assets/scripts/eventListeners.js"></script>
         <script src="/practical_arm_assembly/assets/components/components.js" type="module"></script>
     </head>
 
@@ -13,9 +14,69 @@
         <nav-menu></nav-menu>
 
         <main>
-            <div class="content-container">
-                            
-            </div>
+            <details class="content-container" open>
+                <summary><p>Negative Values in Binary</p></summary>
+                <h3>Understanding Two's Complement</h3>
+                <p>As explained in in the notes for lesson 3, digital computers process all values in binary. To represent negative numbers these systems commonly use two's complement. System's that use two's complement interpret the most significant digit of a binary value as representative ove the value's sign, with 0s representing positive values and 1s representing negative values. The manner in which the remaining digits are parsed depends on the sign bit, with negative values "counting down" upward toward zero and positive values "counting up" as usual. </p>
+                
+                <div class="illustration">
+                    <p class="emphasized">Values 5 and negative 5 in binary using two's complement:</p>
+                    <div class="codebox">
+                        <copy-button></copy-button>
+                        <p class="centered">00000000000000000000000000000101</p>
+                        <p class="centered">11111111111111111111111111111011</p>
+                    </div>
+                </div>
+                <p>Representing negative numbers in this way has multiple advantages. Most notably, because no additional logic is required to "carry" bits, subtraction operations can be handled by with the same circuitry as addition: The subtrahend is converted to a negative and added to the minuend.</p>
+                <div class="illustration">
+                    <p class="emphasized">5 being "subtracted" from 5 via addition:</p>
+                    <div class="codebox">
+                        <copy-button></copy-button>
+                        <p class="centered">00000000000000000000000000000101</p>
+                        <p class="centered symboled">+ 11111111111111111111111111111011</p>
+                        <hr></hr>
+                        <p class="centered">00000000000000000000000000000000</p>
+                    </div>
+                </div>
+
+                <h3>Finding Two's Complement</h3>
+                <p>The two's compliment of any binary number can be found using the following method:</p>
+                <ol>
+                    <li>Invert each bit of the original value (this is referred to as one's compliment):</li>
+                </ol>
+                <div class="illustration">
+                    <p class="emphasized">Finding the one's complement of 23.</p>
+                    <div class="codebox">
+                        <copy-button></copy-button>
+                        <p class="centered">00000000000000000000000000010111</p>                
+                        <hr></hr>
+                        <p class="centered">11111111111111111111111111101000</p>
+                    </div>
+                </div>
+                <ol start="2">
+                    <li>Add 1 to the new value, ignoring any overflow:</li>
+
+                </ol>
+                <div class="illustration">
+                    <p class="emphasized">Finding the two's complement of 23.</p>
+                    <div class="codebox">
+                        <copy-button></copy-button>
+                        <p class="centered">11111111111111111111111111101000</p>                
+                        <p class="centered symboled">+ 00000000000000000000000000000001</p>
+                        <hr></hr>
+                        <p class="centered">11111111111111111111111111101001</p>
+                    </div>
+                </div>
+
+            </details>
+            <details class="content-container" open>
+                <summary><p>Summary</p></summary>
+
+            </details>
+
+            <hr class="page-end"/>
+            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-02/lesson-02.html" class="prev">Lesson 03: Logical Operators</nav-button>
+            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-04/lesson-04.html" class="next">Lesson 05: Shift and Rotate</button>    
         </main>
     </body>
 </html>

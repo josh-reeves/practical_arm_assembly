@@ -191,7 +191,7 @@ details.content-container summary
     flex-flow: row nowrap;
     list-style-type: none;
     background-color: #E4E4E7;
-    border-radius: 5px;
+    border-radius: 3px;
     cursor: pointer;
     overflow-x: auto;
     user-select: none;
@@ -297,6 +297,13 @@ details.content-container ul
 
 }
 
+details.content-container ol
+{
+    margin-top: 5px;
+    margin-left: 60px;
+
+}
+
 details.content-container li
 {
     text-wrap: pretty;
@@ -340,6 +347,13 @@ div.illustration img
     margin: auto;
 }
 
+div.illustration p.emphasized
+{
+    font-family: robotoitalic;
+
+
+}
+
 div.codebox
 {
     position: relative;
@@ -362,6 +376,20 @@ div.codebox p
 
 }
 
+div.codebox p.centered
+{
+    text-align: center;
+
+
+}
+
+div.codebox p.symboled
+{
+    position: relative;
+    left: -1ch;
+
+}
+
 div.codebox span.comment
 {
     font-family: 'Courier New', Courier, monospace;
@@ -377,6 +405,16 @@ div.codebox a
 
 }
 
+div.codebox hr
+{
+    height: 1px; 
+    color: #FAFAFA; 
+    background-color: #FAFAFA; 
+    width: 75%; 
+    margin: auto;
+    
+}
+
 table.content-table
 {
     padding: 10px; 
@@ -386,6 +424,7 @@ table.content-table
     table-layout: auto;
     border-collapse: collapse;
     width: 100%;
+    table-layout: fixed;
 
 }
 

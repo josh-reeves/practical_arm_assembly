@@ -14,16 +14,46 @@
         <nav-menu></nav-menu>
 
         <main>
+
             <details class="content-container" open>
-                <summary><p>Logical Operators</p></summary>
-                <p class="content-section">Logical operators perform logical operations (e.g. comparison) on their inputs and provide a result based on the result of the calculation. Because of the way digital computers process data, the primary method of comparing values is bit-by-bit. For this reason, many logical operators are bitwise. The most prevalent logical operators included in the A32 ISA are AND, ORR, EOR and MVN.</p>
+                <summary><p>Logical Operations</p></summary>
+                <p class="content-section">Logical operators perform basic boolean logic (AND, OR, NOT, etc.) on one or more values and return a value based on the result. Because computers represent numbers with a sequence of electrical charges (or the lack thereof), these values are stored and processed in Binary. This makes understanding binary essential for working with these operations.</p>
+                <h3>Understanding Binary</h3>
+                <p>The most common system for writing numbers in the word is base-10. This means that there are ten distinct glyphs capable of representing a value: 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9. Once these glyphs have been exhausted, larger numbers are represented by placing a new digit to the left of the current number and rolling the existing digits back to 0. This process is then repeated, with the new digit representing the number of times the cycle has completed. Additional digits are added to the total number as needed, with each place ultimately increasing in value by a power of ten.</p>
+                <p>The Binary number system works in exactly the same way, but instead of providing ten distinct glyphs, it only provides two: 0 and 1. Because of this, the digits in the binary number system increase by powers of two instead of powers of ten:</p>
+                <div class="illustration">
+                    <table class="content-table">
+                        <tr>
+                            <th>Binary</th>
+                            <th>Decimal</th>
+                        </tr>
+                        <tr>
+                            <td>00000000</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>00000001</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>00000010</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>00000011</td>
+                            <td>3</td>
+                        </tr>
                 
+                    </table>
+                </div>
+                <p>Each of the digits in a binary number can be considered a bit. The logical operators work operate on values bit-by-bit.</p>
+
             </details>
 
             <details class="content-container" open>
                 <summary><p>AND</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></summary>
                 <p class="content-section">For each pair of bits comprising the provided operands, the AND comparison will return a 1 only if both input bits are also 1. This is illustrated via the below Truth Table: A table representing the output for each of the possible inputs a logical operator is capable of receiving:</p>
-                <div class="illustration" style="margin-bottom: 40px;">
+                <div class="illustration">
                     <h3 >AND Truth Table</h3>
                     <table class="content-table">
                         <tr>
