@@ -134,13 +134,13 @@
                 <h3>Instructions</h3>
                 <div class="a32-content">
                     <ul>
-                        <li><a href="https://developer.arm.com/documentation/dui0801/f/A32-and-T32-Instructions/ADD">ADD(S) rD, rN, #const / rM</a></li>
+                        <li><a href="https://developer.arm.com/documentation/dui0801/f/A32-and-T32-Instructions/ADD">ADD(S) rD, rN, [rM/#Imm]</a></li>
                         <ul>
                             <li>Adds the value of the provided immediate or register to the value stored in register rN and stores the result in rD.</li>
                             <li>The destination register can be the same as one of the operands.</li>
                             <li>If an operand is omitted, the destination register is used in its place.</li>
                         </ul>
-                        <li><a href="https://developer.arm.com/documentation/dui0801/f/A32-and-T32-Instructions/SUB">SUB(S) rD, rN, #const / rM</a></li>
+                        <li><a href="https://developer.arm.com/documentation/dui0801/f/A32-and-T32-Instructions/SUB">SUB(S) rD, rN, [rm/#Imm]</a></li>
                         <ul>
                             <li>Subtracts the value of the provided immediate or register from the value stored in register rN and stores the result in rD.</li>
                             <li>The destination register can be the same as one of the operands.</li>
@@ -157,13 +157,13 @@
 
                 <div class="a64-content">
                     <ul>
-                        <li><a href="https://developer.arm.com/documentation/dui0801/l/A64-General-Instructions/ADD--immediate---A64-">ADD(S) xD, xN, #const / xM</a></li>
+                        <li><a href="https://developer.arm.com/documentation/dui0801/l/A64-General-Instructions/ADD--immediate---A64-">ADD(S) xD, xN, [xM/#Imm]</a></li>
                         <ul>
                             <li>Adds the value of the provided immediate or register to the value stored in register xN and stores the result in xD.</li>
                             <li>The destination register can be the same as one of the operands.</li>
                             <li>All three operands must be provided.</li>
                         </ul>
-                        <li><a href="https://developer.arm.com/documentation/dui0801/l/A64-General-Instructions/SUB--immediate---A64-">SUB(S) xD, xN, #const / xM</a></li>
+                        <li><a href="https://developer.arm.com/documentation/dui0801/l/A64-General-Instructions/SUB--immediate---A64-">SUB(S) xD, xN, #const / [xM/#Imm]</a></li>
                         <ul>
                             <li>Subtracts the value of the provided immediate or register from the value stored in register xN and stores the result in xD.</li>
                             <li>The destination register can be the same as one of the operands.</li>
@@ -197,8 +197,8 @@
             </details>
 
             <hr class="page-end"/>
-            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-01/lesson-01.html" class="prev">Lesson 01: MOV, Exit Syscall</nav-button>
-            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-03/lesson-03.html" class="next">Lesson 03: Logical Operators</nav-button>    
+            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-01/lesson-01.html" class="prev">Lesson 01: Fundamentals</nav-button>
+            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-03/lesson-03.html" class="next">Lesson 03: The PC Register</nav-button>    
 
         </main>
     </body>

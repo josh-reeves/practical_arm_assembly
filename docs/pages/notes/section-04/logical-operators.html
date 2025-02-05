@@ -352,36 +352,60 @@
             
             <details class="content-container" open>
                 <summary><p>Summary</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
-                <ul>
-                    <li><a href="https://developer.arm.com/documentation/ddi0597/2024-09/Base-Instructions/AND--ANDS--immediate---Bitwise-AND--immediate--?lang=en">AND{s}{c}{q} {Rd}, Rn, (Rm/#Imm):</a></li>
+                <h3>Instructions</h3>
+                <div class="a32-content">
                     <ul>
-                        <li>Performs a bitwise AND operation on the bits of the first and second operands and stores the result in Rd.</li>
-                        <li>The last operand can be either an immediate or another register.</li>
-                        <li>If {Rd} is omitted, Rn is used for the destination register.</li>
-                    </ul>
-                    <li><a href="https://developer.arm.com/documentation/ddi0597/2024-09/Base-Instructions/ORR--ORRS--immediate---Bitwise-OR--immediate--?lang=en">ORR{s}{c}{q} {Rd}, Rn, (Rm/#Imm):</a></li>
+                        <li><a href="https://developer.arm.com/documentation/ddi0597/2024-09/Base-Instructions/AND--ANDS--immediate---Bitwise-AND--immediate--?lang=en">AND(s) rD, rN, [rM/#Imm]:</a></li>
+                        <ul>
+                            <li>Performs a bitwise AND operation on the bits of the first and second operands and stores the result in rD.</li>
+                            <li>The last operand can be either an immediate or another register.</li>
+                            <li>If rD is omitted, rN is used for the destination register.</li>
+                        </ul>
+                        <li><a href="https://developer.arm.com/documentation/ddi0597/2024-09/Base-Instructions/ORR--ORRS--immediate---Bitwise-OR--immediate--?lang=en">ORR(s) rD, rN, [rM/#Imm]:</a></li>
+                        <ul>
+                            <li>Performs a bitwise OR operation on the bits of the first and second operands and stores the result in rD.</li>
+                            <li>The last operand can be either an immediate or another register.</li>
+                            <li>If rD is omitted, rN is used for the destination register.</li>
+                        </ul>
+                        <li><a href="https://developer.arm.com/documentation/ddi0597/2024-09/Base-Instructions/ORR--ORRS--immediate---Bitwise-OR--immediate--?lang=en">EOR(s) rD, rN, [rM/#Imm]:</a></li>
+                        <ul>
+                            <li>Performs a bitwise Exclusive-OR operation on the bits of the first and second operands and stores the result in rD.</li>
+                            <li>The last operand can be either an immediate or another register.</li>
+                            <li>If rD is omitted, rN is used for the destination register.</li>
+                        </ul>
+                        <li><a href="https://developer.arm.com/documentation/ddi0597/2024-09/Base-Instructions/ORR--ORRS--immediate---Bitwise-OR--immediate--?lang=en">MVN(s) rD, [rM/#Imm]:</a></li>
+                        <ul>
+                            <li>Performs a bitwise Negate operation on the bits of the second operand and stores the result in rD.</li>
+                            <li>The last operand can be either an immediate or another register.</li>
+                        </ul>
+                    </ul>    
+                </div>
+
+                <div class="a64-content">
                     <ul>
-                        <li>Performs a bitwise OR operation on the bits of the first and second operands and stores the result in Rd.</li>
-                        <li>The last operand can be either an immediate or another register.</li>
-                        <li>If {Rd} is omitted, Rn is used for the destination register.</li>
-                    </ul>
-                    <li><a href="https://developer.arm.com/documentation/ddi0597/2024-09/Base-Instructions/ORR--ORRS--immediate---Bitwise-OR--immediate--?lang=en">EOR{s}{c}{q} {Rd}, Rn, (Rm/#Imm):</a></li>
-                    <ul>
-                        <li>Performs a bitwise Exclusive-OR operation on the bits of the first and second operands and stores the result in Rd.</li>
-                        <li>The last operand can be either an immediate or another register.</li>
-                        <li>If {Rd} is omitted, Rn is used for the destination register.</li>
-                    </ul>
-                    <li><a href="https://developer.arm.com/documentation/ddi0597/2024-09/Base-Instructions/ORR--ORRS--immediate---Bitwise-OR--immediate--?lang=en">MVN{s} Rd, (Rm/#Imm):</a></li>
-                    <ul>
-                        <li>Performs a bitwise Negate operation on the bits of the second operand and stores the result in Rd.</li>
-                        <li>The last operand can be either an immediate or another register.</li>
-                    </ul>
-                </ul>
+                        <li><a href="https://developer.arm.com/documentation/ddi0597/2024-09/Base-Instructions/AND--ANDS--immediate---Bitwise-AND--immediate--?lang=en">AND(s) xD, xN, [xM/#Imm]:</a></li>
+                        <ul>
+                            <li>Performs a bitwise AND operation on the bits of the first and second operands and stores the result in xD.</li>
+                        </ul>
+                        <li><a href="https://developer.arm.com/documentation/ddi0597/2024-09/Base-Instructions/ORR--ORRS--immediate---Bitwise-OR--immediate--?lang=en">ORR(s) xD, xN, [xM/#Imm]:</a></li>
+                        <ul>
+                            <li>Performs a bitwise OR operation on the bits of the first and second operands and stores the result in xD.</li>
+                        </ul>
+                        <li><a href="https://developer.arm.com/documentation/ddi0597/2024-09/Base-Instructions/ORR--ORRS--immediate---Bitwise-OR--immediate--?lang=en">EOR(s) xD, xN, [xM/#Imm]:</a></li>
+                        <ul>
+                            <li>Performs a bitwise Exclusive-OR operation on the bits of the first and second operands and stores the result in xD.</li>
+                        </ul>
+                        <li><a href="https://developer.arm.com/documentation/ddi0597/2024-09/Base-Instructions/ORR--ORRS--immediate---Bitwise-OR--immediate--?lang=en">MVN(s) xD, [xM/#Imm]:</a></li>
+                        <ul>
+                            <li>Performs a bitwise Negate operation on the bits of the second operand and stores the result in xD.</li>
+                        </ul>
+                    </ul>        
+                </div>
             </details>
 
             <hr class="page-end"/>
-            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-02/lesson-02.html" class="prev">Lesson 02: ADD, SUB, MUL</nav-button>
-            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-04/lesson-04.html" class="next">Lesson 04: Signed Number Conversion</button>    
+            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-02/lesson-02.html" class="prev">Lesson 03: Arithmetic Operations</nav-button>
+            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-04/lesson-04.html" class="next">Lesson 05: Signed Number Conversion</button>    
         </main>
     </body>
 </html>
