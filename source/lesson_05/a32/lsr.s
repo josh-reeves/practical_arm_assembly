@@ -12,8 +12,8 @@ _start:
 	/* Shifts the value stored in r0 - 00000000000000000000000000001000 (8) - to
 	 * the right by 2 bits. The result will be 00000000000000000000000000000010 
 	 * (2). This is effectively the same as dividing the source value by two the
-     * number of times specified by the shift value:*/
-	lsr r0, r0, #0X2 
+	 * number of times specified by the shift value:*/
+	lsr r0, #0x12
 
 	mov r7, #0x1
 	swi 0

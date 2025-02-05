@@ -8,7 +8,7 @@ _start:
 	 * bit. The number of bits to shift by can be provided via either register 
 	 * or an immediate value. The source and destination registers can be the
 	 * same.
-     *
+     	 *
 	 * Because two's compliment is used to represent signed values, the LSR 
 	 * operator, which pad's the byte with zeros, would remove the sign bit. 
 	 * Because the ASR operator pads the register with the sign bit, it allows 
@@ -18,13 +18,13 @@ _start:
 	 *
 	 * As with the other shift operators, bits that "fall off" the end of the 
 	 * register are lost.*/
-	mov r0, #-0X8
+	mov r0, #-0x8
 
 	/* Shifts the value stored in r0 - 11111111111111111111111111111000 (-8) - 
 	 * to the right by 2 bits. The result will be 
 	 * 11111111111111111111111111111110 (-2). Unlike the LSR operator, the sign
 	 * bit is respected.*/
-	asr r0, r0, #0X2 
+	asr r0, #0x12
 
 	mov r7, #0x1
 	swi 0

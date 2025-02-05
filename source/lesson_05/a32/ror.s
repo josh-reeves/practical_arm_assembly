@@ -15,10 +15,10 @@ _start:
 	 * accomplished via a sufficient number of right rotations.*/
 
 	// Moves the value 9 (00000000000000000000000000001001) into register 0:
-	mov r0, #0x9 
+	mov r0, #0x8
 
 	// "Rotates" 9 two bits to the right: 01000000000000000000000000000010:
-	ror r0, #0x2 
+	ror r0, #0x12
 
 	mov r7, #0x1
 	swi 0
