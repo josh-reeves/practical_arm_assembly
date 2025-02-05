@@ -17,41 +17,12 @@
 
             <details class="content-container" open>
                 <summary><p>Logical Operations</p></summary>
-                <p class="content-section">Logical operators perform basic boolean logic (AND, OR, NOT, etc.) on one or more values and return a value based on the result. Because computers represent numbers with a sequence of electrical charges (or the lack thereof), these values are stored and processed in Binary. This makes understanding binary essential for working with these operations.</p>
-                <h3>Understanding Binary</h3>
-                <p>The most common system for writing numbers in the word is base-10. This means that there are ten distinct glyphs capable of representing a value: 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9. Once these glyphs have been exhausted, larger numbers are represented by placing a new digit to the left of the current number and rolling the existing digits back to 0. This process is then repeated, with the new digit representing the number of times the cycle has completed. Additional digits are added to the total number as needed, with each place ultimately increasing in value by a power of ten.</p>
-                <p>The Binary number system works in exactly the same way, but instead of providing ten distinct glyphs, it only provides two: 0 and 1. Because of this, the digits in the binary number system increase by powers of two instead of powers of ten:</p>
-                <div class="illustration">
-                    <table class="content-table">
-                        <tr>
-                            <th>Binary</th>
-                            <th>Decimal</th>
-                        </tr>
-                        <tr>
-                            <td>00000000</td>
-                            <td>0</td>
-                        </tr>
-                        <tr>
-                            <td>00000001</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>00000010</td>
-                            <td>2</td>
-                        </tr>
-                        <tr>
-                            <td>00000011</td>
-                            <td>3</td>
-                        </tr>
-                
-                    </table>
-                </div>
-                <p>Each of the digits in a binary number can be considered a bit. The logical operators work operate on values bit-by-bit.</p>
+                <p class="content-section">Logical operators perform basic boolean logic (AND, OR, NOT, etc.) on one or more values and return a value based on the result. Because computers process data in binary, the logical operators compare values bit-by-bit, with the ultimate result of the operation being a composite of the individual bitwise comparisons.</p>
 
             </details>
 
             <details class="content-container" open>
-                <summary><p>AND</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></summary>
+                <summary><p>AND</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
                 <p class="content-section">For each pair of bits comprising the provided operands, the AND comparison will return a 1 only if both input bits are also 1. This is illustrated via the below Truth Table: A table representing the output for each of the possible inputs a logical operator is capable of receiving:</p>
                 <div class="illustration">
                     <h3 >AND Truth Table</h3>
@@ -124,7 +95,7 @@
                     </div>
                 </div>
 
-                <p>The illustration below shows the result of the AND comparison in bit form. The result links to a page where the value can be converted between decimal, binary and hexadecimal:</p>
+                <p>The illustration below shows the result of the AND comparison in bit form. Note that, for simplicity, all of the examples in this section use 32 bits regardless of the associated architecture. The result links to a page where the value can be converted between decimal, binary and hexadecimal:</p>
                 <div class="illustration" style="margin-bottom: 60px;">
                     <h3>AND Example</h3>
                     <div class="codebox" style="text-align: center;">
@@ -138,7 +109,7 @@
             </details>
 
             <details class="content-container" open>
-                <summary><p>ORR</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></summary>
+                <summary><p>ORR</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
                 <p>For each pair of bits comprising the provided operands, the ORR comparison will return a 1 if 1 or more of the inputs are 1:</p>
                 <table style="width: 80%; margin-left: auto; margin-right: auto; margin-bottom: 60px;">
                     <td style="width: 50%;">
@@ -227,7 +198,7 @@
             </details>
 
             <details class="content-container" open>
-                <summary><p>Exclusive-OR</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></summary>
+                <summary><p>Exclusive-OR</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
                 <p>For each pair of bits comprising the provided operands, the EOR (Exclusive-OR) operator will return a 1 only when a single input bit is also 1. If both input bits are 1, 0 is returned:</p>           
                 <table style="width: 80%; margin-left: auto; margin-right: auto; margin-bottom: 60px;">
                     <td td style="width: 50%;">
@@ -317,7 +288,7 @@
             </details>
 
             <details class="content-container" open>
-                <summary><p>Move and Negate</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></summary>
+                <summary><p>Move and Negate</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
                 <p>The MVN operator (Move and Negate) only takes one operand and will invert the value of each bit comprising that operand, returning 1 if the input is 0 and 0 if the input is 1:</p>           
                 <table style="width: 80%; margin-left: auto; margin-right: auto; margin-bottom: 60px;">
                     <td style="width: 50%;">
@@ -380,7 +351,7 @@
             </details>
             
             <details class="content-container" open>
-                <summary><p>Summary</p></summary>
+                <summary><p>Summary</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
                 <ul>
                     <li><a href="https://developer.arm.com/documentation/ddi0597/2024-09/Base-Instructions/AND--ANDS--immediate---Bitwise-AND--immediate--?lang=en">AND{s}{c}{q} {Rd}, Rn, (Rm/#Imm):</a></li>
                     <ul>

@@ -17,8 +17,37 @@
         <main>
             <details class="content-container" open>
                 <summary><p>Processor Architecture Explained Like I'm Five</p></summary>
-                    <p>At a very general level, a processor can be thought of as a group of circuits used to perform basic operations and communicate with each other. These operations usually include basic arithmetic, logical comparisons, memory access, etc.</p>     
-                    <p>Each of these circuits has a series of components capable of carrying a charge. These charges are used to represent numbers in a binary format, with the lack of a charge indicating a 0 and the presence of a charge indicating a 1. We refer to these as bits. The number of charges the components in the processor can work with at one time determine the processor's "bit-ness" (i.e. 32-bit, 64-bit, etc.).</p>
+                <p>At a very general level, a processor can be thought of as a group of circuits used to perform basic operations and communicate with each other. These operations usually include basic arithmetic, logical comparisons, memory access, etc.</p>     
+                <p>Each of these circuits has a series of components capable of carrying a charge. These charges are used to represent numbers in a binary format, with the lack of a charge indicating a 0 and the presence of a charge indicating a 1. We refer to these as bits. The number of charges the components in the processor can work with at one time determine the processor's "bit-ness" (i.e. 32-bit, 64-bit, etc.).</p>
+                <h3>Understanding Binary</h3>
+                <p>The most common system for writing numbers in the world is base-10. This means that there are ten distinct glyphs capable of representing a value: 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9. Once these glyphs have been exhausted, larger numbers are represented by placing a new digit to the left of the current number and rolling the existing digits back to 0. This process is then repeated, with the new digit representing the number of times the cycle has completed. Additional digits are added to the total number as needed, with each place ultimately increasing in value by a power of ten.</p>
+                <p>The Binary number system works in exactly the same way, but instead of providing ten distinct glyphs, it only provides two: 0 and 1. Because of this, the digits in the binary number system increase by powers of two instead of powers of ten:</p>
+                    <div class="illustration">
+                        <table class="content-table">
+                            <tr>
+                                <th>Binary</th>
+                                <th>Decimal</th>
+                            </tr>
+                            <tr>
+                                <td>00000000</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>00000001</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>00000010</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>00000011</td>
+                                <td>3</td>
+                            </tr>
+                    
+                        </table>
+                    </div>
+    
             </details>
 
             <details class="content-container" open>
@@ -212,7 +241,7 @@
 
             <hr class="page-end"/>
             <nav-button href="/practical_arm_assembly/pages/lessons/introduction/introduction.html" class="prev">Introduction</nav-button>
-            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-02/lesson-02.html" class="next">Lesson 02: ADD, SUB, MUL</button>    
+            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-02/lesson-02.html" class="next">Arithmetic Operations</button>    
 
         </main>
 
