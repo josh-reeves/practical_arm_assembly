@@ -51,52 +51,52 @@ class NavMenu extends HTMLElement
                     <p>Notes</p>
                 </div>  
                     <div class="sliding-panel" id="lessons">
-                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/introduction/introduction.html'">
+                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/introduction/introduction.html'">
                             <p>Introduction</p>
                         </div>                        
-                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-01/lesson-01.html'">
+                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-01/fundamentals.html'">
                             <p>Section 01: Fundamentals</p>
                         </div>
-                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-02/lesson-02.html'">
+                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-02/arithmetic-operations.html'">
                             <p>Section 02: Arithmetic Operations</p>
                         </div>
-                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-03/lesson-03.html'">
+                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-03/pc-register.html'">
                             <p>Section 03: The PC Register</p>
                         </div>
-                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-03/lesson-03.html'">
+                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-04/logical-operators.html'">
                             <p>Section 04: Logical Operators</p>
                         </div>
-                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-04/lesson-04.html'">
+                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-05/signed-number-conversion.html'">
                             <p>Section 05: Signed Number Conversion</p>
                         </div>
-                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-05/lesson-05.html'">
+                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-06/shift-and-rotate.html'">
                             <p>Section 06: Shift and Rotate</p>
                         </div>
-                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-06/lesson-06.html'">
+                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-07/cpsr.html'">
                             <p>Section 07: The CPSR</p>
                         </div>
-                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-07/lesson-07.html'">
+                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-08/cmp.html'">
                             <p>Section 08: CMP</p>
                         </div>
-                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-08/lesson-08.html'">
+                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-09/branching.html'">
                             <p>Section 09: Branching</p>
                         </div>
-                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-09/lesson-09.html'">
+                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-10/while-loops.html'">
                             <p>Section 10: While Loops</p>
                         </div>
-                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-10/lesson-10.html'">
+                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-11/function-calls.html'">
                             <p>Section 11: Function Calls</p>
                         </div>
-                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-11/lesson-11.html'">
+                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-12/ldr-and-str.html'">
                             <p>Section 12: LDR and STR</p>
                         </div>
-                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-12/lesson-12.html'">
+                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-13/stack-operations.html'">
                             <p>Section 13: Stack Operations</p>
                         </div>
-                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-13/lesson-13.html'">
+                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-14/push-and-pop.html'">
                             <p>Section 14: Push and Pop</p>
                         </div>
-                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/lessons/lesson-14/lesson-14.html'">
+                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-15/hello-world.html'">
                             <p>Section 15: Hello World!</p>
                         </div>
                     </div>
