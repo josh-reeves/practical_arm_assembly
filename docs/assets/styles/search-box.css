@@ -38,7 +38,7 @@ search-box input
 
 search-box img
 {
-    content: url("/practical_arm_assembly/assets/icons/icon_search_001_outline_001.svg");
+    content: url("/practical_arm_assembly/assets/images/icons/icon_search_001_outline_001.svg");
     border-radius: 5px;
     scale: 1.5;
     padding: 3px;

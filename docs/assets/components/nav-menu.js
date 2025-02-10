@@ -54,7 +54,7 @@ class NavMenu extends HTMLElement
                         <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/introduction/introduction.html'">
                             <p>Introduction</p>
                         </div>                        
-                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-01/fundamentals.html'">
+                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-01/mov-and-svc.html'">
                             <p>Section 01: Fundamentals</p>
                         </div>
                         <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-02/arithmetic-operations.html'">

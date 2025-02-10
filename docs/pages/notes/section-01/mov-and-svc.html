@@ -74,7 +74,9 @@
 
                 <h3>The Program Counter Register</h3>
                 <p>If the A32 code above is executed in <a href="https://cpulator.01xz.net/">CPULator</a>, the contents of the processor's registers are displayed on the left during execution. Toward the bottom of the list is a register labeled pc. This is the Program Counter register. The PC is used by the CPU to find the address of the next instruction to be executed. With each instruction executed, it's value increments by that instruction's length in bytes. In both A32 and A64, a typical instruction is 32 bits (4 bytes) in length.</p>
-                
+                <div class="illustration">
+                    <img src="/practical_arm_assembly/assets/images/pc-register.png" width="300px"></img>
+                </div>
                 <div class="a32-content">
                     <p>A32 allows the PC register to be treated as a general purpose register, meaning data can be directly written to or read from the register. This allows the flow of the program to altered via the MOV instruction (with some restrictions that our outside the scope of these notes).</p>
                 </div>
