@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Practical ARM Assembly Notes</title>
+        <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">
+        <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
+        <script src="/practical_arm_assembly/assets/scripts/eventListeners.js"></script>
+        <script src="/practical_arm_assembly/assets/components/components.js" type="module"></script>
+    </head>
+
+    <body>
+        <page-header></page-header>
+
+        <nav-menu></nav-menu>
+
+        <main>
+            <details class="content-container" open>
+                <summary><p>Shift</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
+                <p>Shift operations move the values of each bit in a register to the right or left a specified number of bits. Bits that are shifted beyond the bounds of their register fall off of the register. Their value is permanently lost and the register is padded with zeros in their place. Subsequent shifts in the opposing direction will not restore the lost value. </p>
+                <h3>Logical Shift Right</h3>
+                <p>The bits of a register can be shifted to the right with the LSR instruction. This is effectively the same as dividing the value by 2 the number of times its shifted. The LSR instruction takes three operands:</p>
+                <ol> 
+                    <li>A register to store the result of the operation.</li>
+                    <li>The register containing the binary value to be shifted.</li>
+                    <li>An immediate or register indicating how many bits the value should be shifted by.</li>
+                </ol>
+                <p>The shifted register can be the same as the destination register:</p>
+
+                <div class="a32-content">
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>lsr r0, r0, #0x12 <span class="comment">// Shifts the bits in register r0 12 bits to the right.</span></p>
+                    </div>
+                </div>
+
+                <div class="a64-content">
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>lsr x0, x0, #0x12 <span class="comment">// Shifts the bits in register x0 12 bits to the right.</span></p>
+                    </div>
+                </div>
+                
+                <h3>Logical Shift Left</h3>
+                <p>The bits of a register can be shifted to the left with the LSL instruction. This is effectively the same as multiplying the value by 2 the number of times its shifted The LSL instruction takes three operands:</p>
+                <ol>
+                    <li>A register to store the result of the operation.</li>
+                    <li>The register containing the binary value to be shifted.</li>
+                    <li>An immediate or register indicating how many bits the value should be shifted by.</li>
+                </ol>
+                <p>The shifted register can be the same as the destination register:</p>
+
+                <div class="a32-content">
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>lsl r0, r0, #0x12 <span class="comment">// Shifts the bits in register r0 12 bits to the left.</span></p>
+                    </div>
+                </div>
+
+                <div class="a64-content">
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>lsl x0, x0, #0x12 <span class="comment">// Shifts the bits in register x0 12 bits to the left.</span></p>
+                    </div>
+                </div>
+
+                <h3>Arithmetic Shift Right</h3>
+                <p>Like the LSR instruction, the Arithmetic Shift Right (ASR) instruction shifts the bits in a register to the right the specified number of times. Unlike the other shift operations, however, the Arithmetic shift pads the register with the value of the sign bit. As explained is Section 5, digital systems that uses two's complement to represent negative values interpret a binary value's sign from its most significant bit. This means that, were the value to be shifted to the right and padded with zeros, the sign bit would be lost:</p>
+                <div class="illustration">
+                    <p class="emphasized">The binary value -23 being shifted one bit to the right via the LSR instruction:</p>
+                    <div class="codebox">
+                        <copy-button></copy-button>
+                        <p class="centered">11111111111111111111111110111011</p>
+                        <hr>
+                        <p class="centered">01111111111111111111111111011101</p>
+                    </div>
+                </div>
+                <p>To address this, the Arithmetic Shift Right instruction pads the register with the value from the most significant digit in order to preserve the value's sign:</p>
+                <div class="illustration">
+                    <p class="emphasized">The binary value -23 being shifted one bit to the right via the ASR instruction. Note that the sign bit is maintained:</p>
+                    <div class="codebox">
+                        <copy-button></copy-button>
+                        <p class="centered">11111111111111111111111110111011</p>
+                        <hr>
+                        <p class="centered">11111111111111111111111111011101</p>
+                    </div>
+                </div>
+                <p>The ASR instruction takes three operands:</p>
+                <ol>
+                    <li>A register to store the result of the operation.</li>
+                    <li>The register containing the binary value to be shifted.</li>
+                    <li>An immediate or register indicating how many bits the value should be shifted by.</li>
+                </ol>
+                <p>The shifted register can be the same as the destination register:</p>    
+
+                <div class="a32-content">
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>asr r0, r0, #0x12 <span class="comment">// Shifts the bits in register r0 12 bits to the right, padding the register with the sign bit.</span></p>
+                    </div>
+                </div>
+
+                <div class="a64-content">
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>asr x0, x0, #0x12 <span class="comment">// Shifts the bits in register r0 12 bits to the right, padding the register with the sign bit.</span></p>
+                    </div>
+                </div>
+
+            </details>
+
+            <details class="content-container" open>
+                <summary><p>Rotate</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
+                <p>Rotation operations also move the value of each bit in a register. Unlike shift operations, however, bits that are shifted beyond the bounds of the register on one end are moved around (i.e. rotated) to the other end of the register.</p>
+                <h3>Rotate Right</h3>
+                <p>The bits of a register can be rotated to the right with the Rotate Right (ROR) instruction. The ror instruction takes three operands:</p>
+                <ol>
+                    <li>A register to store the result of the operation.</li>
+                    <li>The register containing the binary value to be rotated.</li>
+                    <li>An immediate or register indicating how many bits the value should be rotated by.</li>
+                </ol>
+                <p>The rotated register can be the same as the destination register:</p>
+
+                <div class="a32-content">
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>ror r0, r0, #0x12 <span class="comment">// Shifts the bits in register r0 12 bits to the right and stores the result in r0.</span></p>
+                    </div>    
+                </div>
+
+                <div class="a64-content">
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>ror x0, x0, #0x12 <span class="comment">// Shifts the bits in register x0 12 bits to the right and stores the result in x0.</span></p>
+                    </div>    
+                </div>
+                <p>Because any rotation to the left can be accomplished via a sufficient number of rotations to the right, ARM assembly does not provide a separate rotate left instruction.</p>
+            </details>
+            
+            <details class="content-container" open>
+                <summary><p>Summary</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
+                <h3>Instructions</h3>
+                <div class="a32-content">
+                    <ul>
+                        <li><a href="https://developer.arm.com/documentation/dui0801/g/A32-and-T32-Instructions/LSR">LSR(S), rD, rN, [rM/#Imm]</a></li>
+                        <ul>
+                            <li>Shifts the value stored in register rN to the right by the number of bytes specified by rM/#Imm and stores the result in rD.</li>
+                            <li>Pads the register with zeros.</li>
+                        </ul>
+                        <li><a href="https://developer.arm.com/documentation/dui0801/g/A32-and-T32-Instructions/LSL">LSL(S), rD, rN, [rM/#Imm]</a></li>
+                        <ul>
+                            <li>Shifts the value stored in register rN to the left by the number of bytes specified by rM/#Imm and stores the result in rD.</li>
+                            <li>Pads the register with zeros.</li>
+                        </ul>
+                        <li><a href="https://developer.arm.com/documentation/dui0801/g/A32-and-T32-Instructions/ASR">ASR(S), rD, rN, [rM/#Imm]</a></li>
+                        <ul>
+                            <li>Shifts the value stored in register rN to the left by the number of bytes specified by rM/#Imm and stores the result in rD.</li>
+                            <li>Pads the register with the value from the sign bit.</li>
+                        </ul>
+                        <li><a href="//developer.arm.com/documentation/dui0801/g/A32-and-T32-Instructions/ROR">ROR(S) rD, rN, [rM/#Imm]</a></li>
+                        <ul>
+                            <li>Rotates the value stored in register rN to the right by the number of bytes specified by rM/#Imm and stores the result in rD.</li>
+                        </ul>
+                    </ul>
+                </div>
+
+                <div class="a64-content">
+                    <ul>
+                        <li><a href="https://developer.arm.com/documentation/dui0801/l/A64-General-Instructions/LSR--immediate---A64-">LSR, xD, xN, [xM/#Imm]</a></li>
+                        <ul>
+                            <li>Shifts the value stored in register xN to the right by the number of bytes specified by xM/#Imm and stores the result in xD.</li>
+                            <li>Pads the register with zeros.</li>
+                        </ul>
+                        <li><a href="https://developer.arm.com/documentation/dui0801/l/A64-General-Instructions/LSL--immediate---A64-">LSL, xD, xN, [xM/#Imm]</a></li>
+                        <ul>
+                            <li>Shifts the value stored in register xN to the left by the number of bytes specified by xM/#Imm and stores the result in xD.</li>
+                            <li>Pads the register with zeros.</li>
+                        </ul>
+                        <li><a href="https://developer.arm.com/documentation/dui0801/l/A64-General-Instructions/ASR--immediate---A64-">ASR, xD, xN, [xM/#Imm]</a></li>
+                        <ul>
+                            <li>Shifts the value stored in register xN to the left by the number of bytes specified by xM/#Imm and stores the result in xD.</li>
+                            <li>Pads the register with the value from the sign bit.</li>
+                        </ul>
+                        <li><a href="https://developer.arm.com/documentation/dui0801/l/A64-General-Instructions/ROR--immediate---A64-">ROR xD, xN, [xM/#Imm]</a></li>
+                        <ul>
+                            <li>Rotates the value stored in register xN to the right by the number of bytes specified by xM/#Imm and stores the result in xD.</li>
+                        </ul>
+                    </ul>
+                </div>
+                <h3>Examples</h3>
+                <div class="a32-content">
+                    <ul>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/section-06/a32/lsr.s">LSR</a></li>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/section-06/a32/lsl.s">LSL</a></li>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/section-06/a32/asr.s">ASR</a></li>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/section-06/a32/ror.s">ROR</a></li>
+                    </ul>
+                </div>
+
+                <div class="a64-content">
+                    <ul>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/section-06/a64/lsr.s">LSR</a></li>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/section-06/a64/lsl.s">LSL</a></li>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/section-06/a64/asr.s">ASR</a></li>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/section-06/a64/ror.s">ROR</a></li>
+                    </ul>
+
+                </div>
+            </details>
+
+            <hr class="page-end"/>
+            <nav-button href="/practical_arm_assembly/pages/notes/section-04/signed-number-conversion.html" class="prev">Lesson 04: Signed Number Conversion</nav-button>
+            <nav-button href="/practical_arm_assembly/pages/notes/section-06/cpsr.html" class="next">Lesson 06: The CPSR</button>    
+        </main>
+    </body>
+</html>

@@ -16,41 +16,6 @@
 
         <main>
             <details class="content-container" open>
-                <summary><p>Processor Architecture Explained Like I'm Five</p></summary>
-                <p>At a very general level, a processor can be thought of as a group of circuits used to perform basic operations and communicate with each other. These operations usually include basic arithmetic, logical comparisons, memory access, etc.</p>     
-                <p>Each of these circuits has a series of components capable of carrying a charge. These charges are used to represent numbers in a binary format, with the lack of a charge indicating a 0 and the presence of a charge indicating a 1. We refer to these as bits. The number of charges the components in the processor can work with at one time determine the processor's "bit-ness" (i.e. 32-bit, 64-bit, etc.).</p>
-                <h3>Understanding Binary</h3>
-                <p>The most common system for writing numbers in the world is base-10. This means that there are ten distinct glyphs capable of representing a value: 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9. Once these glyphs have been exhausted, larger numbers are represented by placing a new digit to the left of the current number and rolling the existing digits back to 0. This process is then repeated, with the new digit representing the number of times the cycle has completed. Additional digits are added to the total number as needed, with each place ultimately increasing in value by a power of ten.</p>
-                <p>The Binary number system works in exactly the same way, but instead of providing ten distinct glyphs, it only provides two: 0 and 1. Because of this, the digits in the binary number system increase by powers of two instead of powers of ten:</p>
-                    <div class="illustration">
-                        <table class="content-table">
-                            <tr>
-                                <th>Binary</th>
-                                <th>Decimal</th>
-                            </tr>
-                            <tr>
-                                <td>00000000</td>
-                                <td>0</td>
-                            </tr>
-                            <tr>
-                                <td>00000001</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>00000010</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td>00000011</td>
-                                <td>3</td>
-                            </tr>
-                    
-                        </table>
-                    </div>
-    
-            </details>
-
-            <details class="content-container" open>
                 <summary><p>Creating an Assembly Source File</p></summary>
                 <p>ARM assembly is organized into labels: Symbolic references to the memory address of an instruction or piece of data. In order to create an executable program, the symbol representing the program's entry point must be made available to other software. This can be done using the ".global" directive. A directive is a special instruction that controls the assembly process.</p>
                 <p>The associated examples use the label "_start" as their entry point. The following code is used at the beginning of each example to export the label using the .global directive:</p>
@@ -76,8 +41,7 @@
                     <p>A32 Provides access to the following registers:</p>
                     <ul>
                         <li>13 general purpose registers: r0 - r12.</li>
-                        <li>2 registers that perform a special function but can be manipulated in the same manner as general purpose registers and used as such: lr and sp.</li>
-                        <li>1 program counter (pc) register.</li>
+                        <li>3 registers that perform a special function but can be manipulated in the same manner as general purpose registers and used as such: pc, lr and sp.</li>
                         <li>1 application program status register (apsr/cpsr).</li>
                     </ul>
                     <p>The MOV instruction can be used to store a value in one of the general purpose registers. In order to invoke the instruction, it's keyword, or mnemonic, is used along with a series and operands. The MOV instruction takes two operands: The first is the register in which the value will be stored. The second can either be another register, in which case the value stored in that register will be used, or an immediate: A numerical constant denoted with an octothorpe.</p>
@@ -108,6 +72,21 @@
                     </div>
                 </div>
 
+                <h3>The Program Counter Register</h3>
+                <p>If the A32 code above is executed in <a href="https://cpulator.01xz.net/">CPULator</a>, the contents of the processor's registers are displayed on the left during execution. Toward the bottom of the list is a register labeled pc. This is the Program Counter register. The PC is used by the CPU to find the address of the next instruction to be executed. With each instruction executed, it's value increments by that instruction's length in bytes. In both A32 and A64, a typical instruction is 32 bits (4 bytes) in length.</p>
+                
+                <div class="a32-content">
+                    <p>A32 allows the PC register to be treated as a general purpose register, meaning data can be directly written to or read from the register. This allows the flow of the program to altered via the MOV instruction (with some restrictions that our outside the scope of these notes).</p>
+                </div>
+
+                <div class="a64-content">
+                    <p>Unlike A32, A64 does not allow the PC register to be directly accessed. To obtain the current value of the PC register, the following command can be used:</p>
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>ADR xD, .</p>
+                    </div>
+                    <p>The ADR command stores the address of an instruction in xD. The "." operand represents "here," which causes the command to return the address of the current instruction. A64 does not allow the PC register to be directly written to.</p>
+                </div>
             </details>
 
             <details class="content-container" open>
@@ -191,22 +170,15 @@
 
             <details class="content-container" open>
                 <summary><p>Summary</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
-                <br>
-                <h3>Concepts</h3>
-                <ul>
-                    <li>Assembly source file layout.</li>
-                    <li>Storing values with registers.</li>
-                    <li>Making service calls by invoking system interrupts.</li>
-                    <li>Program assembly and execution.</li>
-                </ul>
+                <p>Assembly source files are organized into labels containing the program's data and instructions. Instructions can be used to store a value in a register: A small storage location built directly into the processor. The PC register is used to track the address of the next instruction to execute. When an assembly program is done executing, the SVC instruction can be used to exit the program gracefully.</p>
                 <h3>Instructions</h3>
                 <div class="a32-content">
                     <ul>
-                        <li><a href="https://developer.arm.com/documentation/ddi0406/c/Application-Level-Architecture/Instruction-Details/Alphabetical-list-of-instructions/MOV--immediate-">MOV(S) Rd, #const / Rm</a> </li>
+                        <li><a href="https://developer.arm.com/documentation/ddi0406/c/Application-Level-Architecture/Instruction-Details/Alphabetical-list-of-instructions/MOV--immediate-">MOV(S) rD, [rM/#Imm]</a> </li>
                         <ul>
                             <li>Stores the value specified by #const or contained in register Rm in register Rd.</li>
                         </ul>
-                        <li><a href="https://developer.arm.com/documentation/ddi0406/cb/Application-Level-Architecture/Instruction-Details/Alphabetical-list-of-instructions/SVC--previously-SWI-?lang=en">SVC #const</a></li>
+                        <li><a href="https://developer.arm.com/documentation/ddi0406/cb/Application-Level-Architecture/Instruction-Details/Alphabetical-list-of-instructions/SVC--previously-SWI-?lang=en">SVC #Imm</a></li>
                         <ul>
                             <li>Switches the CPU into supervisor mode. Used to request services from the operating system.</li>
                             <li>The service requested is determined by the value stored in register r7.</li>
@@ -217,9 +189,9 @@
 
                 <div class="a64-content">
                     <ul>
-                        <li><a href="https://developer.arm.com/documentation/100069/0609/A64-General-Instructions/MOV--wide-immediate-">MOV(S) Xd, #const / Xm</a> </li>
+                        <li><a href="https://developer.arm.com/documentation/100069/0609/A64-General-Instructions/MOV--wide-immediate-">MOV(S) xD, [xM, #Imm]</a> </li>
                         <ul>
-                            <li>Stores the value specified by #const or contained in register Xm in register Xd.</li>
+                            <li>Stores the value specified by #const or contained in register Xm in register xD.</li>
                         </ul>
                         <li><a href="https://developer.arm.com/documentation/100069/0609/A64-General-Instructions/SVC">SVC #const</a></li>
                         <ul>
@@ -240,8 +212,8 @@
             </details>
 
             <hr class="page-end"/>
-            <nav-button href="/practical_arm_assembly/pages/lessons/introduction/introduction.html" class="prev">Introduction</nav-button>
-            <nav-button href="/practical_arm_assembly/pages/lessons/lesson-02/lesson-02.html" class="next">Arithmetic Operations</button>    
+            <nav-button href="/practical_arm_assembly/pages/notes/introduction/introduction.html" class="prev">Introduction</nav-button>
+            <nav-button href="/practical_arm_assembly/pages/notes/section-02/arithmetic-operations.html" class="next">Arithmetic Operations</button>    
 
         </main>
 

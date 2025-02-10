@@ -425,7 +425,7 @@ table.content-table
     border-collapse: collapse;
     width: 100%;
     table-layout: fixed;
-
+    
 }
 
 table.content-table th
@@ -437,6 +437,9 @@ table.content-table th
     padding: 15px; 
     border: 1.5px solid #18181B;
     background-color: #E4E4E7;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
 
 }
 
@@ -448,6 +451,15 @@ table.content-table td
     padding: 15px; 
     margin-left: 10px;
     border: 1.5px solid #18181B;
+    overflow: hidden;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    
+}
+
+table.content-table tr.centered
+{
+    text-align: center;
 
 }
 
