@@ -18,16 +18,16 @@ _start:
 	/* The subs command is used to subract the value stored in r1 from the value
 	 * stored in r0. the inclusion of the 's' flag results in the cpsr being
 	 * updated based on the result:*/
-	subs r0, r1
+	subs r0, r0, r1
 
-	/* The below just moves the value from the CPSR register into r0 and shifts
-	 * it so that bits 29, 30 and 31 are the rightmost bits and appear in the
-	 * exit code:*/
-	mrs r0, cpsr 
+	/* The below moves the value from the CPSR register into r0 and shifts it so
+         * that bits 29, 30 and 31 are the rightmost bits and appear in the exit 
+	 * code:*/
+	mrs r0, cpsr
 
-	lsr r0, #0x1D 
+	lsr r0, #0x1D
 
 	mov r7, #0x1
 	swi 0
-	
+
 
