@@ -376,6 +376,12 @@ div.codebox p
 
 }
 
+div.codebox p.indented
+{
+    padding-left: 45px;
+
+}
+
 div.codebox p.centered
 {
     text-align: center;
@@ -460,6 +466,25 @@ table.content-table td
 table.content-table tr.centered
 {
     text-align: center;
+
+}
+
+table.content-table tr.code td
+{
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+table.content-table tr.tiny-text td, tr.tiny-text th
+{
+    font-size: 1.75ch;
+    padding-inline: 5px;
+
+}
+
+table.content-table tr.tiny-text th:active
+{
+    width: 100%;
 
 }
 
