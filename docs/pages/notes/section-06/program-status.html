@@ -2,10 +2,10 @@
 <html>
     <head>
         <title>Practical ARM Assembly Notes</title>
-        <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">
-        <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
-        <script src="/practical_arm_assembly/assets/scripts/eventListeners.js"></script>
         <script src="/practical_arm_assembly/assets/components/components.js" type="module"></script>
+        <script src="/practical_arm_assembly/assets/scripts/eventListeners.js"></script>
+        <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
+        <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">
     </head>
 
     <body>
@@ -56,54 +56,7 @@
                     <p>For more information regarding the process state fields, refer to the <a href="https://developer.arm.com/documentation/100076/0100/Instruction-Set-Overview/Overview-of-AArch64-state/Process-State?lang=en">official documentation</a>.</p>
                 </div>
             </details>
-
-            <details class="content-container" open>
-                <summary><p>Updating the CPSR</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
-                <p>It's important to note that many instructions do not update the current program's status by default. Instead, the A32 and A64 ISAs provide optional methods for indicating that the program's state should be updated based on the result of an operation. While often similar in practice, the implementation of these methods is slightly different:</p>
-                <div class="a32-content">
-                    <h3>The S Flag</h3>
-                    <p>A32 instructions capable of updating the CPSR based on their result include an optional S flag. Including the flag at the end of an eligible instruction indicates that the CPSR should be updated based on that instruction's result:</p>
-                    <div class="illustration codebox">
-                        <copy-button></copy-button>
-                        <p>adds r0, r0, r1 <span class="comment">Adds the values in r0 and r1 and stores the sum in r0, updating CPSR as needed.</span></p>
-                    </div>
-                    <p>Instructions eligible for use with the S flag are notated throughout these notes with the letter S in parentheses: (S).</p>
-                </div>
-
-                <div class="a64-content">
-                    <h3>Flag-Setting Instructions</h3>
-                    <p>Rather than providing an optional flag for each instruction indicating whether it should update the process state fields, the A64 ISA provides alternate instructions for this purpose. These instructions perform the same operation as their non flag-setting counterparts, updating the process state fields as needed:</p>
-                    <div class="illustration codebox">
-                        <copy-button></copy-button>
-                        <p>adds r0, r0, r1 <span class="comment">Adds the values in r0 and r1 and stores the sum in r0, updating the process state fields as needed.</span></p>
-                    </div>
-                    <p>Due to the similarities in presentation, instructions that have an alternate version capable of updating flags are presented in the same manner as the A32 ISA: With the S character in parentheses: (S).</p>
-                </div>
-
-                <h3>Move to Special Register</h3>
-                <p>The A32 and A64 ISAs also allows the program's state to be updated with the MSR (Move to System Register) instruction. The MSR instruction takes two operands:</p>
-                <ol>
-                    <li>The name of the system register to write to.</li>
-                    <li>An immediate value or a register containing the value to write to the system register.</li>
-                </ol>
-                <div class="a32-content">
-                    <p>The code below updates the N, Z, C, and V fields of the CPSR:</p>
-                    <div class="illustration codebox">
-                        <copy-button></copy-button>
-                        <p>msr cpsr, #0b11110000000000000000000000000000</p>
-                    </div>
-                </div>
-
-                <div class="a64-content">
-                    <p>For consistency, the N, Z, C and V state fields occupy the same position in their respective register as the position of their A32 counterparts in the CPSR. Because of the format in which the A64 instruction expects constant values to be provided, however, it's easiest to move the new value into another register first and copy it from there. The below updates the NZCV state fields via their register:</p>
-                    <div class="illustration codebox">
-                        <copy-button></copy-button>
-                        <p>mov x0, #0b11110000000000000000000000000000</p>
-                        <p>msr nzcv, x0</p>
-                    </div>
-                </div>
-            </details>
-
+            
             <details class="content-container" open>
                 <summary><p>Reading the Program's State</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
                 <div class="a32-content">
@@ -134,6 +87,53 @@
             </details>
 
             <details class="content-container" open>
+                <summary><p>Updating the CPSR</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
+                <p>It's important to note that many instructions do not update the current program's status by default. Instead, the A32 and A64 ISAs provide optional methods for indicating that the program's state should be updated based on the result of an operation. While often similar in practice, the implementation of these methods is slightly different:</p>
+                <div class="a32-content">
+                    <h3>The S Flag</h3>
+                    <p>A32 instructions capable of updating the CPSR based on their result include an optional S flag. Including the flag at the end of an eligible instruction indicates that the CPSR should be updated based on that instruction's result:</p>
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>subs r0, r0, r1 <span class="comment">Subtracts the values in r0 and r1 and stores the result in r0, updating CPSR as needed.</span></p>
+                    </div>
+                    <p>Instructions eligible for use with the S flag are notated throughout these notes with the letter S in parentheses: (S).</p>
+                </div>
+
+                <div class="a64-content">
+                    <h3>Flag-Setting Instructions</h3>
+                    <p>Rather than providing an optional flag for each instruction indicating whether it should update the process state fields, the A64 ISA provides alternate instructions for this purpose. These instructions perform the same operation as their non flag-setting counterparts, updating the process state fields as needed:</p>
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>subs r0, r0, r1 <span class="comment">Subtracts the values in r0 and r1 and stores the result in r0, updating the process state fields as needed.</span></p>
+                    </div>
+                    <p>Due to the similarities in presentation, instructions that have an alternate version capable of updating flags are presented in the same manner as the A32 ISA: With the S character in parentheses: (S).</p>
+                </div>
+
+                <h3>Move to Special Register</h3>
+                <p>The A32 and A64 ISAs also allows the program's state to be updated with the MSR (Move to System Register) instruction. The MSR instruction takes two operands:</p>
+                <ol>
+                    <li>The name of the system register to write to.</li>
+                    <li>An immediate value or a register containing the value to write to the system register.</li>
+                </ol>
+                <div class="a32-content">
+                    <p>The code below updates the N, Z, C, and V fields of the CPSR:</p>
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>msr cpsr, #0b11110000000000000000000000000000</p>
+                    </div>
+                </div>
+
+                <div class="a64-content">
+                    <p>For consistency, the N, Z, C and V state fields occupy the same position in their respective register as the position of their A32 counterparts in the CPSR. Because of the format in which the A64 instruction expects constant values to be provided, however, it's easiest to move the new value into another register first and copy it from there. The below updates the NZCV state fields via their register:</p>
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>mov x0, #0b11110000000000000000000000000000</p>
+                        <p>msr nzcv, x0</p>
+                    </div>
+                </div>
+            </details>
+
+            <details class="content-container" open>
                 <summary><p>Summary</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
                 <div class="a32-content">
                     <p>The variety of conditions that arise during the execution of a program are referred to as it's state. This state is tracked in CPSR so it can be to control program flow. The CPSR can be manually updated or retrieved.</p>
@@ -149,10 +149,14 @@
                         </ul>
                     </ul>
                     <h3>Examples</h3>
+                    <ul>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/section-06/a32/s-flag.s">S Flags</a></li>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/section-06/a32/msr.s"></a>Move to Special Register</li>
+                    </ul>
                 </div>
 
                 <div class="a64-content">
-                    <p>The variety of conditions that arise during the execution of a program are referred to as it's state. This state is tracked in CPSR so it can be used to control program flow. The CPSR can be manually updated or retrieved.</p>
+                    <p>The variety of conditions that arise during the execution of a program are referred to as it's state. This state is tracked in a variety of Program State Fields so it can be used to control program flow. The Program State Fields can be manually updated or retrieved.</p>
                     <h3>Instructions</h3>
                     <ul>
                         <li><a href="https://developer.arm.com/documentation/dui0801/l/A64-General-Instructions/MRS--A64-">MRS PSR, [xM/#Imm]</a></li>
@@ -165,9 +169,15 @@
                         </ul>
                     </ul>
                     <h3>Examples</h3>
+                    <ul>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/section-06/a64/s-inst.s">Flag Setting Instructions</a></li>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/section-06/a64/msr.s"></a>Move to Special Register</li>
+                    </ul>
                 </div>
             </details>
-            
+            <hr class="page-end"/>
+            <nav-button href="/practical_arm_assembly/pages/notes/section-04/signed-number-conversion.html" class="prev">Lesson 05: Shift and Rotate</nav-button>
+            <nav-button href="/practical_arm_assembly/pages/notes/section-06/program-status.html" class="next">Lesson 07: CMP</button>    
         </main>
     </body>
 </html>
