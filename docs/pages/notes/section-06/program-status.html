@@ -2,10 +2,10 @@
 <html>
     <head>
         <title>Practical ARM Assembly Notes</title>
+        <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">    
         <script src="/practical_arm_assembly/assets/components/components.js" type="module"></script>
         <script src="/practical_arm_assembly/assets/scripts/eventListeners.js"></script>
         <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
-        <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">
     </head>
 
     <body>
@@ -31,14 +31,25 @@
                             </tr>
                         </table>
                     </div>
-                    <p>Notable fields of the CPSR include:</p>
-                    <ol reversed start="31">
-                        <li>The Negative (N) flag is set to the most significant bit of the result of the last flag-setting instruction. If the result was a negative value, the flag is set to 1. Otherwise, it is set to 0.</li>
-                        <li>The Zero (Z) flag is set to 1 whenever a flag-setting operation results in a value of 0.</li>
-                        <li>The Carry (C) flag is set to 1 whenever the last flag-setting operation results in a carry condition (e.g. Unsigned addition that results in a value that overflows the register).</li>
-                        <li>The Overflow (V) flag is set to 1 whenever the last flag-setting operation results in an overflow condition, but not a carry condition (e.g. A signed overflow on an addition).</li>
+                    <p>The CPSR contains the following:</p>
+                    <ul>
+                        <li>The APSR flags.</li>
+                        <li>Current instruction set state.</li>
+                        <li>The execution state bits for the Thumb If-Then instruction.</li>
+                        <li>Current endianness.</li>
+                        <li>Current processor mode.</li>
+                        <li>Interrupt and asynchronous abort disable bits.</li>
+                    </ul>
+                    <h3>The APSR</h3>
+                    <p>In order to ensure consistent behavior and protect the integrity of the values in the CPSR, the A32 ISA provides protected access to the most commonly needed condition flags via the APSR (Application Program Status Register). The APSR masks the bits of the CPSR that do not include these conditions. The condition flags included in the APSR can be found below:</p>
+                    <ol class="bits">
+                        <li>N - Negative condition flag. Set to 1 if an instruction results in a negative integer represented with two's complement. Otherwise set to 0.</li>
+                        <li>Z - Zero condition flag. Set to 1 if an instruction results in a value of 0. Otherwise set to 0.</li>
+                        <li>C - Carry condition flag. Set to 1 if an instruction results in a carry condition.</li>
+                        <li>V - Overflow condition flag. Set to 1 if an instruction results in an overflow condition.</li>
+                        <li>Q - Set to 1 to indicate that overflow or saturation occurred in some instructions.</li>
+                        <li class="asprge">Greater than or Equal flags.</li>
                     </ol>
-                    <p>For more information regarding the fields of the CPSR, refer to the <a href="https://developer.arm.com/documentation/ddi0601/2024-12/AArch32-Registers/CPSR--Current-Program-Status-Register">official documentation</a>.</p>
                 </div>
 
                 <div class="a64-content">
@@ -65,10 +76,10 @@
                         <li>The general-purpose register into which the contents of the specified program status register (PSR) will be copied.</li>
                         <li>The PSR to copy the contents from.</li>
                     </ol>
-                    <p>The below copies the contents of the CPSR into register r0:</p>
+                    <p>The A32 recommends accessing the condition flags of the CPSR via the APSR. The below copies the contents of the APSR into register r0:</p>
                     <div class="illustration codebox">
                         <copy-button></copy-button>
-                        <p>msr r0, cpsr</p>
+                        <p>msr r0, apsr</p>
                     </div>
                 </div>
 
@@ -116,10 +127,10 @@
                     <li>An immediate value or a register containing the value to write to the system register.</li>
                 </ol>
                 <div class="a32-content">
-                    <p>The code below updates the N, Z, C, and V fields of the CPSR:</p>
+                    <p>The A32 recommends updating the condition flags for the CPSR via the APSR:</p>
                     <div class="illustration codebox">
                         <copy-button></copy-button>
-                        <p>msr cpsr, #0b11110000000000000000000000000000</p>
+                        <p>msr apsr, #0b11110000000000000000000000000000</p>
                     </div>
                 </div>
 

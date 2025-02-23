@@ -495,3 +495,35 @@ hr.page-end
     margin-top: 32px;
     
 }
+
+
+ol.bits
+{
+    list-style-type: none;
+
+    flex-flow: row;
+    content: "Bit: ";
+    counter-reset: bitcounter 32; 
+}
+
+ol.bits li::before
+{
+    font-family: robotomedium;
+    font-weight: light;
+    line-height: 1.5;
+
+    content: "Bit " counter(bitcounter) ".";
+    counter-increment: bitcounter -1;
+    padding-right: 5px;
+
+}
+
+ol.bits li.asprge::before
+{
+    font-family: robotomedium;
+    font-weight: light;
+    line-height: 1.5;
+
+    content: "Bits 19-16."
+
+}

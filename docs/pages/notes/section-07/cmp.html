@@ -2,9 +2,10 @@
 <html>
     <head>
         <title>Practical ARM Assembly Notes</title>
-        <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">
-        <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
+        <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">    
         <script src="/practical_arm_assembly/assets/components/components.js" type="module"></script>
+        <script src="/practical_arm_assembly/assets/scripts/eventListeners.js"></script>
+        <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
     </head>
 
     <body>
@@ -13,7 +14,37 @@
         <nav-menu></nav-menu>
 
         <main>
-            
+            <details class="content-container" open>
+                <summary><p>Compare</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
+                <div class="a32-content">
+                    <p>As explained in the previous section, the program's status is stored in the APSR/CPSR. This status can be updated with various instructions and then used for conditional execution. The Compare (CMP) instruction uses subtraction to determine which is the greater of two values and updates the fields of the APSR based on the result. It takes two operands:</p>
+                    <ol>
+                        <li>A register containing the value to use as the minuend.</li>
+                        <li>The immediate or register to use as the subtrahend.</li>
+                    </ol>
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>mov r0, #0x30 <span class="comment">Moves the value 48 into register r0.</span></p>
+                        <p>cmp r0, #0x43 <span class="comment">Compares the value stored in register r0 with the immediate value 67.</span></p>
+                    </div>
+                </div>
+
+                <div class="a64-content">
+                    <p>As explained in the previous section, the program's status is stored in a series of Process State Fields. This status can be updated with various instructions and then used for conditional execution. The Compare (CMP) instruction uses subtraction to determine which is the greater of two values and updates the condition flags based on the result. It takes two operands:</p>
+                    <ol>
+                        <li>A register containing the value to use as the minuend.</li>
+                        <li>The immediate or register to use as the subtrahend.</li>
+                    </ol>
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>mov x0, #0x30 <span class="comment">Moves the value 48 into register x0.</span></p>
+                        <p>cmp x0, #0x43 <span class="comment">Compares the value stored in register x0 with the immediate value 67.</span></p>
+                    </div>
+                </div>
+            </details>
+            <hr class="page-end"/>
+            <nav-button href="/practical_arm_assembly/pages/notes/section-03/logical-operators.html" class="prev">Lesson 03: Logical Operators</nav-button>
+            <nav-button href="/practical_arm_assembly/pages/notes/section-05/shift-and-rotate.html" class="next">Lesson 05: Shift and Rotate</button>      
         </main>
     </body>
 </html>
