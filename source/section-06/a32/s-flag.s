@@ -23,7 +23,7 @@ _start:
 	/* The below moves the value from the CPSR register into r0 and shifts it so
          * that bits 29, 30 and 31 are the rightmost bits and appear in the exit 
 	 * code:*/
-	mrs r0, cpsr
+	mrs r0, apsr
 
 	lsr r0, #0x1D
 

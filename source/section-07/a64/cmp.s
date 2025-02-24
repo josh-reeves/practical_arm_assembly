@@ -22,22 +22,19 @@ _start:
 	 *			C [29], are both set to 1.*/
 
 	// Moves the value 3 (00000000000000000000000000000011) into register r0:
-	mov r0, #0x30 
+	mov x0, #0x30 
 
 	/* The below compares the value store in r0 (3) to the value 5 to determine
 	 * which is greater. This comparison is done by subtracting the provided value 
 	 * from the value in the first register:*/
-	cmp r0, #0x43
+	cmp x0, #0x43
 
-	/* The below just moves the value from the CPSR register into r0 and shifts
-	 * it so that bits 29, 30 and 31 are the rightmost bits and appear in the
-	 * exit code:*/
-	mrs r0, apsr
+	mrs x0, nzcv
 
 	/* Because the N flag was set to 1 before the shift, this will be 8 in
 	 * decimal:*/
-	lsr r0, #0x1C
+	lsr x0, x0, #0x1c
 
-	mov r7, #0x1
+	mov x8, #0x5d
 	svc 0
 
