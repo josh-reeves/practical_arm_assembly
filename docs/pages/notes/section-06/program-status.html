@@ -16,7 +16,7 @@
         <main>
             <details class="content-container" open>
                 <summary><p>Tracking the Program's State</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
-                <p>The execution of a program's instructions inherently result in a variety of logical conditions and execution parameters. These conditions are referred to as the program's state. The processor can use this information to control the program's flow and behavior as needed. The ARM ISAs provide a variety of manners for tracking and updating this information.</p>
+                <p>The execution of a program's instructions inherently result in a variety of logical conditions and execution parameters. These conditions are referred to as the program's state. The processor can use this information to control the program's flow and behavior. The ARM ISAs provide a variety of manners for tracking and updating this information.</p>
                 <div class="a32-content">
                     <h3>The Current Program Status Register</h3>
                     <p>The A32 ISA tracks the program's state in a special register referred to as the Current Program Status Register (CPSR). The CPSR is a 32-bit register where the bits act as a series of fields representing the program's state.</p>
@@ -33,23 +33,25 @@
                     </div>
                     <p>The CPSR contains the following:</p>
                     <ul>
-                        <li>The APSR flags.</li>
-                        <li>Current instruction set state.</li>
+                        <li>The condition flags.</li>
+                        <li>The current instruction set state.</li>
                         <li>The execution state bits for the Thumb If-Then instruction.</li>
-                        <li>Current endianness.</li>
-                        <li>Current processor mode.</li>
+                        <li>The current endianness.</li>
+                        <li>The current processor mode.</li>
                         <li>Interrupt and asynchronous abort disable bits.</li>
                     </ul>
-                    <h3>The APSR</h3>
-                    <p>In order to ensure consistent behavior and protect the integrity of the values in the CPSR, the A32 ISA provides protected access to the most commonly needed condition flags via the APSR (Application Program Status Register). The APSR masks the bits of the CPSR that do not include these conditions. The condition flags included in the APSR can be found below:</p>
+                    <h3>The Condition Flags</h3>
+                    <p>The condition flags allow instructions to be optionally executed based on the results of other instructions:</p>
                     <ol class="bits">
                         <li>N - Negative condition flag. Set to 1 if an instruction results in a negative integer represented with two's complement. Otherwise set to 0.</li>
                         <li>Z - Zero condition flag. Set to 1 if an instruction results in a value of 0. Otherwise set to 0.</li>
                         <li>C - Carry condition flag. Set to 1 if an instruction results in a carry condition.</li>
                         <li>V - Overflow condition flag. Set to 1 if an instruction results in an overflow condition.</li>
                         <li>Q - Set to 1 to indicate that overflow or saturation occurred in some instructions.</li>
-                        <li class="asprge">Greater than or Equal flags.</li>
+                        <li class="asprge">GE - Greater than or Equal flags.</li>
                     </ol>
+                    <h3>The APSR</h3>
+                    <p>In order to ensure consistent behavior and protect the integrity of the values in the CPSR, the A32 ISA provides protected access to the condition flags via the APSR (Application Program Status Register). The APSR masks the bits of the CPSR that do not include these conditions.</p>
                 </div>
 
                 <div class="a64-content">
@@ -63,7 +65,15 @@
                         <li>Current exception level (EL)</li>
                         <li>Single step process state bit (SS)</li>
                         <li>Illegal exception return state bit (IL)</li>
-                    </ul>    
+                    </ul>
+                    <h3>The Condition Flags</h3>
+                    <p>Condition flags allow instructions to be optionally executed based on the results of other instructions. A64 stores the NZCV flags in their own register that is considered part of the Process State. The available condition flags include:</p>
+                    <ol class="bits">
+                        <li>N - Negative condition flag. Set to 1 if an instruction results in a negative integer represented with two's complement. Otherwise set to 0.</li>
+                        <li>Z - Zero condition flag. Set to 1 if an instruction results in a value of 0. Otherwise set to 0.</li>
+                        <li>C - Carry condition flag. Set to 1 if an instruction results in a carry condition.</li>
+                        <li>V - Overflow condition flag. Set to 1 if an instruction results in an overflow condition.</li>
+                    </ol>    
                     <p>For more information regarding the process state fields, refer to the <a href="https://developer.arm.com/documentation/100076/0100/Instruction-Set-Overview/Overview-of-AArch64-state/Process-State?lang=en">official documentation</a>.</p>
                 </div>
             </details>
@@ -76,7 +86,7 @@
                         <li>The general-purpose register into which the contents of the specified program status register (PSR) will be copied.</li>
                         <li>The PSR to copy the contents from.</li>
                     </ol>
-                    <p>The A32 recommends accessing the condition flags of the CPSR via the APSR. The below copies the contents of the APSR into register r0:</p>
+                    <p>The A32 ISA recommends accessing the condition flags of the CPSR via the APSR. The below copies the contents of the APSR into register r0:</p>
                     <div class="illustration codebox">
                         <copy-button></copy-button>
                         <p>msr r0, apsr</p>
@@ -115,27 +125,27 @@
                     <p>Rather than providing an optional flag for each instruction indicating whether it should update the process state fields, the A64 ISA provides alternate instructions for this purpose. These instructions perform the same operation as their non flag-setting counterparts, updating the process state fields as needed:</p>
                     <div class="illustration codebox">
                         <copy-button></copy-button>
-                        <p>subs r0, r0, r1 <span class="comment">Subtracts the values in r0 and r1 and stores the result in r0, updating the process state fields as needed.</span></p>
+                        <p>subs x0, x0, x1 <span class="comment">Subtracts the values in x0 and x1 and stores the result in x0, updating the process state fields as needed.</span></p>
                     </div>
                     <p>Due to the similarities in presentation, instructions that have an alternate version capable of updating flags are presented in the same manner as the A32 ISA: With the S character in parentheses: (S).</p>
                 </div>
 
                 <h3>Move to Special Register</h3>
-                <p>The A32 and A64 ISAs also allows the program's state to be updated with the MSR (Move to System Register) instruction. The MSR instruction takes two operands:</p>
+                <p>The A32 and A64 ISAs also allow the CPSR and Process State Fields updated with the MSR (Move to System Register) instruction. The MSR instruction takes two operands:</p>
                 <ol>
-                    <li>The name of the system register to write to.</li>
+                    <li>The name of the system register or Process State Field to write to.</li>
                     <li>An immediate value or a register containing the value to write to the system register.</li>
                 </ol>
                 <div class="a32-content">
-                    <p>The A32 recommends updating the condition flags for the CPSR via the APSR:</p>
+                    <p>Updating the condition flags of the CPSR directly is considered bad practice in newer versions of the A32 ISA. Instead, the flags should be updated via the APSR. This requires the bits of the APSR that should be updated to be specified with with an underscore followed by a string of characters representing the flags to update after the first operand. The available combinations of flags are nzcvq, g, or nzcvqg. Updating the APSR without specifying any bits is considered deprecated behavior in newer versions of ARM.</p>
                     <div class="illustration codebox">
                         <copy-button></copy-button>
-                        <p>msr apsr, #0b11110000000000000000000000000000</p>
+                        <p>msr apsr_nczvq, #0b11110000000000000000000000000000</p>
                     </div>
                 </div>
 
                 <div class="a64-content">
-                    <p>For consistency, the N, Z, C and V state fields occupy the same position in their respective register as the position of their A32 counterparts in the CPSR. Because of the format in which the A64 instruction expects constant values to be provided, however, it's easiest to move the new value into another register first and copy it from there. The below updates the NZCV state fields via their register:</p>
+                    <p>For consistency, the N, Z, C and V state fields occupy the same position in their respective 64-bit register as the position of their A32 counterparts in the 32-bit CPSR/APSR. Because of the format in which the A64 instruction expects constant values to be provided, however, it's easiest to move the new value into another register first and copy it from there. The below updates the NZCV state fields via their register:</p>
                     <div class="illustration codebox">
                         <copy-button></copy-button>
                         <p>mov x0, #0b11110000000000000000000000000000</p>
