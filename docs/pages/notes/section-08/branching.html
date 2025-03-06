@@ -2,9 +2,10 @@
 <html>
     <head>
         <title>Practical ARM Assembly Notes</title>
-        <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">
-        <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
+        <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">    
         <script src="/practical_arm_assembly/assets/components/components.js" type="module"></script>
+        <script src="/practical_arm_assembly/assets/scripts/eventListeners.js"></script>
+        <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
     </head>
 
     <body>
@@ -13,7 +14,82 @@
         <nav-menu></nav-menu>
 
         <main>
+            <details class="content-container" open>
+                <summary><p>Conditional Execution</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
+                <p>As mentioned in Section 6, the N, C, Z, V, Q and GE flags are used for conditional execution. Conditional execution allows an instruction to be optionally executed based on the result of another instruction. This is accomplished by adding a suffix to the end of an eligible instruction that indicates the condition required for execution. Truly conditional instructions that advance the <a href="/practical_arm_assembly/pages/notes/section-01/mov-and-svc.html#pc-register">PC register</a> with no other effect when the required condition is false vary between ISAs.</p>
+            </details>
             
+            <details class="content-container" open>
+                <summary><p>Branching</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
+                <p>The Branch (B) instruction is commonly used for conditional execution in both A32 and A64 ISAs. Section 1 introduced the concept of labels: Symbolic references to the memory address of an instruction or piece of data. At its most simple, the Branch instruction simply instructs the program to jump, or "branch," execution to the label specified by its only operand:</p>
+                
+                <div class="a32-content">
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>b exit <span class="comment">// Branches execution to exit label</span></p>
+                        <br>
+                        <p>mov r0, #0x9<span class="comment">// This instruction will not be executed</span></p>
+                        <br>
+                        <p>exit: <span class="comment">// Exit label</span></p>
+                        <p>mov r7, #0x1</p>
+                        <p>svc 0</p>
+                    </div>
+                </div>
+
+                <p>As mentioned above, conditional execution is implemented by extending an instruction with a suffix indicating the required condition. A full list of these extensions and their related flags can be found <a href="https://developer.arm.com/documentation/dui0801/l/Condition-Codes/Condition-code-suffixes-and-related-flags?lang=en">here.</a> The code below uses the Negative (MI) extension to conditionally execute the Branch instruction based on the result of preceding Compare instruction:</p>
+                
+                <div class="a32-content">
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>mov r0, #0x5</p>
+                        <br>
+                        <p>cmp r0, #0x6 <span class="comment">// Compares the value stored in r0 with the value 6 and updates the condition flags based on the result.</span></p>
+                        <p>bmi cond1 <span class="comment">// Branches execution to cond1 if the previous instruction results in the N (Negative) condition flag being set.</span></p>
+                        <br>
+                        <p>cond1: <span class="comment">// Label for condition 1</span></p>
+                        <p>mov r0, #0x1</p>
+                        <br>
+                        <p>cond2: <span class="comment">// Label for condition 2</span></p>
+                        <p>mov 40, #0x2</p>
+                        <br>
+                        <p>exit: <span class="comment">// Exit label</span></p>
+                        <p>mov r7, #0x1</p>
+                        <p>svc 0</p>
+                    </div>
+                </div>
+
+                <p>It is important to note that branching to the cond1 label in the code above does not mean that the cond2 and exit labels are not executed. After branching, execution continues sequentially until the end of the program. Additional branch statements can be used to work around this:</p>
+                
+                <div class="a32-content">
+                    <div class="illustration codebox">
+                        <copy-button></copy-button>
+                        <p>mov r0, #0x5</p>
+                        <br>
+                        <p>cmp r0, #0x6 <span class="comment">// Compares the value stored in r0 with the value 6 and updates the condition flags based on the result</span></p>
+                        <p>bmi cond1 <span class="comment">// Branches execution to cond1 if the previous instruction results in the N (Negative) condition flag being set</span></p>
+                        <br>
+                        <p>cond1: <span class="comment">// Label for condition 1</span></p>
+                        <p>mov r0, #0x1</p>
+                        <p>b exit <span class="comment">// Branches execution to exit label to prevent execution of code under cond2 label</span></p>
+                        <br>
+                        <p>cond2: <span class="comment">// Label for condition 2</span></p>
+                        <p>mov 40, #0x2</p>
+                        <p><span class="comment">// Note that branching to the exit label is not required here. Execution will proceed to the exit label regardless.</span></p>
+                        <br>
+                        <p>exit: <span class="comment">// Exit label</span></p>
+                        <p>mov r7, #0x1</p>
+                        <p>svc 0</p>
+                    </div>
+                </div>
+            </details>
+
+            <details class="content-container" open>
+                <summary><p>Summary</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
+
+            </details>
+            <hr class="page-end"/>
+            <nav-button href="/practical_arm_assembly/pages/notes/section-03/logical-operators.html" class="prev">Section 09: While Loops</nav-button>
+            <nav-button href="/practical_arm_assembly/pages/notes/section-05/shift-and-rotate.html" class="next">Section 07: Compare</button>      
         </main>
     </body>
 </html>
