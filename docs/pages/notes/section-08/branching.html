@@ -85,11 +85,44 @@
 
             <details class="content-container" open>
                 <summary><p>Summary</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
+                <p>Conditional execution allows an instruction to be executed based on the contents of the condition flags. The Branch instruction is a truly conditional instruction common to both the A32 and A64 ISAs that allows program execution to be conditionally branched to another label.</p>
+                <h3>Instructions</h3>
+                <div class="a32-content">
+                    <ul>
+                        <li><a href="https://developer.arm.com/documentation/ddi0597/2024-12/Base-Instructions/B--Branch-">B [label]</a></li>
+                        <ul>
+                            <li>Branches program execution to the specified label.</li>
+                            <li>Can be combined with a number of <a href="https://developer.arm.com/documentation/dui0801/l/Condition-Codes/Condition-code-suffixes-and-related-flags?lang=en">mnemonic extensions</a> for conditional execution.</li>
+                        </ul>
+                    </ul>
+                </div>
 
+                <div class="a64-content">
+                    <ul>
+                        <li><a href=https://developer.arm.com/documentation/ddi0602/2022-06/Base-Instructions/B--Branch-">B [label]</a></li>
+                        <ul>
+                            <li>Branches program execution to the specified label.</li>
+                            <li>Can be combined with a number of <a href="https://developer.arm.com/documentation/dui0801/l/Condition-Codes/Condition-code-suffixes-and-related-flags?lang=en">mnemonic extensions</a> for conditional execution.</li>
+                        </ul>
+                    </ul>
+                </div>
+                <h3>Examples</h3>
+                <div class="a32-content">
+                    <ul>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/section-08/a32/branching.s">Branching</a>                        </li>
+                    </ul>
+                </div>
+
+                <div class="a64-content">
+                    <ul>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/section-08/a64/branching.s">Branching</a>                        </li>
+                    </ul>
+                </div>
             </details>
+
             <hr class="page-end"/>
-            <nav-button href="/practical_arm_assembly/pages/notes/section-03/logical-operators.html" class="prev">Section 09: While Loops</nav-button>
-            <nav-button href="/practical_arm_assembly/pages/notes/section-05/shift-and-rotate.html" class="next">Section 07: Compare</button>      
+            <nav-button href="/practical_arm_assembly/pages/notes/section-09/while-loops.html" class="prev">Section 09: While Loops</nav-button>
+            <nav-button href="/practical_arm_assembly/pages/notes/section-07/cmp.html" class="next">Section 07: Compare</button>      
         </main>
     </body>
 </html>
