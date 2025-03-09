@@ -1,9 +1,9 @@
 .global _start
 
 _start:
-	mov x1, #0x4 // Moves the value 5 into r1.
+	mov x1, #0x4 // Moves the value 5 into x1.
 
-	cmp x1, #0x5 // Compares the value stored in r1 with the value 5 and updates the condition flags based on the result.
+	cmp x1, #0x5 // Compares the value stored in x1 with the value 5 and updates the condition flags based on the result.
 
 	bmi cond1 // The MI extension indicates that the instruction should only be executed if the N condition flag is set to 1.
 
@@ -15,7 +15,7 @@ cond1:
 	 * software interrupt has been placed under it's own label, which we can
 	 * force the program to jump to by using the branch mnemonic without any
 	 * extensions:*/
-	b exit // Jump toexit label.
+	b exit // Jump to exit label.
 
 cond2:
 	mov x0, #0x2
