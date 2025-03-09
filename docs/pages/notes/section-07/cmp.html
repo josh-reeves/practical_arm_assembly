@@ -42,6 +42,42 @@
                     </div>
                 </div>
             </details>
+
+            <details class="content-container" open>
+                <summary><p>Summary</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
+                <p>The Compare instruction compares two values via subtraction and updates the Condition Flags based on the result.</p>
+                <h3>Instructions</h3>
+                <div class="a32-content">
+                    <ul>
+                        <li><a href="https://developer.arm.com/documentation/ddi0597/2024-12/Base-Instructions/B--Branch-">CMP rN, #const/rM  </a></li>
+                        <ul>
+                            <li>Compares two values via subtraction and updates the condition flags based on the result.</li>
+                        </ul>
+                    </ul>
+                </div>
+
+                <div class="a64-content">
+                    <ul>
+                        <li><a href="https://developer.arm.com/documentation/ddi0597/2024-12/Base-Instructions/B--Branch-">CMP xN, #const/xM  </a></li>
+                        <ul>
+                            <li>Compares two values via subtraction and updates the condition flags based on the result.</li>
+                            <li>Because of the way a64 handles immediate values, it's easiest to use a register for the second operand.</li>
+                        </ul>
+                    </ul>
+                </div>
+                <h3>Examples</h3>
+                <div class="a32-content">
+                    <ul>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/section-07/a32/cmp.s">Compare</a>                        </li>
+                    </ul>
+                </div>
+
+                <div class="a64-content">
+                    <ul>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/section-07/a64/cmp.s">Compare</a>                        </li>
+                    </ul>
+                </div>
+            </details>
             <hr class="page-end"/>
             <nav-button href="/practical_arm_assembly/pages/notes/section-06/program-status.html" class="prev">Section 06: Program State</nav-button>
             <nav-button href="/practical_arm_assembly/pages/notes/section-08/branching.html" class="next">Section 08: Branching</button>      
