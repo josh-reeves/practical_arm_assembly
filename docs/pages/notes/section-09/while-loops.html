@@ -2,9 +2,10 @@
 <html>
     <head>
         <title>Practical ARM Assembly Notes</title>
-        <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">
-        <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
+        <link rel="stylesheet" href="/assets/styles/default-styles.css">    
         <script src="/practical_arm_assembly/assets/components/components.js" type="module"></script>
+        <script src="/practical_arm_assembly/assets/scripts/eventListeners.js"></script>
+        <script src="/assets/scripts/utils.js"></script>
     </head>
 
     <body>
@@ -13,6 +14,25 @@
         <nav-menu></nav-menu>
 
         <main>
+            <details class="content-container" open>
+                <summary><p>Looping</p></summary>
+                <p>The previous section explored how the Branch instruction can be used to implement conditional execution. In addition to conditional statements, this can also be used to implement loops. The illustration below shows a while-loop in C:</p>
+                <div class="illustration codebox">
+                    <copy-button></copy-button>
+                    <p>int main(void)</p>    
+                    <p>{</p>
+                        <p>&emsp;&emsp;int i = 0;</p>
+                        <p>&emsp;&emsp;while (i < 5)</p>
+                        <p>&emsp;&emsp;{</p>
+                        <p>&emsp;&emsp;&emsp;&emsp;i++;</p>
+                        <br>
+                        <p>&emsp;&emsp;}</p>
+                        <p>&emsp;&emsp;return 0;</p>
+                        <br>
+                        <p>}</p>
+                </div>
+
+            </details>
             
         </main>
     </body>
