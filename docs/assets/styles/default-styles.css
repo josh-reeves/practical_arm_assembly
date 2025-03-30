@@ -382,6 +382,11 @@ div.codebox p.indented
     padding-left: 45px;
 
 }
+div.codebox p.indentedx2
+{
+    padding-left: 90px;
+
+}
 
 div.codebox p.centered
 {

@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">    
         <script src="/practical_arm_assembly/assets/components/components.js" type="module"></script>
         <script src="/practical_arm_assembly/assets/scripts/eventListeners.js"></script>
-        <script src="/assets/scripts/utils.js"></script>
+        <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
     </head>
 
     <body>
@@ -21,34 +21,40 @@
                     <div class="illustration codebox">
                         <copy-button></copy-button>
                         <p>_start:</p>
-                        <p class="indented">cmp r0, #0x5</p>
-                        <p class="indented">bge exit</p>
+                        <p class="indented">mov r0, #0x0</p>
                         <br>
-                        <p class="indented">add r0, r0, #0x1</p>
-                        <p class="indented">b _start</p>
+                        <p class="indented">loop:</p>
+                        <p class="indentedx2">cmp r0, #0x5</p>
+                        <p class="indentedx2">bge exit</p>
                         <br>
-                        <p>exit:</p>
-                        <p class="indented">mov r7, #0x1</p>
-                        <p class="indented">svc 0</p>
+                        <p class="indentedx2">add r0, r0, #0x1</p>
+                        <p class="indentedx2">b loop</p>
+                        <br>
+                        <p class="indented">exit:</p>
+                        <p class="indentedx2">mov r7, #0x1</p>
+                        <p class="indentedx2">svc 0</p>
                     </div>
-                    <p>The program begins by comparing the value stored in register r0 to 5. The following line pairs the Branch instruction with the Greater than or Equal to (ge) mnemonic extension to restrict execution of the instruction based on the value stored in r0. If the value is greater than or equal to 5, execution will branch to the exit label and the program will end. Otherwise, 1 is added to the value currently stored in r0 and execution branches back to the beginning of the program. This is roughly equivalent to the following code in C:</p>    
+                    <p>The program begins by moving the value 0 into register r0. comparing the value stored in r0 to 5. The following line pairs the Branch instruction with the Greater than or Equal to (ge) mnemonic extension to restrict execution of the instruction based on the results of the previous comparison. If the value stored in r0 is greater than or equal to 5, execution will branch to the exit label and the program will end. Otherwise, 1 is added to the value currently stored in r0 and execution branches back to the beginning of the loop label. This is roughly equivalent to the following code in C:</p>    
                 </div>
 
                 <div class="a64-content">
                     <div class="illustration codebox">
                         <copy-button></copy-button>
                         <p>_start:</p>
-                        <p class="indented">cmp x0, #0x5</p>
-                        <p class="indented">bge exit</p>
+                        <p class="indented">mov x0, #0x0</p>
                         <br>
-                        <p class="indented">add x0, x0, #0x1</p>
-                        <p class="indented">b _start</p>
+                        <p class="indented">loop:</p>
+                        <p class="indentedx2">cmp x0, #0x5</p>
+                        <p class="indentedx2">bge exit</p>
                         <br>
-                        <p>exit:</p>
-                        <p class="indented">mov x8, #0x5d</p>
-                        <p class="indented">svc 0</p>
+                        <p class="indentedx2">add x0, x0, #0x1</p>
+                        <p class="indentedx2">b loop</p>
+                        <br>
+                        <p class="indented">exit:</p>
+                        <p class="indentedx2">mov x8, #0x5d</p>
+                        <p class="indentedx2">svc 0</p>
                     </div>
-                    <p>The program begins by comparing the value stored in register r0 to 5. The following line pairs the Branch instruction with the Greater than or Equal to (ge) mnemonic extension to restrict execution of the instruction based on the value stored in x0. If the value is greater than or equal to 5, execution will branch to the exit label and the program will end. Otherwise, 1 is added to the value currently stored in x0 and execution branches back to the beginning of the program. This is roughly equivalent to the following code in C:</p>    
+                    <p>The program begins by moving the value 0 into register x0. comparing the value stored in x0 to 5. The following line pairs the Branch instruction with the Greater than or Equal to (ge) mnemonic extension to restrict execution of the instruction based on the results of the previous comparison. If the value stored in x0 is greater than or equal to 5, execution will branch to the exit label and the program will end. Otherwise, 1 is added to the value currently stored in x0 and execution branches back to the beginning of the loop label. This is roughly equivalent to the following code in C:</p>    
                 </div>
                 <div class="illustration codebox">
                     <copy-button></copy-button>
@@ -70,19 +76,19 @@
                 <h3>Examples</h3>
                 <div class="a32-content">
                     <ul>
-                        <li><a href="">While Loop</a></li>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/section-09/a32/while-loop.s">While Loop</a></li>
                     </ul>
                 </div>
 
                 <div class="a64-content">
                     <ul>
-                        <li><a href="">While Loop</a></li>
+                        <li><a href="https://github.com/josh-reeves/practical_arm_assembly/blob/main/source/section-09/a64/while-loop.s">While Loop</a></li>
                     </ul>
                 </div>
             </details>
             <hr class="page-end"/>
-            <nav-button href="/practical_arm_assembly/pages/notes/section-09/while-loops.html" class="prev">Section 09: While Loops</nav-button>
-            <nav-button href="/practical_arm_assembly/pages/notes/section-07/cmp.html" class="next">Section 07: Compare</button>      
+            <nav-button href="/practical_arm_assembly/pages/notes/section-10/function-calls.html" class="prev">Section 10: Function Calls</nav-button>
+            <nav-button href="/practical_arm_assembly/pages/notes/section-08/branching.html" class="next">Section 08: Branching</button>      
         </main>
     </body>
 </html>
