@@ -8,7 +8,7 @@
 /practical_arm_assembly/pages/notes/section-06/program-status.html
 /practical_arm_assembly/pages/notes/section-07/cmp.html
 /practical_arm_assembly/pages/notes/section-08/branching.html
-/practical_arm_assembly/pages/notes/section-09/while-loops.html
+/practical_arm_assembly/pages/notes/section-09/loops.html
 /practical_arm_assembly/pages/notes/section-10/function-calls.html
 /practical_arm_assembly/pages/notes/section-11/ldr-and-str.html
 /practical_arm_assembly/pages/notes/section-12/stack-operations.html

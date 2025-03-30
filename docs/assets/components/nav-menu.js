@@ -78,8 +78,8 @@ class NavMenu extends HTMLElement
                         <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-08/branching.html'">
                             <p>Section 08: Branching</p>
                         </div>
-                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-09/while-loops.html'">
-                            <p>Section 09: While Loops</p>
+                        <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-09/loops.html'">
+                            <p>Section 09: Loops</p>
                         </div>
                         <div class="submenu-item-hidden" onclick="window.location.href='/practical_arm_assembly/pages/notes/section-10/function-calls.html'">
                             <p>Section 10: Function Calls</p>
