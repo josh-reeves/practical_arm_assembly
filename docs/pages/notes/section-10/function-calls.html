@@ -2,9 +2,10 @@
 <html>
     <head>
         <title>Practical ARM Assembly Notes</title>
-        <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">
-        <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>
+        <link rel="stylesheet" href="/practical_arm_assembly/assets/styles/default-styles.css">    
         <script src="/practical_arm_assembly/assets/components/components.js" type="module"></script>
+        <script src="/practical_arm_assembly/assets/scripts/eventListeners.js"></script>
+        <script src="/practical_arm_assembly/assets/scripts/utils.js"></script>    
     </head>
 
     <body>
@@ -13,7 +14,18 @@
         <nav-menu></nav-menu>
 
         <main>
-            
+            <details class="content-container" open>
+                <summary><p>Procedures</p><div><button class="a32-toggle inactive">A32</button><button class="a64-toggle">A64</button></div></summary>
+                <p>Section 1 explained that ARM assembly code is organized into labels that reference data or instructions. These labels can be used to create procedures: Blocks of instructions that perform specific tasks. Like functions, procedures are designed to be modular and reusable.</p>
+                <div class="illustration codebox">
+                <copy-button></copy-button>
+                <p>add_nums:</p>
+                <p class="indented">r0, r1, r2 <span class="comment">// Adds the values stored in r1 and r2 together and stores the result in r0.</span></p> 
+                <br>
+                <p class="indented">bx lr<span class="comment">// Returns execution to the address stored in lr.</span></p>  
+            </div>
+
+            </details>
         </main>
     </body>
 </html>
